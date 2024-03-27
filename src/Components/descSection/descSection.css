@@ -7,7 +7,7 @@
 
 /* Dando uma margem do ultimo componente e pintando o fundo */
 .container-desc {
-    padding-top: 50px;
+    padding: 50px;
     background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
 }
 
@@ -105,4 +105,23 @@
 .desc-icon svg {
     margin: 0 auto;
     display: block;
+}
+
+@media screen and (max-width: 799px) {
+    .container-desc {
+        padding: 20px;
+    }
+
+    .content-desc {
+        display: block;
+    }
+
+    .title-desc {
+        font-size: 25px;
+        width: 100%;
+    }
+
+    .section-desc {
+        margin: 20px auto;
+    }
 }
