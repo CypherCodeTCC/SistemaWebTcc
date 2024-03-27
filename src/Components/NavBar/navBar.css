@@ -147,4 +147,124 @@
     margin-right: 4em;
 }
 
+.nav-mobile,
+#fullscreen-menu {
+    display: none;
+}
+
 /* Menu hamburger mobile */
+@media (max-width:767px) {
+    .desktop {
+        display: none;
+    }
+
+    .wrap {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        /* Alterado para alinhar à direita */
+        flex-wrap: wrap;
+    }
+
+    .burger {
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+        background: none;
+        /* Removido o fundo */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        transition: all .5s ease;
+        margin: 1em;
+        z-index: 9999;
+    }
+
+    .burger-strip {
+        transition: all .5s ease;
+    }
+
+    .strip div {
+        height: 3px;
+        border-radius: 2px;
+        background: rgb(56 56 56);
+        margin: 10px;
+        transition: all .55s cubic-bezier(0.075, 0.82, 0.165, 1);
+        width: 40px;
+    }
+
+    .burger.active .strip div {
+        background: white;
+    }
+
+    .burger.active .burger-strip-2 div:first-child {
+        transform: translateY(13px) rotate(45deg);
+    }
+
+    .burger.active .burger-strip-2 div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.active .burger-strip-2 div:last-child {
+        transform: translateY(-13px) rotate(-45deg);
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+
+    #fullscreen-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: #212121;
+        box-shadow: 18px 18px 35px #1c1c1c,
+            -18px -18px 35px #262626;
+        z-index: 9998;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: slideInRight 0.5s ease forwards;
+    }
+
+    #fullscreen-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        animation: slideInRight 0.5s ease forwards;
+    }
+
+    #fullscreen-menu li {
+        font-family: 'Inter', sans-serif;
+        font-size: 2em;
+        color: #F5F5F5;
+        margin-bottom: 45px;
+        position: relative;
+    }
+
+    #fullscreen-menu li:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.825);
+    }
+}

@@ -33,13 +33,6 @@
 	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
 }
 
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading {
-		padding: 0 20px;
-	}
-}
-
 /* Estilos para o conteúdo do cabeçalho principal */
 .mainHeading__content {
 	max-width: 1110px;
@@ -52,18 +45,13 @@
 	position: relative;
 }
 
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading__content {
-		min-height: 500px;
-	}
-}
-
 /* Estilos para o texto do cabeçalho principal */
 .mainHeading__text {
 	z-index: 1;
-	color: #020403; /* Cor do texto fora do botão */
-	background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo alterada */
+	color: #020403;
+	/* Cor do texto fora do botão */
+	background-color: rgba(255, 255, 255, 0.8);
+	/* Cor de fundo alterada */
 	padding: 40px;
 	max-width: 620px;
 	margin-top: 100px;
@@ -79,18 +67,11 @@
 	position: absolute;
 	width: 2.4px;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.2); /* Cor da linha alterada */
+	background-color: rgba(0, 0, 0, 0.2);
+	/* Cor da linha alterada */
 	top: 0;
 	left: 0;
 	animation: line 0.8s 0.6s ease backwards;
-}
-
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading__text {
-		padding: 20px;
-		margin: 90px 0 40px 0;
-	}
 }
 
 /* Animação para entrada do texto */
@@ -107,7 +88,8 @@
 	font-weight: 600;
 	letter-spacing: 2px;
 	margin-bottom: 16px;
-	color: #020403; /* Cor do texto fora do botão */
+	color: #020403;
+	/* Cor do texto fora do botão */
 }
 
 /* Estilos para o título do cabeçalho principal */
@@ -117,15 +99,8 @@
 	letter-spacing: 2px;
 	margin-bottom: 24px;
 	font-size: 40px;
-	color: #020403; /* Cor do texto fora do botão */
-}
-
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading__title {
-		margin-bottom: 16px;
-		font-size: 28px;
-	}
+	color: #020403;
+	/* Cor do texto fora do botão */
 }
 
 /* Estilos para a descrição do cabeçalho principal */
@@ -133,13 +108,6 @@
 	letter-spacing: 0.5px;
 	font-size: 16px;
 	line-height: 26px;
-}
-
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading__description {
-		font-size: 14px;
-	}
 }
 
 /* Estilos para a imagem do cabeçalho principal */
@@ -153,17 +121,6 @@
 	overflow: hidden;
 	animation: image 0.6s 0.2s ease backwards;
 }
-
-/* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading__image {
-		height: 400px;
-		width: 80%;
-		transform: translatey(40px);
-		right: -15%;
-	}
-}
-
 /* Animação para entrada da imagem */
 @keyframes image {
 	0% {
@@ -215,10 +172,13 @@
 /* Estilos para o botão de call-to-action */
 .cta {
 	padding: 16px 32px;
-	color: #000; /* Cor do texto do botão */
-	background-color: #f2f0f1; /* Cor de fundo do botão */
-	border: 1px solid #000; /* Cor da borda do botão */
-    border-radius: 8px;
+	color: #000;
+	/* Cor do texto do botão */
+	background-color: #f2f0f1;
+	/* Cor de fundo do botão */
+	border: 1px solid #000;
+	/* Cor da borda do botão */
+	border-radius: 8px;
 	font-family: "Raleway", sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -231,15 +191,43 @@
 
 /* Efeito hover para o botão de call-to-action */
 .cta:hover {
-	border: 1px solid rgba(0, 0, 0, 0.8); /* Cor da borda ao passar o mouse */
-    background-color: #000;
-    color: #f0f0f0;
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	/* Cor da borda ao passar o mouse */
+	background-color: #000;
+	color: #f0f0f0;
 	box-shadow: inset 0px -80px 0px rgba;
 }
 
+/* Ajustes para telas menores */
 @media screen and (max-width: 799px) {
+	.mainHeading {
+		padding: 0 20px;
+	}
+	.mainHeading__content {
+		min-height: 500px;
+	}
+
+	.mainHeading__text {
+		padding: 20px;
+		margin: 90px 0 40px 0;
+	}
+
+	.mainHeading__title {
+		margin-bottom: 16px;
+		font-size: 28px;
+	}
+	.mainHeading__description {
+		font-size: 14px;
+	}
+	.mainHeading__image {
+		height: 320px;
+		width: 80%;
+		transform: translatey(40px);
+		transform: translateX(-40px);
+		right: -15%;
+		overflow: hidden;
+	}
 	.cta {
 		margin-top: 16px;
-   }
+	}
 }
-
