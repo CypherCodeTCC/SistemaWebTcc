@@ -1,0 +1,108 @@
+/*  Importando a fonte Raleway do Google Fonts  */
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+/*Importando a fonte Inter*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/*Importando a fonte Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Dando uma margem do ultimo componente e pintando o fundo */
+.container-desc {
+    padding-top: 50px;
+    background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
+}
+
+/* Alinhando todos os cards de forma horizontal e no centro */
+.content-desc {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.desc-icon {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Dando uma margem entre os cards e do titulo */
+.section-desc {
+    margin: 0 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 50px;
+    gap: 10px;
+    width: 349px;
+    height: 445px;
+    background: #FFFFFF;
+    border: 1px solid #DEDEDE;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    border-radius: 18px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+/* Aumentando o tamanho da fonte, posicionando ela na tela, usando o tipo de fonte e tirando o negrito */
+.title-desc {
+    font-size: 50px;
+    text-align: center;
+    margin-right: 350px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+}
+
+/* Adicionando cor a palavra "especial" e "Foco */
+.span-desc,
+.span-right {
+    color: #172B85;
+}
+
+/* Centralizando todos os cards de maneira horizontal, definindo altura e largura, bordas, espaçando o conteudo interno
+   e alinhando todo conteudo no centro com a imagem em coluna */
+.left-desc,
+.center-desc,
+.right-desc {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    height: 330px;
+    padding-top: 10px;
+    border-radius: 8px;
+}
+
+/* Quebrando a descrição dos produtos em linhas, definindo quando quebrarão, alinhando os textos e espaçando para baixo */
+.left-desc p,
+.center-desc p,
+.right-desc p {
+    font-family: 'Inter', sans-serif;
+    color: #555555;
+    overflow-wrap: break-word;
+    width: 250px;
+    text-align: center;
+    padding-top: 2.2em;
+}
+
+/* ALinhando no centro */
+.left-desc h2,
+.center-desc h2,
+.right-desc h2 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    color: #252B42;
+    letter-spacing: 0.1px;
+    margin-top: 0.6em;
+}
+
+/* Inserindo as imagens em bloco sem margem, alinhando horizontalmente */
+.desc-icon svg {
+    margin: 0 auto;
+    display: block;
+}
