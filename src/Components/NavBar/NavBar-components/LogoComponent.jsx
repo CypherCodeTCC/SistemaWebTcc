@@ -1,6 +1,6 @@
 // LogoComponent.jsx
-import React from 'react';
-import logo from '../../../Images/logotipo.png';
+import React from "react";
+import logo from "../../../Images/logotipo.png";
 
 function LogoComponent() {
     return (
