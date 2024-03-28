@@ -13,6 +13,7 @@ function Navbar() {
                 <LogoComponent />
                 <MenuLinks />
                 <CartLoginIcons />
+                <MenuMobile />
             </nav>
         </>
     );
