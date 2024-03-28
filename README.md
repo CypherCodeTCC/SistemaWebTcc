@@ -1,11 +1,28 @@
-# React + Vite
+## Guia de Instruções para Iniciar o Projeto 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Pré-requisitos**  
+Antes de começar, certifique-se de ter o Node.js instalado em seu sistema. Se você ainda não o tem, pode baixá-lo e instalá-lo a partir do [site oficial do Node.js](https://nodejs.org/).
 
-Currently, two official plugins are available:
+**Instalação**
+1. Clone este repositório para o seu ambiente local:
+### git clone https://github.com/CypherCodeTCC/SistemaWebTcc
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Navegue até o diretório do projeto:
+### cd SistemaWebTcc
+
+**Instalando Dependências**  
+*Antes de iniciar o projeto, instale as dependências necessárias.*
+
+3. No terminal, execute o seguinte comando:
+### npm install
+
+**Rodando o Projeto**  
+Após a instalação das dependências, você pode iniciar o servidor de desenvolvimento.
+
+No terminal, execute o seguinte comando:
+### npm run dev
+
+Isso iniciará o servidor de desenvolvimento e abrirá automaticamente o seu navegador padrão com o projeto em execução. Qualquer alteração feita nos arquivos será refletida no navegador. 😊
 
 ## Estrutura de Pasta do Projeto
 
