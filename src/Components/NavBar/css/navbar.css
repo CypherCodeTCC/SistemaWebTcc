@@ -1,0 +1,160 @@
+/* Import de fontes */
+@import url("https://fonts.googleapis.com/css?family=inter:100,200,300,400,500,600,700,800,900&display=swap");
+
+/* NavBar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: normal;
+    padding: 0.9%;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Logo */
+.logo {
+    margin: auto;
+    margin-left: 1.2em;
+    margin-right: 1em;
+}
+
+.logo img {
+    width: 100px;
+}
+
+/* NavBar Links */
+.navbar-links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Links do NavBar e Animação Hover */
+.lista {
+    display: flex;
+    margin: auto;
+    margin-left: 1.2em;
+}
+
+.lista li {
+    list-style: none;
+    padding: 0.8em;
+    padding-left: 1.2em;
+}
+
+.lista a {
+    display: inline-block;
+    position: relative;
+    color: #000000;
+    overflow: hidden;
+    /* Serve para impedir que a linha ultrapasse o tamanho do container pai */
+}
+
+.lista a::before,
+.lista a::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    /* Não mexer para não quebrar as linhas */
+    height: 1.8px;
+    bottom: 0;
+    background-color: #010203;
+    transition: transform 0.25s ease-out;
+}
+
+.lista a::before {
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    /* Este está na esquerda */
+}
+
+.lista a::after {
+    right: 0;
+    transform: scaleX(0);
+    transform-origin: right center;
+    /* Este está na direita */
+}
+
+.lista a:hover::before,
+.lista a:hover::after {
+    transform: scaleX(1.2);
+    /* Ambos se juntam no hover */
+}
+
+/* Fim Links NavBar */
+
+/* Barra de Pesquisa NavBar */
+.navbar-search {
+    width: auto;
+}
+
+.navbar-search .custom-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 100%;
+}
+
+.navbar-search .input {
+    font-size: 14px;
+    padding: 10px 100px; /* aumentando o espaço para a direita */
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 3px 1px 2px 1px #e2e2e29f;
+    transition: .3s ease;
+}
+
+.navbar-search .input:focus {
+    background: #F5F5F5;
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+}
+
+.navbar-search .input::placeholder {
+    position: absolute;
+    height: 24px;
+    left: 56px;
+    right: 48px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-search img {
+    position: absolute;
+    left: 15px;
+    fill: #000000;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* adicionando espaçamento entre os ícones */
+}
+
+/* Fim Barra de Pesquisa NavBar */
+
+/* Ícones de Carrinho e Login */
+.carrinho-logar {
+    display: flex;
+    margin-right: 1.2em;
+}
+
+.carrinho-logar img {
+    margin-right: 10px; /* adicionando espaçamento entre os ícones */
+}
+
+/* removendo navbar mobile de outros dispositivos */
+.navbar-mobile {
+    display: none;
+}
+
+/* Menu hamburger mobile */
+@media (max-width:767px) {
+    .desktop {
+        display: none;
+    }
+}
