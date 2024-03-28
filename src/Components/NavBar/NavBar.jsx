@@ -1,37 +1,30 @@
 import { useState } from 'react';
-import "./navBar.css";
+import "./navbar.css";
 import logo from '../Images/logotipo.png';
 
-function FullScreenMenu() {
-    const [isFullScreenMenuOpen, setIsFullScreenMenuOpen] = useState(false);
-
-    const toggleFullScreenMenu = () => {
-        setIsFullScreenMenuOpen(!isFullScreenMenuOpen);
-    };
-
+function MenuMobile() {
     return (
-        <>
-            <section className="nav-mobile wrap" onClick={toggleFullScreenMenu}>
-                <div className={`burger ${isFullScreenMenuOpen ? 'active' : ''}`}>
-                    <div className="strip burger-strip-2">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+        <div class="navbar-mobile">
+            <div class="header-navbar-mobile">
+                <div class="burger-container">
+                    <div id="burger">
+                        <div class="bar topBar"></div>
+                        <div class="bar btmBar"></div>
                     </div>
                 </div>
-            </section>
-
-            {isFullScreenMenuOpen && (
-                <div id="fullscreen-menu" onClick={toggleFullScreenMenu}>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Ofertas</a></li>
-                        <li><a href="#">Eventos</a></li>
-                    </ul>
-                </div>
-            )}
-        </>
+                <img src={logo} style={"height:30px; margin:10px 70px 0px; position:relative; float:right;"} />
+                <div class="icon icon-apple"></div>
+                <ul class="menu">
+                    <li class="menu-item"><a href="#">Mac</a></li>
+                    <li class="menu-item"><a href="#">iPad</a></li>
+                    <li class="menu-item"><a href="#">iPhone</a></li>
+                    <li class="menu-item"><a href="#">Watch</a></li>
+                    <li class="menu-item"><a href="#">TV</a></li>
+                    <li class="menu-item"><a href="#">Music</a></li>
+                    <li class="menu-item"><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
     );
 }
 
@@ -39,7 +32,7 @@ function Navbar() {
     return (
         <>
             <nav class="navbar">
-                <div className="logo">
+                <div className="logo desktop">
                     <img src={logo} alt="Logotipo da empresa" />
                 </div>
                 <div class="navbar-links desktop">
@@ -73,10 +66,8 @@ function Navbar() {
                         </svg>
                     </div>
                 </div>
-                {/*menu mobile */}
-                <FullScreenMenu />
             </nav>
-
+            <MenuMobile />
         </>
     )
 }
