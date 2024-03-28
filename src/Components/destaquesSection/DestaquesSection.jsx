@@ -1,4 +1,4 @@
-import './destaquesSection.css';
+import './destaquessection.css';
 
 function DestaquesSection() {
     return (

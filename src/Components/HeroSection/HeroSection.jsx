@@ -1,9 +1,6 @@
-import './heroSection.css';
-import image from '../Images/azulDeitado.png';
+import './herosection.css';
+import image from '../../Images/azulDeitado.png';
 
-function HeadingText() {
-    
-}
 function HeroSection() {
     return (
         <>
