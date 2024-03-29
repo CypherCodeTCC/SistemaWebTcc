@@ -9,9 +9,7 @@
 .navbar {
     display: flex;
     position: sticky;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #ffffff;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),

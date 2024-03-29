@@ -58,6 +58,7 @@
 	backdrop-filter: blur(8px);
 	animation: text 1.2s 0.6s ease backwards;
 	position: relative;
+	z-index: 1;
 }
 
 /* Linha decorativa antes do texto */
@@ -137,7 +138,7 @@
 	height: 0%;
 	top: 100%;
 	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
-	opacity: 0;
+	opacity: 1;
 	left: 0;
 }
 
