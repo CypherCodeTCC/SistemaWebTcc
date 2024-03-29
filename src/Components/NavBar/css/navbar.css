@@ -1,5 +1,6 @@
 /* Import de fontes */
 @import url("https://fonts.googleapis.com/css?family=inter:100,200,300,400,500,600,700,800,900&display=swap");
+
 :root {
     --cor-cinza: #d0d0d0;
     --cor-hover: #141414;
@@ -25,9 +26,10 @@
 }
 
 .logo img {
-    width: 100%; 
+    width: 100%;
     height: auto;
 }
+
 /* NavBar Links */
 .navbar-links {
     display: flex;
@@ -56,7 +58,8 @@
     position: absolute;
     width: 60%;
     height: 2.8px;
-    bottom: calc(-1.2rem);;
+    bottom: calc(-1.2rem);
+    ;
     background-color: #010203;
     transition: transform 0.25s ease-out;
 }
@@ -93,4 +96,52 @@
 
 .icones img:not(:last-child) {
     margin-right: 32px;
+}
+
+/* popup carrinho vazio */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 320px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EAECED;
+    color: #000;
+    text-align: center;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.modal-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.modal-content p {
+    font-family: 'Inter', 'Courier New', Courier, monospace;
+    margin: auto 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+.error-icon {
+    margin-bottom: 20px;
+    font-size: 64px;
+    color: rgb(0, 0, 0);
 }
