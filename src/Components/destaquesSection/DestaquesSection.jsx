@@ -40,22 +40,9 @@ function DestaquesSection() {
                 </div>
             </div>
 
-            <div class="flex-container">
-                <div className='produtoPrincipal-flex-container'>
-                <div class="flex-items"><h1>A</h1></div>
-                </div>
-                <div class="colunasMenores-flex-container">
-                    <div class="primeiraColuna-flex-container">
-                        <div class="flex-items"><h1>1</h1></div>
-                        <div class="flex-items"><h1>2</h1></div>
-                    </div>
-                    <div class="segundaColuna-flex-container">
-                        <div class="flex-items"><h1>3</h1></div>
-                        <div class="flex-items"><h1>4</h1></div>
-                    </div>
-                </div>
+            <div className='produtos-destaques'>
+                
             </div>
-
         </section>
     )
 }

@@ -34,7 +34,6 @@ function MobileMenuInterior() {
         </section>
     )
 }
-
 // Componente principal para o menu mobile
 function MobileMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

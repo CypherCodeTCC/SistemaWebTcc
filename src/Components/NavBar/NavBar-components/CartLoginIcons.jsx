@@ -17,8 +17,14 @@ function PopupCarrinhoVazio({ setIsPopupOpen }) {
                 </div>
             </div>
         </div>
-
     );
+}
+function PopupPesquisar() {
+    return (
+        <>
+        
+        </>
+    )
 }
 
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
