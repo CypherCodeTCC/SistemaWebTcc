@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import "./descsection.css";
+import "./descSection.css";
 
 export default function DescSection() {
     const description = [

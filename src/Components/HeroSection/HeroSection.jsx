@@ -1,4 +1,4 @@
-import './herosection.css';
+import './heroSection.css';
 import image from '../../Images/azulDeitado.png';
 
 function HeroSection() {

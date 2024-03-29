@@ -47,7 +47,6 @@
 
 /* Estilos para o texto do cabeçalho principal */
 .mainHeading__text {
-	z-index: 1;
 	color: #020403;
 	/* Cor do texto fora do botão */
 	background-color: rgba(255, 255, 255, 0.8);
@@ -138,7 +137,7 @@
 	height: 0%;
 	top: 100%;
 	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
-	opacity: 1;
+	opacity: 0;
 	left: 0;
 }
 

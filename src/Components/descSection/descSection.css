@@ -9,6 +9,7 @@
 .container-desc {
     padding: 50px;
     background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
+    
 }
 
 /* Alinhando todos os cards de forma horizontal e no centro */
@@ -16,6 +17,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    animation: container-animation 1.9s;
 }
 
 .desc-icon {
@@ -34,8 +36,7 @@
     align-items: center;
     padding: 40px 50px;
     gap: 10px;
-    width: 349px;
-    height: 445px;
+    animation: resizeCardsDesk 1s forwards;
     background: #FFFFFF;
     border: 1px solid #DEDEDE;
     box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
@@ -107,6 +108,8 @@
     display: block;
 }
 
+/* RESPONSIVIDADES */
+
 @media screen and (max-width: 767px) {
     .container-desc {
         padding: 20px;
@@ -123,19 +126,18 @@
 
     .section-desc {
         margin: 20px auto;
-        width: 269px;
-        height: 345px;
+        animation: resizeCardsCell 1s forwards;
     }
 
     .left-desc,
     .center-desc,
     .right-desc {       
-        width: 200px;
-        height: 230px;
+        width: 230px;
+        height: 260px;
     }
 }
 
-@media screen and (min-width: 767px) and (max-width: 1180px) {
+@media screen and (min-width: 768px) and (max-width: 1150px) {
     .title-desc {
         font-size: 40px;
         width: 100%;
@@ -145,23 +147,69 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 100%;
+        width: 98%;
     }
 
     .section-desc {
         margin: 20px;
-        width: 309px;
-        height: 375px;
+        animation: resizeCardsTablet 1s forwards;
     }
 
     .left-desc,
     .center-desc{
         width: calc(50% - 20px);
-        height: 230px;
+
     }
 
     .right-desc {      
         width: calc(100% - 20px);
-        height: 230px;
+    }
+}
+
+/* ANIMAÇÃO */
+
+@keyframes container-animation {
+	0% {
+		opacity: 0;
+		transform: translateY(200px);
+	}
+}
+
+@keyframes resizeCardsCell{
+    from
+    {
+        width: 379px;
+        height: 405px;
+    }
+    to
+    {
+        width: 349px;
+        height: 375px;
+    }
+}
+
+@keyframes resizeCardsTablet{
+    from
+    {
+        width: 349px;
+        height: 445px;
+    }
+    to
+    {
+        width: 379px;
+        height: 405px;
+    }
+}
+
+@keyframes resizeCardsDesk{
+    from
+    {
+        width: 379px;
+        height: 405px;
+    }
+    to
+    {
+        width: 349px;
+        height: 445px;
     }
 }
