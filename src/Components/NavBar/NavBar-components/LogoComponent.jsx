@@ -4,7 +4,7 @@ import logo from "../../../Images/logotipo.png";
 
 function LogoComponent() {
     return (
-        <div className="logo desktop">
+        <div className="logo">
             <img src={logo} alt="Logotipo da empresa" />
         </div>
     );
