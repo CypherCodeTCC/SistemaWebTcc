@@ -15,12 +15,13 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
     font-family: "Inter", Arial, Helvetica, sans-serif;
+    padding: 0.6rem;
 }
 
 /* Logo */
 .logo {
     margin: auto 0;
-    max-width: 90px;
+    max-width: 125px;
 }
 
 .logo img {
@@ -54,8 +55,8 @@
     content: "";
     position: absolute;
     width: 60%;
-    height: 1.8px;
-    bottom: 0;
+    height: 2.8px;
+    bottom: calc(-1.2rem);;
     background-color: #010203;
     transition: transform 0.25s ease-out;
 }
