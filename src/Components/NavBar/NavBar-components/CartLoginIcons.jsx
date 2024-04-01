@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CartIcon from "../../../Images/Svg/carrinho.svg";
-import SearchIcon from "../../../Images/Svg/search.svg";
+import CartIcon from "../../../../public/carrinho.svg";
+import SearchIcon from "../../../../public/search.svg";
 
 function PopupCarrinhoVazio({ setIsPopupOpen }) {
     const handleFechar = () => {

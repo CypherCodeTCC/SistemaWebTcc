@@ -1,4 +1,4 @@
-import './destaquessection.css';
+import './destaquesSection.css';
 
 function DestaquesSection() {
     return (
@@ -16,6 +16,18 @@ function DestaquesSection() {
                         <li className="aba-item aba-item-ativa">
                             <button className="aba-titulo">
                                 Novidades
+                            </button>
+                        </li>
+                        {/* Aba: Livros */}
+                        <li className="aba-item">
+                            <button className="aba-titulo">
+                                Livros
+                            </button>
+                        </li>
+                        {/* Aba: Livros */}
+                        <li className="aba-item">
+                            <button className="aba-titulo">
+                                Livros
                             </button>
                         </li>
                         {/* Aba: Livros */}

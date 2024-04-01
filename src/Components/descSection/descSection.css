@@ -103,7 +103,7 @@
 }
 
 /* Inserindo as imagens em bloco sem margem, alinhando horizontalmente */
-.desc-icon svg {
+.desc-icon img {
     margin: 0 auto;
     display: block;
 }
