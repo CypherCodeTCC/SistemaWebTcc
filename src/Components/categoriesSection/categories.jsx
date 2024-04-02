@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    background-image: #ffffff;
-    width: 100%;
+    background-color: #000000;
     display: flex;
     justify-content: center;
 `;
 
 export const Div = styled.div`    
-    .cards{
-        width: 100%;
+    .content{
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        width: 100%;
     }
     
     .card-devpessoal{
@@ -24,12 +23,11 @@ export const Div = styled.div`
     }
 
     .card-classic, .card-geek{
-        width: 450px;
+        width: 350px;
         height: 200px;
         background-color: gray;
         border-radius: 8px;
         padding: 20px;
-        display: flex;
         margin: 10px;
     }
 `

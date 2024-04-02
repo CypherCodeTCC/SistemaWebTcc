@@ -13,7 +13,7 @@ function DestaquesSection() {
                 <div className="abas">
                     <ul className="abas-lista" role="tablist">
                         {/* Aba: Novidades */}
-                        <li className="aba-item aba-item-ativa">
+                        <li className="aba-item">
                             <button className="aba-titulo">
                                 Novidades
                             </button>
