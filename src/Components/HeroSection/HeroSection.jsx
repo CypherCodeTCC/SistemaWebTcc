@@ -1,5 +1,5 @@
 import './heroSection.css';
-import image from '../../Images/azulDeitado.png';
+import image from '../../../public/azulDeitado.png';
 
 function HeroSection() {
     return (
