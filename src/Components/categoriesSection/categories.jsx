@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    background-color: #000000;
     display: flex;
     justify-content: center;
 `;
 
 export const Div = styled.div`    
-    .content{
+    .cards-devpessoal{
         display: flex;
-        justify-content: center;
         width: 100%;
+        height: 100%;
+    }
+
+    .cards-classicgeek{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 50%;
+        background-color: black;
     }
     
     .card-devpessoal{
