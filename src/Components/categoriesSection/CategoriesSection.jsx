@@ -1,6 +1,12 @@
 import React from "react";
 
-import { Container, Div } from "./categories";
+/* IMPORTANDO AS IMAGENS */ 
+import imageDev from '../../../public/roxoapontandodireita.png';
+
+/* IMPORTANTO OS COMPONENTES ESTILIZADOS */
+import { Container, Div, Figure, H1, H5 } from "./categories";
+
+
 
 export default function Categories() {
     return (
@@ -8,20 +14,36 @@ export default function Categories() {
             <Container className="container">
                 <Div className="cards-devpessoal">
                     <Div className="card-devpessoal">
-                        <h1>Desenvolvimento Pessoal</h1>
-                        <h5>Comprar agora</h5>
+                        <H1>Desenvolvimento Pessoal</H1>
+                        <H5>Comprar agora</H5>
+                        <Figure>
+                            <img className="imageDev"
+                                src={imageDev} 
+                                alt="Livro roxo flutuando"
+                            />
+                        </Figure>
                     </Div>
                 </Div>
                 <Div className="cards-classicgeek">
                     <Div className="card-classic">
-                        <h1>Clássicos</h1>
-                        <h5>Comprar agora</h5>
+                        <Figure>
+                            <img className="imageClassic"
+                                src={imageDev} 
+                                alt="Livro roxo flutuando"
+                            />
+                        </Figure>
+                        <H1>Clássicos</H1>
+                        <H5>Comprar agora</H5>
                     </Div>
-                </Div>
-                <Div className="cards-classicgeek">
                     <Div className="card-geek">
-                        <h1>Geek</h1>
-                        <h5>Comprar agora</h5>
+                        <Figure>
+                            <img className="imageGeek"
+                                src={imageDev} 
+                                alt="Livro roxo flutuando"
+                            />
+                        </Figure>
+                        <H1>Geek</H1>
+                        <H5>Comprar agora</H5>
                     </Div>
                 </Div>
             </Container>
