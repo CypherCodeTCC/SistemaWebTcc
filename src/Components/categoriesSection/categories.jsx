@@ -4,6 +4,12 @@ import styled from "styled-components";
 export const Container = styled.section`
     display: flex;
     justify-content: center;
+
+@media screen and (max-width: 767px){
+    flex-direction: column;
+    margin: 20px auto;
+    align-items: center;
+}
 `;
 
 export const Div = styled.div`   
@@ -37,14 +43,24 @@ export const Div = styled.div`
         background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
         border-radius: 8px;
         padding: 20px;
-        margin: 10px
-        
+        margin: 10px;
+        position: relative;
     }
+
+    .card-classic h1, .card-geek h1{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 10px; /* Adiciona um pouco de espaço ao redor do texto */
+    }
+
+@media screen and (max-width: 767px){
+    
+}
 `
 
 export const Figure = styled.figure`
     /* DEFININDO ESPAÇO DA DIV PAI */
-    
     width: 100%;
     height: 90%;
     margin-top: 10px;
@@ -75,10 +91,7 @@ export const H1 = styled.h1`
         text-align: left;
     }
 
-    .card-classic h1, .card-geek h1{
-        position: absolute;
-
-    }
+    
 `
 
 export const H5 = styled.h5`
