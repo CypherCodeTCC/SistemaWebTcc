@@ -3,52 +3,16 @@ import './destaquesSection.css';
 function DestaquesSection() {
     return (
         <section className='destaques-container'>
-            {/* Seção de Destaques */}
             <div className='titulo-links-destaques'>
-                {/* Título da Seção de Destaques */}
                 <div className='titulo-container-destaques'>
                     <h2 className='titulo-destaques'>Destaques</h2>
                 </div>
-                {/* Abas de Navegação */}
                 <div className="abas">
-                    <ul className="abas-lista" role="tablist">
-                        {/* Aba: Novidades */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Novidades
-                            </button>
-                        </li>
-                        {/* Aba: Livros */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Livros
-                            </button>
-                        </li>
-                        {/* Aba: Livros */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Livros
-                            </button>
-                        </li>
-                        {/* Aba: Livros */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Livros
-                            </button>
-                        </li>
-                        {/* Aba: Livros */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Livros
-                            </button>
-                        </li>
-                        {/* Aba: Livros */}
-                        <li className="aba-item">
-                            <button className="aba-titulo">
-                                Livros
-                            </button>
-                        </li>
-                    </ul>
+                    <button className="aba-titulo">Livros</button>
+                    <button className="aba-titulo">Livros</button>
+                    <button className="aba-titulo">Livros</button>
+                    <button className="aba-titulo">Livros</button>
+                    <button className="aba-titulo">Livros</button>        
                 </div>
             </div>
 

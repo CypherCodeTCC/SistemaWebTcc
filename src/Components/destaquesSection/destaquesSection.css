@@ -5,29 +5,30 @@
 @import url("https://fonts.googleapis.com/css?family=inter:100,200,300,400,500,600,700,800,900&display=swap");
 
 /* Estilos para o container de destaques */
-.destaques-container {
-    display: block;
+.destaques-container { 
     overflow: hidden;
     margin: auto;
-    max-width: 98vw;
+    max-width: 100%;
     height: 49vw;
+
+    display: flex;
+    justify-content: center;
 }
 
 /* Estilos para o título dos destaques */
 .titulo-container-destaques {
-    position: relative;
+    
     width: 100%;
-    max-width: 1392px;
-    margin: 0 auto;
+    padding: 10px;
     font-family: 'Inter', arial, sans-serif;
-    font-size: 38px;
-    font-weight: 400;
-    line-height: 1.2;
-    overflow: visible;
-    word-break: keep-all;
+    font-size: 20px;
     text-align: center;
-    text-overflow: clip;
 }
+
+.abas{
+    width: 100%;
+}
+
 
 @media only screen and (max-width: 767px) {
     .titulo-container-destaques {
