@@ -22,18 +22,18 @@ export const Container = styled.section`
   .card {
     padding: 20px;
     border-radius: 8px;
-    background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);  
+    background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
   }
 
   .main-container-right {
-    width: 50%;
+    width: calc(25% - 20px);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px 0;
   }
 
   .card-left {
-    max-width: 50%;
     height: 85vh;
   }
 
@@ -46,18 +46,17 @@ export const Container = styled.section`
     height: 650px;
   }
 
-  p{
+  p {
     text-decoration: underline;
     width: max-content;
   }
 
-
-  .card:hover{
+  .card:hover {
     cursor: pointer;
     background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
   }
 
-  p:hover{
+  p:hover {
     font-weight: bold;
   }
 
@@ -68,7 +67,7 @@ export const Container = styled.section`
     .card {
       padding: 10px;
     }
-    
+
     .book-image {
       width: 100%;
     }
@@ -91,10 +90,10 @@ export const Container = styled.section`
     }
   }
 
-@keyframes container-animation {
-	0% {
-		opacity: 0;
-		transform: translateY(200px);
-	}
-}
+  @keyframes container-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+  }
 `;

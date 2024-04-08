@@ -1,26 +1,71 @@
-import './destaquesSection.css';
+import bookImg from "../../../public/roxoapontandodireita.png";
+import { Container } from "./destaques.jsx";
 
 function DestaquesSection() {
-    return (
-        <section className='destaques-container'>
-            <div className='titulo-links-destaques'>
-                <div className='titulo-container-destaques'>
-                    <h2 className='titulo-destaques'>Destaques</h2>
-                </div>
-                <div className="abas">
-                    <button className="aba-titulo">Livros</button>
-                    <button className="aba-titulo">Livros</button>
-                    <button className="aba-titulo">Livros</button>
-                    <button className="aba-titulo">Livros</button>
-                    <button className="aba-titulo">Livros</button>        
-                </div>
-            </div>
+  return (
+    <Container className="container">
+      <div className="title">
+        <h1>Destaques</h1>
+      </div>
+      <div className="menu">
+        <button className="button-menu">Livros</button>
+        <button className="button-menu">Livros</button>
+        <button className="button-menu">Livros</button>
+        <button className="button-menu">Livros</button>
+        <button className="button-menu">Livros</button>
+      </div>
 
-            <div className='produtos-destaques'>
-                
-            </div>
-        </section>
-    )
+      <div className="container-cards">
+        <div className="card card-left">
+          <h1>Hello World!</h1>
+          <p>lorem</p>
+          <img
+            src={bookImg}
+            className="book-image big-image"
+            alt="Livro roxo flutuando"
+          />
+        </div>
+        <div className="main-container-right">
+          <div className="card card-right">
+            <img
+              src={bookImg}
+              className="book-image"
+              alt="Livro roxo flutuando"
+            />
+            <h1>Hello World!</h1>
+            <p>lorem</p>
+          </div>
+          <div className="card card-right">
+            <img
+              src={bookImg}
+              className="book-image"
+              alt="Livro roxo flutuando"
+            />
+            <h1>Hello World!</h1>
+            <p>lorem</p>
+          </div>
+          <div className="card card-right">
+            <img
+              src={bookImg}
+              className="book-image"
+              alt="Livro roxo flutuando"
+            />
+            <h1>Hello World!</h1>
+            <p>lorem</p>
+          </div>
+          <div className="card card-right">
+            <img
+              src={bookImg}
+              className="book-image"
+              alt="Livro roxo flutuando"
+            />
+            <h1>Hello World!</h1>
+            <p>lorem</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
 }
 export default DestaquesSection;
 
