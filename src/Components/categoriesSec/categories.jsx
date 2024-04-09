@@ -26,10 +26,9 @@ export const Container = styled.section`
   }
 
   .main-container-right {
-    width: calc(25% - 20px);
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 10px 0;
   }
 

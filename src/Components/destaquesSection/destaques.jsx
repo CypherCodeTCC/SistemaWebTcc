@@ -4,7 +4,6 @@ export const Container = styled.section`
   max-width: 100%;
   min-height: 49vw;
 
-  gap: 0 10px;
   padding: 20px;
 
   font-family: Arial, Helvetica, sans-serif;
@@ -18,10 +17,10 @@ export const Container = styled.section`
   }
 
   .container-cards {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     padding: 40px;
-    gap: 0 20px;
+    gap: 0px 5px;
     background-color: black;
   }
 
@@ -29,6 +28,7 @@ export const Container = styled.section`
     flex-direction: column;
     width: 100%;
     background-color: pink;
+    text-align: center;
   }
 
   .card {
@@ -40,67 +40,74 @@ export const Container = styled.section`
   .main-container-right {
     width: 100%;
     display: flex;
-    background-color: beige;
-    gap: 0 20px;
+    flex-wrap: wrap;
+    
   }
 
   .card-left {
     max-width: 50%;
-    height: 65vh;
+    height: 70vh;
+    text-align: center;
+
+    h1{
+      padding-top: 15px;
+    }
   }
 
   .card-right {
-    max-width: 25%;
-    height: 32.5vh;
+    max-width: 49%;
+    height: 34.5vh;
+    text-align: center;
     flex-grow: 1;
+
+    h1{
+      font-size: 18px;
+    }
   }
 
   .book-image {
     object-fit: contain;
     width: 100%;
-    height: 250px;
+    height: 200px;
   }
 
   .big-image {
-    padding-top: 50px;
-    height: 500px;
+    padding: 0;
+    height: 400px;
   }
 
   button {
     background-color: transparent;
-    padding: 20px;
-    font-size: 18px;
+    padding: 15px;
+    font-size: 15px;
     font-weight: bold;
   }
 
-  @media only screen and (max-width: 767px) {
-    .titulo-container-destaques {
-      max-width: 100vw;
-      padding-top: 5.6vw;
-      font-size: 7.2vw;
-      line-height: 1.33;
+  @media (max-width: 840px) {
+    .container-cards{
+      flex-wrap: wrap;
+      gap: 10px 0px;
     }
-  }
 
-  /* Estilos para as abas */
-  .menu {
-    text-align: center;
-    white-space: nowrap;
-    height: 64px;
-  }
+    .main-container-right{
+      
+    }
+    
+    .card{
+      width: 100%;
+    }
 
-  /* Estilos para os itens das abas */
-  .aba-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 3.33333333vw;
-  }
+    .card-left {
+      max-width: 100%;
+      height: 50vh;    
+    }
 
-  /* Estilos para o título da aba */
-
-  .produtos-destaques {
-    max-width: 98.33333333vw;
-    height: 49.16666667vw;
+    .card-right{
+      max-width: 49.5%;
+    }
+    
+    .big-image { 
+      height: 250px;
   }
+}
 `;

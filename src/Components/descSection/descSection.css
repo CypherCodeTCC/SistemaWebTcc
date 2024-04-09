@@ -35,6 +35,7 @@
     align-items: center;
     padding: 40px 50px;
     gap: 10px;
+    animation: resizeCardsDesk 1s forwards;
     background: #FFFFFF;
     border: 1px solid #DEDEDE;
     box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
@@ -47,9 +48,9 @@
 
 /* Aumentando o tamanho da fonte, posicionando ela na tela, usando o tipo de fonte e tirando o negrito */
 .title-desc {
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-    margin-right: 350px;
+    margin-right: 450px;
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
 }

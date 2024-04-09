@@ -17,13 +17,13 @@ function DestaquesSection() {
 
       <div className="container-cards">
         <div className="card card-left">
-          <h1>Hello World!</h1>
-          <p>lorem</p>
           <img
             src={bookImg}
             className="book-image big-image"
             alt="Livro roxo flutuando"
           />
+          <h1>Hello World!</h1>
+          <p>lorem</p>
         </div>
         <div className="main-container-right">
           <div className="card card-right">
