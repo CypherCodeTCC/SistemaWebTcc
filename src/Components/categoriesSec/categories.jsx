@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  max-width: 100%;
   min-height: 60vh;
 
   display: flex;
@@ -16,11 +15,11 @@ export const Container = styled.section`
   .book-image {
     object-fit: contain;
     width: 100%;
-    height: 250px;
+    height: 200px;
   }
 
   .card {
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
     background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
   }
@@ -34,20 +33,28 @@ export const Container = styled.section`
 
   .card-left {
     height: 85vh;
+
+    h1{
+      word-wrap: break-word;
+      width: 250px;
+    }
   }
 
   .card-right {
     flex-grow: 1;
     height: 40vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .big-image {
-    height: 650px;
+    height: 500px;
   }
 
   p {
     text-decoration: underline;
     width: max-content;
+    padding-top: 20px;
   }
 
   .card:hover {
@@ -72,7 +79,7 @@ export const Container = styled.section`
     }
 
     .big-image {
-      height: 450px;
+      height: 350px;
     }
 
     .main-container-right {
@@ -80,6 +87,10 @@ export const Container = styled.section`
       display: flex;
       flex-direction: column;
       gap: 10px 0;
+
+      h1, p{
+        padding-left: 20px;
+      }
     }
 
     .card-left {

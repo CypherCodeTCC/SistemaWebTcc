@@ -27,7 +27,7 @@ export const Container = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px
+    gap: 10px;
   }
 
   .card-left {
@@ -61,6 +61,17 @@ export const Container = styled.section`
     padding: 15px;
     font-size: 15px;
     font-weight: bold;
+  }
+
+  button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 1.0s;
+  }
+
+  .card:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
   }
 
   @media (max-width: 940px) {
