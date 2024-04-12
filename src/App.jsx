@@ -5,6 +5,7 @@ import Header from './routes/heroSection/HeroSection.jsx';
 import DescSection from './routes/descSection/DescSection.jsx';
 import DestaquesSection from './routes/destaquesSection/DestaquesSection.jsx';
 import CategoriesSection from './routes/categoriesSec/CategoriesSec.jsx';
+import CardsSection from './routes/cardsSec/CardsSec.jsx';
 
 import './main.css'
 
@@ -16,6 +17,7 @@ function App() {
       <DescSection />
       <DestaquesSection />
       <CategoriesSection />
+      <CardsSection />
     </>
   )
 }
