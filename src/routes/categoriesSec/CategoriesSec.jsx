@@ -11,14 +11,15 @@ export default function BooksSection() {
       </div>
       <div className="main-container-right">
         <div className="card card-right">
-          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>   
           <h1>Clássicos</h1>
           <p>Compre Agora</p>
+          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>   
+          
         </div>
         <div className="card card-right">
-          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>
           <h1>Geek</h1>
           <p>Compre Agora</p>
+          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>    
         </div>
       </div>
     </Container>

@@ -19,7 +19,7 @@ export const Container = styled.section`
   }
 
   .card {
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
   }

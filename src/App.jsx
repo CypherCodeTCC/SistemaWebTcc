@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import NavBar from './Components/NavBar/NavBar.jsx';
-import Header from './Components/HeroSection/HeroSection.jsx';
-import DescSection from './Components/descSection/DescSection.jsx';
-import DestaquesSection from './Components/destaquesSection/DestaquesSection.jsx';
-import CategoriesSection from './Components/categoriesSec/CategoriesSec.jsx';
+
+import NavBar from './components/navBar/NavBar.jsx';
+import Header from './routes/heroSection/HeroSection.jsx';
+import DescSection from './routes/descSection/DescSection.jsx';
+import DestaquesSection from './routes/destaquesSection/DestaquesSection.jsx';
+import CategoriesSection from './routes/categoriesSec/CategoriesSec.jsx';
 
 import './main.css'
 
