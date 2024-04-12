@@ -15,7 +15,7 @@ export const Container = styled.section`
   .book-image {
     object-fit: contain;
     width: 100%;
-    height: 200px;
+    height: 25vh;
   }
 
   .card {
@@ -48,7 +48,7 @@ export const Container = styled.section`
   }
 
   .big-image {
-    height: 500px;
+    height: 70vh;
   }
 
   p {
@@ -79,7 +79,7 @@ export const Container = styled.section`
     }
 
     .big-image {
-      height: 350px;
+      height: 40vh;
     }
 
     .main-container-right {
