@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const Container = styled.section`
   background-color: black;
   color: white;
-  min-height: 50vh;
-  width: 50%;
+  width: 70%;
   display: flex;
   margin: auto;
-  border-radius: 8px;
+  border-radius: 15px;
 
   font-family: Arial, Helvetica, sans-serif;
 
@@ -32,6 +31,10 @@ export const Container = styled.section`
     }
   }
 
+  .content{
+    display: flex;
+  }
+
   .container-statistic {
     padding: 0;
     padding-top: 20px;
@@ -51,10 +54,19 @@ export const Container = styled.section`
 
     p {
       font-size: 14px;
+      width: max-content;
     }
 
     img {
-      width: 15%;
+      width: 25%;
     }
+
+    .container-texts{
+      flex: 1;
+    }
+  }
+ 
+  .bookimg{
+    height: 0;
   }
 `;
