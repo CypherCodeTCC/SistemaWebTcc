@@ -74,7 +74,7 @@ export const Container = styled.section`
     background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
   }
 
-  @media (max-width: 940px) {
+  @media (max-width: 940px) {    
     .container-cards{
       flex-wrap: wrap;
       gap: 10px 0px;  

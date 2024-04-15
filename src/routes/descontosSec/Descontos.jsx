@@ -20,7 +20,7 @@ export default function Descontos() {
               A promoção só se aplica para livros da categoria Desenvolvimento
               Pessoal.
             </p>
-            <div className="container container-statistic">
+            <div className="container-statistic">
               <div className="container-statistic pos1">
                 <img src={PngPessoa} alt="Pessoa" />
                 <div className="container-texts">
