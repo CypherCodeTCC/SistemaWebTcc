@@ -1,10 +1,10 @@
 // Estilo Css
 import "./css/navbar.css";
 // Components.jsx
-import LogoComponent from "./NavBar-components/LogoComponent.js";
-import MenuLinks from "./NavBar-components/MenuLinks.js";
-import CartLoginIcons from "./NavBar-components/CartLoginIcons.js";
-import MenuMobile from "./NavBar-components/MobileMenu.js";
+import LogoComponent from "./navBarComponents/LogoComponent.jsx";
+import MenuLinks from "./navBarComponents/MenuLinks.jsx";
+import CartLoginIcons from "./navBarComponents/CartLoginIcons.jsx";
+import MenuMobile from "./navBarComponents/MobileMenu.jsx";
 
 function Navbar() {
     return (

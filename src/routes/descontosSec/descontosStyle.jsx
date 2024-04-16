@@ -3,119 +3,78 @@ import styled from "styled-components";
 export const Container = styled.section`
   background-color: black;
   color: white;
-  width: 73%;
-  display: flex;
+  width: 70%;
+  border-radius: 18px;
+  padding: 30px;
   margin: auto;
-  border-radius: 15px;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  .container {
-    padding: 30px;
-    width: 100%;
-    max-width: 100%;
+  .container-content{
+    display: flex;
+  }
 
-    h1 {
-      font-size: 3vw;
-      padding-bottom: 25px;
-      word-wrap: break-word;
-      width: 650px;
-    }
+  .container-text{
+    font-size: 18px;
 
-    p {
-      font-size: 1.5vw;
-      word-wrap: break-word;
-      width: 40vw;
-    }
-
-    span {
+    span{
       color: orange;
     }
-  }
 
-  .content{
-    width: 100%;
-    display: flex;
-  }
-  .content-text{
-    width: 100%;
-  }
-
-  .container-statistic {
-    padding: 0;
-    padding-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .pos1,
-  .pos2,
-  .pos3,
-  .pos4 {
-    width: 49%;
-    height: max-content;
-
-    p {
-      font-size: 14px;
-      width: max-content;
-    }
-
-    img {
-      width: 3vw;
-    }
-
-    .container-texts{
-      flex: 1;
-    }
-  }
- 
-  .bookimg{
-    height: 0;
-  }
-
-@media (max-width: 1300px){
-  .bookimg{
-    display: none;
-  }
-}
-
-@media (max-width: 900px){
-  width: 95%;
-
-  .container{
-    width: 100%;
-    padding: 20px;
-
-    h1{
-      font-size: 1.3em;
-      width: max-content;
-    }
     p{
-      font-size: 1.2em;
-      width: 500px;
+      font-size: 15px;
+      padding-top: 15px;
     }
   }
 
-  .container-statistic{
-    justify-content: center;
+  .main-container-left{
+    display: flex;
+    flex-wrap: wrap;    
   }
 
+  .card-left{
+    width: 45%;
+  }
 
-  .pos1,
-  .pos2,
-  .pos3,
-  .pos4 {
-    width: 20%;
+  .card-right{
+    width: 100%; 
     
-    img {
-      width: 25%;
-    }
+  }
+
+  .big-image{
+    width: 300px;
+    height: 350px;
+  }
+
+@media (max-width: 940px){
+  width: 80%;
+  font-size: 15px;
+
+  .container-content{
+    flex-direction: column;
+  }
+
+  .container-text{
+    flex-grow: 1;
+    text-align: center;
+
     p{
-      width: 0.1em;
-      white-space: nowrap;
+      padding-top: 15px;
+      padding-bottom: 25px;
     }
+  }
+
+  .card-left{
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  .card-right{
+    padding-top: 20px;
+    flex-grow: 1;
+    text-align: center;
+    gap: 100px;
+    height: max-content;
   }
 }
 `;
