@@ -1,7 +1,11 @@
 import { Footer } from './footerStyle';
 
-export default function FooterBar(){
-    return(
+import PngGps from '../../../public/gps.png';
+import PngEmail from '../../../public/email.png';
+import PngTelefone from '../../../public/telefone.png';
+
+export default function FooterBar() {
+    return (
         <>
             <Footer>
                 <div className="container-aboutUs">
@@ -11,8 +15,11 @@ export default function FooterBar(){
                 </div>
                 <div className="container-client">
                     <h4>Ajuda ao cliente</h4>
+                    <img src={PngGps} alt="GPS"/>
                     <p>R. Guaipá, 678 - Vila Leopoldina</p>
+                    <img src={PngEmail} alt="Email"/>
                     <p>email@gmail.com</p>
+                    <img src={PngTelefone} alt="Telefone"/>
                     <p>+55 (11) 99999-9999</p>
                 </div>
                 <div className="container-social-media">

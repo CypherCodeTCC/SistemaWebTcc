@@ -14,11 +14,27 @@ export const Footer = styled.section`
 
     .container-aboutUs, .container-client, .container-social-media, .container-know-more, .container-payment{
         width: 200px;
+        background-color: orange;
+    }
+
+    .client-info{
+        display: flex;
+        align-items: center;
+
+        img{
+            width: 24px;
+        
+        }
     }
 
     .container-rights-reserved{
         width: 100%;
         text-align: center;
+    }
+
+    .logo-image{
+        width: 100px;
+        
     }
 
     button{
