@@ -8,12 +8,10 @@ export const Container = styled.section`
     flex-wrap: wrap;
 
     .content-text{
-        width: 60%;
+        width: 40%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        word-wrap: break-word;
-        width: 500px;
         gap: 20px;
 
         button{
@@ -26,24 +24,35 @@ export const Container = styled.section`
     }
 
     .content-image{
-        width: max-content;
-        min-width: 50%;
+        width: 55%;
+        display: flex;
+        justify-content: center;
 
         img{
-            object-fit: contain;
-            width: 100%;  
-            height: 675px;
+            width: 80%;  
         }
     }
 
-@media (max-width: 1360px){
+@media (max-width: 1080px){
     justify-content: center;
-    
+
     .content-text{
+        width: 80%;
         align-items: center;
 
         h1{
             font-size: 20px;
+        }
+
+        button{
+            width: 65%;
+    }
+}
+    .content-image{
+        width: 100%;
+
+        img{
+            width: 70%;  
         }
     }
 }
