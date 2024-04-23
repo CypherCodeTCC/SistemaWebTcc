@@ -13,11 +13,11 @@ export default function FooterBar() {
       behavior: "smooth",
     });
   };
-  
+
   const navigate = useNavigate();
 
-  const handleAboutUs = () => {
-      navigate("/about");
+  const handleRoutes = (route) => {
+      navigate(route);
   }
 
   return (
@@ -55,8 +55,8 @@ export default function FooterBar() {
         </div>
         <div className="container-know-more">
           <h4>Saiba Mais</h4>
-          <p onClick={handleAboutUs}>Quem somos</p>
-          <p>Trabalhe conosco</p>
+          <p onClick={() => handleRoutes("/about")}>Quem somos</p>
+          <p onClick={() => handleRoutes("/about")}>Trabalhe conosco</p>
           <p>Entre em contato</p>
         </div>
         <div className="container-payment">

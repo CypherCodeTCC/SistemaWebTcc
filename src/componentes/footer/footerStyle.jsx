@@ -13,7 +13,7 @@ export const Footer = styled.section`
     flex-wrap: wrap;
 
     .container-aboutUs, .container-client, .container-social-media, .container-know-more, .container-payment{
-        width: 17%;
+        width: 200px;
     }
 
     .container-rights-reserved{
