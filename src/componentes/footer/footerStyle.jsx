@@ -56,6 +56,12 @@ export const Footer = styled.section`
         transition: 0.5s;
     }
 
+    .container-know-more p:hover{
+        cursor:pointer;
+        transform: scale(1.05);
+        transition: 0.5s;
+    }
+
 @media (max-width: 1300px){
     text-align: center;
 }
