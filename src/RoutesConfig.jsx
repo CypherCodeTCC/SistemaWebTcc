@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./componentes/nav/NavBar.jsx";
 import Home from "./routes/Home.jsx";
+import Vanancies from "./routes/vananciesSec/Vanancies.jsx";
 import Error from "./routes/error/Error.jsx";
 import Footer from "./componentes/footer/FooterBar.jsx";
 
@@ -18,6 +19,7 @@ export default function RoutesConfig(){
         <BrowserRouter>      
                 <Routes>
                     <Route path="/" element={<Layout><Home/></Layout>}/>
+                    <Route path="/about" element={<Layout><Vanancies /></Layout>}/>
                     <Route path="*" element={<Error/>}/>
                 </Routes>
         </BrowserRouter>

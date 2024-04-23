@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Footer } from "./footerStyle";
 
 import PngGps from "../../../public/gps.png";
@@ -11,6 +13,12 @@ export default function FooterBar() {
       behavior: "smooth",
     });
   };
+  
+  const navigate = useNavigate();
+
+  const handleAboutUs = () => {
+      navigate("/about");
+  }
 
   return (
     <>
@@ -47,7 +55,7 @@ export default function FooterBar() {
         </div>
         <div className="container-know-more">
           <h4>Saiba Mais</h4>
-          <p>Quem somos</p>
+          <p onClick={handleAboutUs}>Quem somos</p>
           <p>Trabalhe conosco</p>
           <p>Entre em contato</p>
         </div>
