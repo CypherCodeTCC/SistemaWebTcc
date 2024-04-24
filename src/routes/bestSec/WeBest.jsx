@@ -1,12 +1,14 @@
+import { Container } from './weBestStyle';
+
 import PngLibrary from '../../../public/library.png'
 import PngVerificado from '../../../public/verificado.png'
 
 export default function WeBest(){
     return(
         <>
-            <section>
+            <Container>
                 <div className="container-image">
-                    <img src={PngLibrary} alt='Livraria'/>
+                    <img src={PngLibrary} className="library-image" alt='Livraria'/>
                 </div>
                 <div className="container-text">
                     <h1>O por que somos os <span>melhores?</span></h1>
@@ -28,7 +30,7 @@ export default function WeBest(){
                         <p>100% de entregas realizadas sem erros</p>
                     </div>
                 </div>
-            </section>
+            </Container>
         </>
     );
 }
