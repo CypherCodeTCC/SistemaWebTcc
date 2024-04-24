@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
+    min-height: 66vh;
     display: flex;
     padding: 30px;
     font-family: Arial, Helvetica, sans-serif;
