@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CartIcon from "../../../../public/carrinho.svg";
 import SearchIcon from "../../../../public/search.svg";
+import PngUser from "../../../../public/user.png";
+import { useNavigate } from "react-router-dom";
 
 function PopupCarrinhoVazio({ setIsPopupOpen }) {
     const handleFechar = () => {
@@ -35,6 +37,12 @@ function setMainHeadingZIndexBasedOnState(isMenuOpen) {
 }
 
 function CartLoginIcons() {
+    const navigate = useNavigate();
+
+    const handleRoutes = (route) => {
+        navigate(route);
+    }
+
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const handleCartIconClick = () => {
@@ -48,6 +56,7 @@ function CartLoginIcons() {
             <div className="icones">
                 <img src={SearchIcon} alt="Ícone de busca" />
                 <img src={CartIcon} alt="Ícone de Carrinho" onClick={handleCartIconClick} />
+                <img src={PngUser} onClick={() => handleRoutes("/login")} alt="Icone de Login" />
             </div>
         </div>
     );
