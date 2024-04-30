@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import PngCelular from '../../../public/celular.png'
 import { Container } from './loginStyle';
 
 export default function Login(){
+    const navigate = useNavigate();
+
+    const handleRoutes = (route) => {
+        navigate(route);
+    }
+
     return(
         <>
             <Container>
@@ -18,9 +25,9 @@ export default function Login(){
                     <h4>E-mail</h4>
                     <input type="text" placeholder='Ex: meuemail@endereco.com'/>
                     <h4>Senha</h4>
-                    <input type="text" placeholder='Insira sua palavra-passe' />
+                    <input type="password" placeholder='Insira sua palavra-passe' />
                     <button className='btn-login'>Login</button>
-                    <p className='center'>Não tem uma conta? <span>Crie sua conta</span></p>
+                    <p className='center'>Não tem uma conta? <span onClick={() => handleRoutes("/signup")}>Crie sua conta</span></p>
                 </div>
             </Container>
         </>

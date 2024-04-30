@@ -32,6 +32,7 @@ export const Container = styled.section`
         button{
             border-radius: 8px;
             padding: 7px;
+            cursor: pointer;
         }
 
         .btn-login{
@@ -48,6 +49,7 @@ export const Container = styled.section`
 
         span{
             color:#6236F5;
+            cursor: pointer;
         }
     }
 

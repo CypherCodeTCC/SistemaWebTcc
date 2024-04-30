@@ -6,6 +6,7 @@ import About from "./routes/About.jsx";
 import Error from "./routes/error/Error.jsx";
 import Footer from "./componentes/footer/FooterBar.jsx";
 import Login from "./routes/loginSec/Login.jsx";
+import SignUp from "./routes/signUpSec/SignUp.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -36,6 +37,7 @@ export default function RoutesConfig() {
           }
         />
         <Route path="/login" element={<Layout><Login/></Layout>}/>
+        <Route path="/signup" element={<Layout><SignUp/></Layout>}/>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
