@@ -11,7 +11,7 @@ git clone https://github.com/CypherCodeTCC/SistemaWebTcc
 
 2. Use o seguinte comando:
 ~~~node
-### cd SistemaWebTcc
+cd SistemaWebTcc
 ~~~
 
 **Instalando Dependências**  
@@ -19,7 +19,7 @@ git clone https://github.com/CypherCodeTCC/SistemaWebTcc
 
 3. No terminal, execute o seguinte comando:
 ~~~node
-### npm install
+npm install
 ~~~
 
 **Rodando o Projeto**  
@@ -27,7 +27,7 @@ Após a instalação das dependências, você pode iniciar o servidor de desenvo
 
 No terminal, execute o seguinte comando:
 ~~~node
-### npm run dev
+npm run dev
 ~~~
 
 Isso iniciará o servidor de desenvolvimento e abrirá automaticamente o seu navegador padrão com o projeto em execução. Qualquer alteração feita nos arquivos será refletida no navegador. 😊
