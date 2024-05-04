@@ -5,7 +5,8 @@ Antes de começar, certifique-se de ter o Node.js instalado em seu sistema. Se v
 
 **Instalação**
 1. Clone este repositório para o seu ambiente local:
-~~~node git clone https://github.com/CypherCodeTCC/SistemaWebTcc
+~~~node 
+git clone https://github.com/CypherCodeTCC/SistemaWebTcc
 ~~~
 
 2. Use o seguinte comando:
