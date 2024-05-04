@@ -4,6 +4,7 @@ export const Container = styled.section`
     padding: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 40px;
     font-size: 14px;
 
@@ -22,10 +23,10 @@ export const Container = styled.section`
         width: 34%;
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 25px;
 
         .input-email{
-            width: 97%;
+            width: 100%;
 
             input{ 
                 width: 100%;
@@ -35,7 +36,14 @@ export const Container = styled.section`
         .input-text{
             display: flex;
             flex-direction: column;
-            width: 47%;
+            flex-grow: 1;
+            width: 45.5%;
+        }
+
+        .input-cep-num-uf{
+            display: flex;
+            flex-direction: column;
+            width: 20%;
         }
 
         .input-checkbox{
@@ -86,12 +94,15 @@ export const Container = styled.section`
     }
 
     .container-form{
-        flex-wrap: nowrap;
-        flex-direction: column;
         width: 80%;
 
         .input-text, .input-email, button{
             width: 100%;
+        }
+
+        .input-address, .input-cep-num-uf, .input-city{
+            width: 45.5%;
+            flex-grow: 1;
         }
     }
 }
