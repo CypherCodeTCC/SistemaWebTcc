@@ -1,16 +1,20 @@
 import BookPng from '../../../public/book.png'
 import FacPng from '../../../public/fac.png'
+import { Container } from './commonStyle';
 
 export default function CommonQuestion() {
     return (
         <>
-            <section>
+            <Container>
                 <div className='container-image'>
-                    <img src={BookPng} alt="livrao" />
+                    <img src={BookPng} className="big-image" alt="livrao" />
                 </div>
                 <div className='container-text'>
-                    <img src={FacPng} />
-                    <h1>Perguntas Frquentes</h1>
+                    <div className='content-title'>
+                        <img src={FacPng} />
+                        <p>FAC</p>
+                    </div>
+                    <h1>Perguntas Frequentes</h1>
                     <details>
                         <summary>Smod tempor incididunt ut labore et dolore</summary>
                         <ul>
@@ -33,7 +37,7 @@ export default function CommonQuestion() {
                         </ul>
                     </details>
                 </div>
-            </section>
+            </Container>
         </>
     );
 }
