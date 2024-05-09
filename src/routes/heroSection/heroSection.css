@@ -3,231 +3,223 @@
 
 /* Resetando estilos para todos os elementos */
 * {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	border: 0;
-	outline: 0;
-	-webkit-tap-highlight-color: transparent;
-	text-decoration: none;
-	color: inherit;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
 }
 
 /* Removendo outline ao focar */
 *:focus {
-	outline: 0;
+    outline: 0;
 }
 
 /* Definindo a fonte para o corpo do documento */
 .mainHeading {
-	font-family: "Raleway", sans-serif;
+    font-family: "Raleway", sans-serif;
+    position: relative; /* Added positioning */
+    z-index: 1; /* Added z-index */
 }
 
 /* Estilos para o cabeçalho principal */
 .mainHeading {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	padding: 0 40px;
-	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
+    width: 100%;
+    height: 100%;
+    padding: 0 40px;
+    background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
 }
 
 /* Estilos para o conteúdo do cabeçalho principal */
 .mainHeading__content {
-	max-width: 1110px;
-	min-height: 560px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
+    max-width: 1110px;
+    min-height: 560px;
+    margin: 0 auto; /* Center align content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Ensure content appears above background */
 }
 
 /* Estilos para o texto do cabeçalho principal */
 .mainHeading__text {
-	color: #020403;
-	/* Cor do texto fora do botão */
-	background-color: rgba(255, 255, 255, 0.8);
-	/* Cor de fundo alterada */
-	padding: 40px;
-	max-width: 620px;
-	margin-top: 100px;
-	width: 70%;
-	backdrop-filter: blur(8px);
-	animation: text 1.2s 0.6s ease backwards;
-	position: relative;
-	z-index: 1;
+    color: #020403;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    max-width: 620px;
+    margin-top: 100px;
+    width: 70%;
+    backdrop-filter: blur(8px);
+    animation: text 1.2s 0.6s ease backwards;
+    position: relative;
+    z-index: 1;
 }
 
 /* Linha decorativa antes do texto */
 .mainHeading__text:before {
-	content: "";
-	position: absolute;
-	width: 2.4px;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.2);
-	/* Cor da linha alterada */
-	top: 0;
-	left: 0;
-	animation: line 0.8s 0.6s ease backwards;
+    content: "";
+    position: absolute;
+    width: 2.4px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    animation: line 0.8s 0.6s ease backwards;
 }
 
 /* Animação para entrada do texto */
 @keyframes text {
-	0% {
-		opacity: 0;
-		transform: translateX(200px);
-	}
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
 }
 
 /* Estilos para o subtítulo do cabeçalho principal */
 .mainHeading__preTitle {
-	text-transform: uppercase;
-	font-weight: 600;
-	letter-spacing: 2px;
-	margin-bottom: 16px;
-	color: #020403;
-	/* Cor do texto fora do botão */
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    color: #020403;
 }
 
 /* Estilos para o título do cabeçalho principal */
 .mainHeading__title {
-	text-transform: uppercase;
-	font-weight: 200;
-	letter-spacing: 2px;
-	margin-bottom: 24px;
-	font-size: 40px;
-	color: #020403;
-	/* Cor do texto fora do botão */
+    text-transform: uppercase;
+    font-weight: 200;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    font-size: 40px;
+    color: #020403;
 }
 
 /* Estilos para a descrição do cabeçalho principal */
 .mainHeading__description {
-	letter-spacing: 0.5px;
-	font-size: 16px;
-	line-height: 26px;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    line-height: 26px;
 }
 
 /* Estilos para a imagem do cabeçalho principal */
 .mainHeading__image {
-	right: 0;
-	max-width: 600px;
-	width: 50%;
-	height: 600px;
-	transform: translatey(60px);
-	position: absolute;
-	overflow: hidden;
-	animation: image 0.6s 0.2s ease backwards;
+    right: 0;
+    width: 50%;
+    height: auto;
+    transform: translateY(60px);
+    position: absolute;
+    overflow: hidden;
 }
+
 /* Animação para entrada da imagem */
 @keyframes image {
-	0% {
-		opacity: 0;
-		transform: translatey(200px);
-	}
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
 }
 
 /* Elementos adicionais para efeito visual na imagem */
 .mainHeading__image:before,
 .mainHeading__image:after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	height: 0%;
-	top: 100%;
-	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
-	opacity: 0;
-	left: 0;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0%;
+    top: 100%;
+    background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
+    opacity: 0;
+    left: 0;
 }
 
 /* Animação para entrada da imagem */
 .mainHeading__image:before {
-	animation: imageBefore 1.4s ease;
-}
-
-/* Animação para entrada da imagem */
-@keyframes imageBefore {
-	0% {
-		height: 100%;
-		top: 0;
-	}
+    animation: imageBefore 1.4s ease;
 }
 
 /* Elementos adicionais para efeito visual na imagem */
 .mainHeading__image:after {
-	background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
-	height: 100%;
-	top: 0;
-	opacity: 0.1;
+    background-image: linear-gradient(to top, #F2F0F1 20%, #F2F0F1 100%);
+    height: 100%;
+    top: 0;
+    opacity: 0.1;
 }
 
 /* Estilos para a imagem dentro do cabeçalho principal */
 .mainHeading__image img {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 /* Estilos para o botão de call-to-action */
 .cta {
-	padding: 16px 32px;
-	color: #000;
-	/* Cor do texto do botão */
-	background-color: #f2f0f1;
-	/* Cor de fundo do botão */
-	border: 1px solid #000;
-	/* Cor da borda do botão */
-	border-radius: 8px;
-	font-family: "Raleway", sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: 600;
-	margin-top: 32px;
-	cursor: pointer;
-	box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.2);
-	transition: all 0.4s ease;
+    padding: 16px 32px;
+    color: #000;
+    background-color: #f2f0f1;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 32px;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
 /* Efeito hover para o botão de call-to-action */
 .cta:hover {
-	border: 1px solid rgba(0, 0, 0, 0.8);
-	/* Cor da borda ao passar o mouse */
-	background-color: #000;
-	color: #f0f0f0;
-	box-shadow: inset 0px -80px 0px rgba;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: #000;
+    color: #f0f0f0;
+    box-shadow: inset 0px -80px 0px rgba;
 }
 
 /* Ajustes para telas menores */
-@media screen and (max-width: 799px) {
-	.mainHeading {
-		padding: 0 20px;
-	}
-	.mainHeading__content {
-		min-height: 500px;
-	}
+@media screen and (max-width: 767px) {
+    .mainHeading {
+        padding: 0 20px;
+    }
+    .mainHeading__content {
+        min-height: 500px;
+    }
 
-	.mainHeading__text {
-		padding: 20px;
-		margin: 90px 0 40px 0;
-	}
+    .mainHeading__text {
+        padding: 20px;
+        margin: 90px 0 40px 0;
+    }
 
-	.mainHeading__title {
-		margin-bottom: 16px;
-		font-size: 28px;
-	}
-	.mainHeading__description {
-		font-size: 14px;
-	}
-	.mainHeading__image {
-		height: 320px;
-		width: 80%;
-		transform: translatey(40px);
-		transform: translateX(-40px);
-		right: -15%;
-		overflow: hidden;
-	}
-	.cta {
-		margin-top: 16px;
-	}
+    .mainHeading__title {
+        margin-bottom: 16px;
+        font-size: 28px;
+    }
+    .mainHeading__description {
+        font-size: 14px;
+    }
+    .mainHeading__image {
+        width: 65%;
+        height: 320px;
+        transform: translateY(40px);
+        transform: translateX(-40px);
+        right: -15%;
+        overflow: hidden;
+    }
+    .cta {
+        margin-top: 16px;
+    }
+}
+
+/* Ajustes para telas médias */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .mainHeading__image {
+        width: 60%;
+        transform: translateY(40px) translateX(-20px);
+        right: -10%;
+    }
 }
