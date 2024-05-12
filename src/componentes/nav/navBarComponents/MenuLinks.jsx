@@ -19,7 +19,6 @@ function MenuLinks() {
     });
   };
 
-  // Quando o dropdown está aberto, ajusta o z-index do cabeçalho principal
   setMainHeadingZIndexBasedOnState(isDropdownOpen);
 
   return (
@@ -34,7 +33,6 @@ function MenuLinks() {
         >
           <a href="/">Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
-            {/* Coloque os itens do menu suspenso aqui */}
             <a href="/">Subcategoria 1</a>
             <a href="/">Subcategoria 2</a>
             <a href="/">Subcategoria 3</a>
