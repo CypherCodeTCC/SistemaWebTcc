@@ -8,6 +8,7 @@ import Footer from "./componentes/footer/FooterBar.jsx";
 import Login from "./routes/loginSec/Login.jsx";
 import SignUp from "./routes/signUpSec/SignUp.jsx";
 import BestSellers from "./routes/bestSellersSec/BestSellers.jsx";
+import ProductPage from "./routes/productPageSec/ProductPage.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -42,11 +43,26 @@ export default function RoutesConfig() {
           element={
             <Layout>
               <BestSellers />
+              <ProductPage />
             </Layout>
           }
         />
-        <Route path="/login" element={<Layout><Login/></Layout>}/>
-        <Route path="/signup" element={<Layout><SignUp/></Layout>}/>
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Layout>
+              <SignUp />
+            </Layout>
+          }
+        />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
