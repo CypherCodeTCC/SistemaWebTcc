@@ -7,6 +7,7 @@ import Error from "./routes/error/Error.jsx";
 import Footer from "./componentes/footer/FooterBar.jsx";
 import Login from "./routes/loginSec/Login.jsx";
 import SignUp from "./routes/signUpSec/SignUp.jsx";
+import BestSellers from "./routes/bestSellersSec/BestSellers.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -33,6 +34,14 @@ export default function RoutesConfig() {
           element={
             <Layout>
               <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/testeAmbiente"
+          element={
+            <Layout>
+              <BestSellers />
             </Layout>
           }
         />
