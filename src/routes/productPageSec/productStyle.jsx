@@ -13,10 +13,9 @@ export const Container = styled.section`
   .container-product-img {
     display: flex;
     gap: 20px;
-    align-items: center;
     flex-direction: column;
     width: 5%;
-    height: 100%;
+    order: -1;
 
     img {
       width: 100%;
@@ -32,16 +31,7 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 50%;
-
-    button {
-      border-radius: 8px;
-      padding: 7px;
-      border: 1px solid;
-      background-color: white;
-      cursor: pointer;
-      font-size: 30px;
-    }
+    width: 40%;
 
     .container-images {
       display: flex;
@@ -49,6 +39,15 @@ export const Container = styled.section`
       img {
         width: 30%;
       }
+    }
+
+    button {
+      border-radius: 8px;
+      padding: 7px;
+      border: 1px solid;
+      background-color: white;
+      cursor: pointer;
+      font-size: 20px;
     }
 
     .container-buttons {
@@ -62,6 +61,28 @@ export const Container = styled.section`
       .small-button {
         width: 10%;
       }
+    }
+  }
+
+  @media (min-width: 802px) and (max-width: 1150px){
+    flex-direction: column;
+    align-items: center;
+
+    .big-image {
+      width: 50%;
+      height: 50%;
+    }
+
+    //REORDENANDO A ORDEM ORIGINAL E AJUSTANDO A DIREÇÃO
+    .container-product-img{
+      width: 12%;
+      justify-content: center;
+      flex-direction: initial;
+      order: 0;
+    }
+
+    .container-text {
+      width: 80%;
     }
   }
 
@@ -81,16 +102,19 @@ export const Container = styled.section`
       width: 80%;
     }
 
-    .container-buttons {
-      font-size: 10px;
-    }
-
     .big-button {
       flex-grow: 1;
     }
 
     .small-button {
       display: none;
+    }
+
+    // QUANDO DEFINIMOS ESTILOS PARA UM ELEMENTO, POR MEIO DE CLASSES OU IDS, O NAVEGADOR DETERMINA A ESTILIZAÇÃO COM BASE NO SELETOR.
+    // NESSE CASO PRECISAMOS AUMENTAR A ESPECIFICIDADE PARA O BOTÃO ISOLADO PARA APLICAR A ESTILIZAÇÃO DESEJADA.
+    .container-text .button-alone{
+      background-color: black;
+      color: white;
     }
   }
 `;

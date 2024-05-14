@@ -10,6 +10,7 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import { Container } from "./productStyle";
 
 export default function ProductPage() {
+  //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
   function Avaliacoes({ avaliacao }) {
     const estrelas = [];
 
@@ -34,18 +35,18 @@ export default function ProductPage() {
 
   return (
     <>
-      <Container>
+      <Container>      
+        <img src={PngImagem3} className="big-image" alt="Imagem do Produto" />
         <div className="container-product-img">
           <img src={PngImagem1} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
-        </div>
-        <img src={PngImagem3} className="big-image" alt="Imagem do Produto" />
+        </div>   
         <div className="container-text">
           <h2>O livro dos livros</h2>
-          <Card avaliacao={4} />
+          <Card avaliacoes={4} />
           <h2>R$ 999,99</h2>
           <h3>Descrição</h3>
           <p>
