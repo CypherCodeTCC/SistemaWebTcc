@@ -7,7 +7,6 @@ import Error from "./routes/error/Error.jsx";
 import Footer from "./componentes/footer/FooterBar.jsx";
 import Login from "./routes/loginSec/Login.jsx";
 import SignUp from "./routes/signUpSec/SignUp.jsx";
-import BestSellers from "./routes/bestSellersSec/BestSellers.jsx";
 import ProductPage from "./routes/productPageSec/ProductPage.jsx";
 
 const Layout = ({ children }) => (
@@ -42,7 +41,6 @@ export default function RoutesConfig() {
           path="/testeAmbiente"
           element={
             <Layout>
-              <BestSellers />
               <ProductPage />
             </Layout>
           }
