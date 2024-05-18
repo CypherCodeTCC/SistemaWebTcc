@@ -33,9 +33,9 @@ function MenuLinks() {
         >
           <a href="/">Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
-            <a href="/">Subcategoria 1</a>
-            <a href="/">Subcategoria 2</a>
-            <a href="/">Subcategoria 3</a>
+            <a href="/">Desenvolvimento Pessoal</a>
+            <a href="/">Clássicos</a>
+            <a href="/">Geek</a>
           </Dropdown>
         </li>
         <li>

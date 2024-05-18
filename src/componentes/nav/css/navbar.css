@@ -28,7 +28,8 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  padding: 24px;
+  padding: 36px;
+  width: 400px;
 }
 
 .dropdown.show {
@@ -37,10 +38,10 @@
 
 /* Estilos para os itens do dropdown */
 .dropdown a {
-  display: block;
-  width: 125%;
-  padding: 20px 40px;
+  display: flex;
+  width: 100%;
   color: #000;
+  padding: 1.2em;
   text-decoration: none;
 }
 
