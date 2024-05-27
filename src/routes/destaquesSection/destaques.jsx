@@ -19,12 +19,30 @@ export const CardsContainer = styled.div`
     flex-direction: column;
     gap: 0.625rem 0px;
   }
+
+  @media (max-width: 767px) {
+    margin: 0;
+    padding: 30px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding: 30px;
+    margin: 0;
+  }
 `;
 
 // Container para o cartão CardPrincipal
 export const CardPrincipal = styled.div`
   width: 50%;
-`
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100%;
+  }
+`;
 
 // Container para os cartões secundários
 export const CardsSecundarios = styled.div`
@@ -33,7 +51,15 @@ export const CardsSecundarios = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1.25rem;
-`
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 100%;
+  }
+`;
 
 // Container para uma fileira de cartões
 export const Fileira = styled.div`
@@ -61,14 +87,18 @@ export const BigCard = styled.div`
     cursor: pointer;
     background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
   }
-`
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 // Cartão padrão
 export const Card = styled.div`
-  width: calc(45% - 0.625rem);
+  width: 100%;
   border-radius: 1rem;
+  padding: 50px;
   background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
-  padding: 4.6875rem;
 
   &:hover {
     cursor: pointer;
@@ -108,24 +138,25 @@ export const Button = styled.button`
 `;
 
 // Opção do menu
-export const Option = styled.a`
-
-`;
+export const Option = styled.a``;
 
 // Imagem do cartão
 export const Imagem = styled.img.attrs({
-  src: `${bookImg}`, 
+  src: `${bookImg}`,
 })`
-  object-fit: contain;
   width: 100%;
-  height: 8rem;
+  object-fit: contain;
 
   &.big-image {
+    object-fit: contain;
     height: 15.625rem;
 
     @media (max-width: 58.75rem) {
       height: 12.5rem;
     }
+  }
+
+  @media (max-width: 58.75rem) {
   }
 `;
 

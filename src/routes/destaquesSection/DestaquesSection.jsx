@@ -20,7 +20,7 @@ function DestaquesSection() {
   const [lastClickedButton, setLastClickedButton] = useState(null);
 
   const handleButtonClick = (buttonId) => {
-    console.log(buttonId, '| teste')
+    console.log(buttonId, "| teste");
     setLastClickedButton(buttonId);
   };
 
@@ -28,23 +28,23 @@ function DestaquesSection() {
     <Container>
       <Title>Destaques</Title>
       <MenuContainer>
-       {[1, 2, 3, 4, 5].map((item) => (
-        <Button
-          key={item}
-          onClick={() => handleButtonClick(item)}
-          style={{
-            backgroundColor: lastClickedButton === item ? "black" : "",
-            color: lastClickedButton === item ? "white" : ""
-          }}
-        >
-          <Option>Livros</Option>
-        </Button>
-      ))}
+        {[1, 2, 3, 4, 5].map((item) => (
+          <Button
+            key={item}
+            onClick={() => handleButtonClick(item)}
+            style={{
+              backgroundColor: lastClickedButton === item ? "black" : "",
+              color: lastClickedButton === item ? "white" : "",
+            }}
+          >
+            <Option>Livros</Option>
+          </Button>
+        ))}
       </MenuContainer>
       <CardsContainer>
         <CardPrincipal>
           <BigCard>
-            <Imagem />
+            <Imagem className="big-image" />
             <CardTitle>Hello World</CardTitle>
             <CardSubTitle>Descriçao especial + desconto</CardSubTitle>
           </BigCard>
