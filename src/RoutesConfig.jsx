@@ -37,14 +37,7 @@ export default function RoutesConfig() {
             </Layout>
           }
         />
-        <Route
-          path="/testeAmbiente"
-          element={
-            <Layout>
-              <ProductPage />
-            </Layout>
-          }
-        />
+        
         <Route
           path="/login"
           element={
@@ -61,6 +54,14 @@ export default function RoutesConfig() {
             </Layout>
           }
         />
+        <Route 
+          path="/produto/:id"
+          element={
+            <Layout>
+              <ProductPage />
+            </Layout>
+          }
+          />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

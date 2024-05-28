@@ -16,6 +16,7 @@ import {
   
   //Estrelas do ReactIcons
   import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
   
   function Avaliacoes({ avaliacao }) {
     const estrelas = [];
@@ -31,13 +32,15 @@ import {
     return <AvaliacoesContainer>{estrelas}</AvaliacoesContainer>;
   }
   
-  function Card({ imagem, nome, preco, avaliacoes }) {
+  function Card({ id, imagem, name, price, avaliacoes }) {
+    const navigate = useNavigate();
+
     return (
       <CardContainer>
-        <Imagem src={imagem}></Imagem>
-        <NomeLivro>{nome}</NomeLivro>
+        <Imagem src={imagem} onClick={() => navigate(`/produto/${id}`)}></Imagem>
+        <NomeLivro>{name}</NomeLivro>
         <Avaliacoes avaliacao={avaliacoes} />
-        <PrecoLivro>R${preco}</PrecoLivro>
+        <PrecoLivro>R${price}</PrecoLivro>
       </CardContainer>
     );
   }
@@ -48,7 +51,7 @@ import {
     useEffect(() => {
       const fetchAllBooks = async () => {
         try {
-          const res = await axios.get("http://localhost:8081/books");
+          const res = await axios.get("http://localhost:8081/book");
           setBooks(res.data);
         } catch (err) {
           console.log(err);
@@ -56,8 +59,6 @@ import {
       };
       fetchAllBooks();
     }, []);
-  
-    console.log(books);
   
     return (
       <Container>
@@ -67,8 +68,9 @@ import {
               <Card
                 key={book.id}
                 imagem="/azulDeitado.png"
-                nome={book.Nome}
-                preco={book.Preco}
+                id = {book.id}
+                name={book.name}
+                price={book.price}
                 avaliacoes={4.2} // Supondo que a avaliação seja 4.2
               />
             ))}

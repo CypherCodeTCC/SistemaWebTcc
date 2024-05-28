@@ -8,6 +8,9 @@ import { FaStar } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { Container } from "./productStyle";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function ProductPage() {
   //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
@@ -33,9 +36,24 @@ export default function ProductPage() {
     );
   }
 
+  const [book, setBook] = useState({});
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8081/book/${id}`);
+        setBook(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchBook();
+  }, [id]);
+
   return (
     <>
-      <Container>      
+      <Container>
         <img src={PngImagem3} className="big-image" alt="Imagem do Produto" />
         <div className="container-product-img">
           <img src={PngImagem1} alt="Imagem do Produto" />
@@ -43,16 +61,13 @@ export default function ProductPage() {
           <img src={PngImagem2} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />
-        </div>   
+        </div>
         <div className="container-text">
-          <h2>O livro dos livros</h2>
+          <h2>{book.name}</h2>
           <Card avaliacoes={4} />
-          <h2>R$ 999,99</h2>
+          <h2>R$ {book.price}</h2>
           <h3>Descrição</h3>
-          <p>
-            Pellentesque condimentum lorem vitae justo congue, ut semper nisi
-            gravida. Sed viverra nibh eget tincidunt convallis.
-          </p>
+          <p>{book.synopsis}</p>
           <h4>Editoras</h4>
           <div className="container-images">
             <img src={PngRocco} alt="Editora Rocco" />
