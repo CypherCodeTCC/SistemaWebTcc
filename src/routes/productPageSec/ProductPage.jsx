@@ -1,3 +1,8 @@
+import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import CartContext from "../../context/cart/CartContext";
+
 import PngImagem1 from "../../../public/produto1.png";
 import PngImagem2 from "../../../public/produto2.png";
 import PngImagem3 from "../../../public/produto3.png";
@@ -8,9 +13,6 @@ import { FaStar } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { Container } from "./productStyle";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 
 export default function ProductPage() {
   //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
@@ -38,6 +40,7 @@ export default function ProductPage() {
 
   const [book, setBook] = useState({});
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext); 
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -74,7 +77,7 @@ export default function ProductPage() {
             <img src={PngWish} alt="Editora Wish" />
           </div>
           <div className="container-buttons">
-            <button className="big-button">
+            <button className="big-button" onClick={() => addToCart(book.id)}>
               <FaRegPlusSquare /> Adicionar ao carrinho
             </button>
             <button className="small-button">

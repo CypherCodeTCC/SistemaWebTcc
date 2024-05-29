@@ -8,6 +8,8 @@ import Footer from "./componentes/footer/FooterBar.jsx";
 import Login from "./routes/loginSec/Login.jsx";
 import SignUp from "./routes/signUpSec/SignUp.jsx";
 import ProductPage from "./routes/productPageSec/ProductPage.jsx";
+import CartProvider from "./context/cart/CartProvider.jsx";
+import Cart from "./routes/cartSec/Cart.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -19,51 +21,54 @@ const Layout = ({ children }) => (
 
 export default function RoutesConfig() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Home />
-            </Layout>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <Layout>
-              <About />
-            </Layout>
-          }
-        />
-        
-        <Route
-          path="/login"
-          element={
-            <Layout>
-              <Login />
-            </Layout>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <Layout>
-              <SignUp />
-            </Layout>
-          }
-        />
-        <Route 
-          path="/produto/:id"
-          element={
-            <Layout>
-              <ProductPage />
-            </Layout>
-          }
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
           />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </BrowserRouter>
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <Layout>
+                <Login />
+              </Layout>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Layout>
+                <SignUp />
+              </Layout>
+            }
+          />
+          <Route
+            path="/produto/:id"
+            element={
+              <Layout>
+                <ProductPage />
+              </Layout>
+            }
+          />
+          <Route path="/cart" element={<Layout><Cart/></Layout>} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
