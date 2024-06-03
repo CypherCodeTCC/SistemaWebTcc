@@ -25,12 +25,14 @@ export default function CartProvider({ children }) {
     }
   }, [items]);
 
+  console.log(items);
+
   //METODO PARA QUE O INDICE DE CADA PRODUTO SEJA INDIVIDUAL
   const getDefaultCart = () => {
     let cart = {};
-    for(let i = 1; i <= items.length; i++){
-      cart[i] = 0;
-  }
+    items.forEach(item => {
+      cart[item.id] = 0;
+    });
 
     return cart;
   };
