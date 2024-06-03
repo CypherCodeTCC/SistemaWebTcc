@@ -25,20 +25,15 @@ export default function CartProvider({ children }) {
     }
   }, [items]);
 
-  console.log(items);
-
   //METODO PARA QUE O INDICE DE CADA PRODUTO SEJA INDIVIDUAL
   const getDefaultCart = () => {
     let cart = {};
-    items.forEach(item => {
+    items.forEach((item) => {
       cart[item.id] = 0;
     });
 
     return cart;
   };
-
-
-  console.log(cartItems);
 
   //METODO PARA SOMAR OS VALORES DOS ITENS NO CARRINHO
   const getTotalCartAmount = () => {
@@ -54,23 +49,24 @@ export default function CartProvider({ children }) {
         totalAmount += cartItems[item] * itemInfo.price;
       }
     }
-    console.log(totalAmount);
     return totalAmount;
   };
 
   //METODO PARA ADICIONAR NO CARRINHO
   const addToCart = (itemId) => {
-    if (!isNaN(itemId)) { // Verifica se itemId é um número válido
-        setCartItems((prev) => ({...prev, [itemId]: prev[itemId] + 1}));
+    if (!isNaN(itemId)) {
+      // Verifica se itemId é um número válido
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     }
-}
+  };
 
-// Metodo para remover do carrinho
-const removeFromCart = (itemId) => {
-    if (!isNaN(itemId)) { // Verifica se itemId é um número válido
-        setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}));
+  // Metodo para remover do carrinho
+  const removeFromCart = (itemId) => {
+    if (!isNaN(itemId)) {
+      // Verifica se itemId é um número válido
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     }
-}
+  };
   //METODO PARA DIMINUIR E AUMENTAR A QUANTIDADE DE ITENS NO CARRINHO
   const updateCartItemCount = (newAmount, itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
