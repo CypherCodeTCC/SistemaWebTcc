@@ -1,109 +1,121 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  min-height: 60vh;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+  width: 87.5%;
   display: flex;
-  justify-content: center;
-  gap: 0 10px;
-  padding: 20px;
+  padding: 1.5625rem 0 1.5625rem 0;
+  gap: 0 20px;
+  margin: auto;
 
-  font-family: Arial, Helvetica, sans-serif;
-
-  animation: container-animation 1.9s;
-
-  .book-image {
-    object-fit: contain;
-    width: 100%;
-    height: 25vh;
-  }
-
-  .card {
-    padding: 20px;
-    border-radius: 8px;
-    background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
-  }
-
-  .main-container-right {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px 0;
-  }
-
-  .card-left {
-    height: 85vh;
-
-    h1{
-      word-wrap: break-word;
-      width: 250px;
-    }
-  }
-
-  .card-right {
-    flex-grow: 1;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .big-image {
-    height: 70vh;
-  }
-
-  p {
-    text-decoration: underline;
-    width: max-content;
-    padding-top: 20px;
-  }
-
-  .card:hover {
-    cursor: pointer;
-    background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
-  }
-
-  p:hover {
-    font-weight: bold;
-  }
+  font-family: "Poppins", sans-serif;
 
   @media (max-width: 840px) {
     flex-direction: column;
     gap: 10px 0;
+  }
+`;
 
-    .card {
-      padding: 10px;
-    }
+export const MainContainerLeft = styled.div`
+  width: 100%;
+`;
 
-    .book-image {
-      width: 100%;
-    }
+export const Card = styled.div`
+  width: 100%;
+  padding: 34px;
+  border-radius: 8px;
 
-    .big-image {
-      height: 40vh;
-    }
-
-    .main-container-right {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px 0;
-
-      h1, p{
-        padding-left: 20px;
-      }
-    }
-
-    .card-left {
-      height: 65vh;
-      max-width: 100%;
-      padding: 20px;
-    }
+  &&:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
   }
 
-  @keyframes container-animation {
-    0% {
-      opacity: 0;
-      transform: translateY(200px);
-    }
+  @media (max-width: 767px) {
+    padding: 10px;
+  }
+`;
+
+export const CardLeft = styled.div`
+  height: 75vh;
+
+  @media (max-width: 767px) {
+    height: 65vh;
+    max-width: 100%;
+    padding: 20px;
+  }
+`;
+
+export const Title = styled.h1`
+  word-wrap: break-word;
+  width: 250px;
+
+  @media (max-width: 767px) {
+    padding-left: 20px;
+  }
+`;
+
+export const SubTitle = styled.p`
+  text-decoration: underline;
+  width: max-content;
+  padding-top: 10px;
+
+  &&:hover {
+    font-weight: bold;
+  }
+
+  @media (max-width: 767px) {
+    padding-left: 20px;
+  }
+`;
+
+export const ImageAlign = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const BigImage = styled.img`
+  object-fit: contain;
+  height: 25vh;
+  width: 50%;
+  height: 70vh;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 40vh;
+  }
+`;
+
+export const MainContainerRight = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px 0;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+  }
+`;
+
+export const CardRight = styled.div`
+  flex-grow: 1;
+  width: 100%;
+  height: 32.5vh;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BookImage = styled.img`
+  object-fit: contain;
+  width: 100%;
+  height: 25vh;
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;

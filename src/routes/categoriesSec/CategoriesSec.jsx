@@ -1,27 +1,48 @@
-import bookImg from '../../../public/roxoapontandodireita.png';
-import { Container } from "./categories";
+import bookImg from "../../../public/roxoapontandodireita.png";
+import {
+  Container,
+  Card,
+  CardLeft,
+  Title,
+  SubTitle,
+  ImageAlign,
+  BigImage,
+  MainContainerRight,
+  MainContainerLeft,
+  CardRight,
+  BookImage,
+} from "./categories";
 
 export default function BooksSection() {
   return (
     <Container>
-      <div className="card card-left">
-        <h1>Desenvolvimento Pessoal</h1>
-        <p>Compre Agora</p>
-        <img src={bookImg} className="book-image big-image" alt="Livro Roxo Flutuando"/>
-      </div>
-      <div className="main-container-right">
-        <div className="card card-right">
-          <h1>Clássicos</h1>
-          <p>Compre Agora</p>
-          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>   
-          
-        </div>
-        <div className="card card-right">
-          <h1>Geek</h1>
-          <p>Compre Agora</p>
-          <img src={bookImg} className="book-image" alt="Livro Roxo Flutuando"/>    
-        </div>
-      </div>
+      <MainContainerLeft>
+        <Card>
+          <CardLeft>
+            <Title>Desenvolvimento Pessoal</Title>
+            <SubTitle>Compre Agora</SubTitle>
+            <ImageAlign>
+              <BigImage src={bookImg} alt="Livro Roxo Flutuando" />
+            </ImageAlign>
+          </CardLeft>
+        </Card>
+      </MainContainerLeft>
+      <MainContainerRight>
+        <Card>
+          <CardRight>
+            <BookImage src={bookImg} alt="Livro Roxo Flutuando" />
+            <Title>Clássicos</Title>
+            <SubTitle>Compre Agora</SubTitle>
+          </CardRight>
+        </Card>
+        <Card>
+          <CardRight>
+            <BookImage src={bookImg} alt="Livro Roxo Flutuando" />
+            <Title>Geek</Title>
+            <SubTitle>Compre Agora</SubTitle>
+          </CardRight>
+        </Card>
+      </MainContainerRight>
     </Container>
   );
 }
