@@ -25,20 +25,20 @@ export default function SignUp() {
     const handleSubmit = async () => {
         try{
             const data = {
-                Cpf: cpfRef.current.value,
-                Nome: nomeRef.current.value + " " + sobrenomeRef.current.value,   
-                Email: emailRef.current.value,
-                Telefone: telefoneRef.current.value,         
-                Cep: cepRef.current.value,             
-                Senha: senhaRef.current.value,         
-                Logradouro: logradouroRef.current.value,
-                Uf: ufRef.current.value,  
-                NomeCid: nomeCidRef.current.value,
-                NumeroEnd: numeroEndRef.current.value,
-                Complemento: complementoRef.current.value,      
+                cpf: cpfRef.current.value,
+                nome: nomeRef.current.value + " " + sobrenomeRef.current.value,   
+                email: emailRef.current.value,
+                telefone: telefoneRef.current.value,         
+                cep: cepRef.current.value,             
+                senha: senhaRef.current.value,         
+                logradouro: logradouroRef.current.value,
+                uf: ufRef.current.value,  
+                nomeCid: nomeCidRef.current.value,
+                numeroEnd: numeroEndRef.current.value,
+                complemento: complementoRef.current.value,      
             }
 
-            await axios.post("http://localhost:8081/signup", data)
+            await axios.post("http://localhost:8081/client", data)
             navigate("/login");
         }
         catch(err){
