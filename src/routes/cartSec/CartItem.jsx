@@ -2,11 +2,11 @@ import { useContext } from "react";
 import CartContext from "../../context/cart/CartContext";
 
 import {
-  Button,
   CartItems,
   CountHandler,
   Description,
   Input,
+  Title,
   NomeAutor,
   NomeLivro,
 } from "./cartStyle";
@@ -16,6 +16,12 @@ export default function CartItem(props) {
   const { addToCart, removeFromCart, updateCartItemCount, cartItems } =
     useContext(CartContext);
 
+  function handleChanged() {
+    let value = document.getElementById("number");
+    if (value++) addToCart(id);
+    else removeFromCart(id);
+  }
+
   return (
     <>
       <CartItems>
@@ -23,13 +29,15 @@ export default function CartItem(props) {
           <NomeAutor>{name}</NomeAutor>
           <NomeLivro>R$ {price}</NomeLivro>
           <CountHandler>
-            <Button onClick={() => removeFromCart(id)}> - </Button>
             <Input
+              type="number"
+              id="number"
               value={cartItems[id]}
               onChange={(e) => updateCartItemCount(Number(e.target.value), id)}
+              onInput={handleChanged}
             />
-            <Button onClick={() => addToCart(id)}> + </Button>
           </CountHandler>
+          <NomeLivro>R$ 440.00</NomeLivro>
         </Description>
       </CartItems>
     </>
