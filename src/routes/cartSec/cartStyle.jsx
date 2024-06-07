@@ -49,7 +49,7 @@ export const ContainerCheckout = styled.div`
 export const Checkout = styled.div`
   padding: 30px;
   display: flex;
-  width: 30%;
+  width: 32.57%;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;

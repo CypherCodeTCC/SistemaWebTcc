@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/cart/CartContext";
 import axios from "axios";
 import CartItem from "./CartItem";
+import CartMobile from "./mobile/CartMobile";
+import useWindowWidth from "../../hooks/useWindowWidth";
 import {
   ButtonCart,
   CartEmpty,
@@ -16,9 +18,7 @@ import {
   TitleDescription,
   Infos,
   Line,
-  NomeAutor,
 } from "./cartStyle";
-import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [items, setItems] = useState([]);
@@ -26,7 +26,7 @@ export default function Cart() {
 
   const totalAmount = getTotalCartAmount();
 
-  const navigate = useNavigate();
+  const width = useWindowWidth();
 
   useEffect(() => {
     const fetchAllBooks = async () => {
@@ -39,6 +39,9 @@ export default function Cart() {
     };
     fetchAllBooks();
   }, []);
+
+  if (width < 1024)
+    return <CartMobile />
 
   return (
     <>
