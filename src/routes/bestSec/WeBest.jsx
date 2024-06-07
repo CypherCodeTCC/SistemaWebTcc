@@ -1,36 +1,50 @@
-import { Container } from './weBestStyle';
+import {
+  Container,
+  ContainerImage,
+  ContainerText,
+  ContentChecked,
+  Image,
+  ImageLibrary,
+  Span,
+  Title,
+} from "./weBestStyle";
 
-import PngLibrary from '../../../public/library.png'
-import PngVerificado from '../../../public/verificado.png'
+import PngLibrary from "../../../public/library.png";
+import PngVerificado from "../../../public/verificado.png";
 
-export default function WeBest(){
-    return(
-        <>
-            <Container>
-                <div className="container-image">
-                    <img src={PngLibrary} className="library-image" alt='Livraria'/>
-                </div>
-                <div className="container-text">
-                    <h1>O por que somos os <span>melhores?</span></h1>
-                    <p>Nossa livrária, diferente das demais, é certificada, segura, confiavel e reconhecida nacionalmente.</p>
-                    <div className='content-checked'>
-                        <img src={PngVerificado} alt='Circulo de checagem verdadeiro' />
-                        <p>Serviço reconhecido por empresas globais</p>
-                    </div>
-                    <div className='content-checked'>
-                        <img src={PngVerificado} alt='Circulo de checagem verdadeiro' />
-                        <p>Time competente e esforçado</p>
-                    </div>
-                    <div className='content-checked'>
-                        <img src={PngVerificado} alt='Circulo de checagem verdadeiro' />
-                        <p>97% das nossas avaliações são positivas</p>
-                    </div>
-                    <div className='content-checked'>
-                        <img src={PngVerificado} alt='Circulo de checagem verdadeiro' />
-                        <p>100% de entregas realizadas sem erros</p>
-                    </div>
-                </div>
-            </Container>
-        </>
-    );
+export default function WeBest() {
+  return (
+    <>
+      <Container>
+        <ContainerImage>
+          <ImageLibrary src={PngLibrary} alt="Livraria" />
+        </ContainerImage>
+        <ContainerText>
+          <Title>
+            O por que somos os <Span>melhores?</Span>
+          </Title>
+          <p>
+            Nossa livrária, diferente das demais, é certificada, segura,
+            confiavel e reconhecida nacionalmente.
+          </p>
+          <ContentChecked>
+            <Image src={PngVerificado} alt="Circulo de checagem verdadeiro" />
+            <p>Serviço reconhecido por empresas globais</p>
+          </ContentChecked>
+          <ContentChecked>
+            <Image src={PngVerificado} alt="Circulo de checagem verdadeiro" />
+            <p>Time competente e esforçado</p>
+          </ContentChecked>
+          <ContentChecked>
+            <Image src={PngVerificado} alt="Circulo de checagem verdadeiro" />
+            <p>97% das nossas avaliações são positivas</p>
+          </ContentChecked>
+          <ContentChecked>
+            <Image src={PngVerificado} alt="Circulo de checagem verdadeiro" />
+            <p>100% de entregas realizadas sem erros</p>
+          </ContentChecked>
+        </ContainerText>
+      </Container>
+    </>
+  );
 }
