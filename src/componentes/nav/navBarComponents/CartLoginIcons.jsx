@@ -22,8 +22,12 @@ function PopupCarrinhoVazio({ setIsPopupOpen }) {
     </div>
   );
 }
-function PopupPesquisar() {
-  return <></>;
+
+//FUNÇÃO PARA QUANDO O USUARIO ESTIVER LOGADO E CLICAR NO USUARIO, DESCER AS OPÇÕES
+function Dropdown({ isOpen, children }) {
+  return (
+    <div className={`dropdownUser ${isOpen ? "show" : ""}`}>{children}</div>
+  );
 }
 
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
@@ -37,18 +41,29 @@ function CartLoginIcons() {
   const { getTotalCartAmount } = useContext(CartContext);
   const totalAmount = getTotalCartAmount();
 
+  const [menuUserLogged, setMenuUserLogged] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const user = localStorage.getItem("user");
+
   const navigate = useNavigate();
 
   const handleRoutes = (route) => {
     navigate(route);
   };
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const handleUserIconClick = () => {
+    if (!isPopupOpen) {
+      setMenuUserLogged((prevState) => !prevState);
+      setMainHeadingZIndexBasedOnState(!menuUserLogged);
+    }
+  };
 
   const handleCartIconClick = () => {
     if (totalAmount > 0) {
       handleRoutes("/cart");
     } else {
+      setMenuUserLogged(false);
       setIsPopupOpen(true);
       setMainHeadingZIndexBasedOnState(true);
     }
@@ -64,11 +79,36 @@ function CartLoginIcons() {
           alt="Ícone de Carrinho"
           onClick={handleCartIconClick}
         />
-        <img
-          src={PngUser}
-          onClick={() => handleRoutes("/login")}
-          alt="Icone de Login"
-        />
+        {user ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "relative",
+            }}
+          >
+            <img
+              src={PngUser}
+              onClick={handleUserIconClick}
+              alt="Ícone de Menu do Usuário"
+            />
+            <Dropdown isOpen={menuUserLogged}>
+              <ul>
+                <li onClick={() => handleRoutes("/profile")}>Meu Perfil</li>
+                <li onClick={() => handleRoutes("/orders")}>Meus Pedidos</li>
+                <li onClick={() => localStorage.removeItem('user')}>Sair</li>
+              </ul>
+            </Dropdown>
+          </div>
+        ) : (
+          <img
+            src={PngUser}
+            onClick={() => handleRoutes("/login")}
+            alt="Icone de Login"
+          />
+        )}
       </div>
     </div>
   );

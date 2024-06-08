@@ -65,13 +65,13 @@ export default function Cart() {
               <Title>Total da Compra</Title>
               <Infos>
                 <SubTitle>Subtotal:</SubTitle>
-                <PrecoTotal>R${totalAmount}</PrecoTotal>
+                <PrecoTotal>R${totalAmount.toFixed(2)}</PrecoTotal>
                 <Line></Line>
                 <SubTitle>Frete:</SubTitle>
                 <PrecoTotal>Grátis</PrecoTotal>
                 <Line></Line>
                 <SubTitle>Total:</SubTitle>
-                <PrecoTotal>R${totalAmount}</PrecoTotal>
+                <PrecoTotal>R${totalAmount.toFixed(2)}</PrecoTotal>
               </Infos>
               <ButtonCart>Finalizar Compra</ButtonCart>
             </Checkout>
