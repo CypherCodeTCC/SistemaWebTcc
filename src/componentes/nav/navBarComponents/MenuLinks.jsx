@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Dropdown({ isOpen, children }) {
   return (
@@ -9,6 +10,7 @@ function Dropdown({ isOpen, children }) {
 }
 
 function MenuLinks() {
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Função para ajustar o z-index do cabeçalho principal
@@ -25,24 +27,22 @@ function MenuLinks() {
     <div className="navbar-links desktop">
       <ul className="lista">
         <li>
-          <a href="/">Home</a>
+          <a onClick={() => navigate('/')}>Home</a>
         </li>
         <li
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
         >
-          <a href="/">Categorias</a>
+          <a onClick={() => navigate('/')}>Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
             <a href="/">Desenvolvimento Pessoal</a>
-            <a href="/">Clássicos</a>
-            <a href="/">Geek</a>
           </Dropdown>
         </li>
         <li>
-          <a href="/">Ofertas</a>
+          <a onClick={() => navigate('/')}>Ofertas</a>
         </li>
         <li>
-          <a href="/">Eventos</a>
+          <a onClick={() => navigate('/')}>Eventos</a>
         </li>
       </ul>
     </div>

@@ -178,6 +178,10 @@
   width: 1.8rem;
 }
 
+.pngUser{
+  cursor: pointer;
+}
+
 .icones img:not(:last-child) {
   margin-right: 32px;
 }

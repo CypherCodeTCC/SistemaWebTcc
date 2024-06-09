@@ -8,3 +8,8 @@
     height: 0px;
     width: 0px;
 }
+
+.toast-black{
+    background-color: black;
+    color: white;
+}

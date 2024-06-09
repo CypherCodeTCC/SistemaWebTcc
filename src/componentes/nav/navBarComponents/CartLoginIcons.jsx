@@ -4,6 +4,7 @@ import SearchIcon from "../../../../public/search.svg";
 import PngUser from "../../../../public/user.png";
 import { useNavigate } from "react-router-dom";
 import CartContext from "../../../context/cart/CartContext";
+import { toast } from "react-toastify";
 
 function PopupCarrinhoVazio({ setIsPopupOpen }) {
   const handleFechar = () => {
@@ -69,6 +70,15 @@ function CartLoginIcons() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("userId");
+    toast.info("Voce deslogou da sua conta." , {
+      closeOnClick: true
+    });
+    handleRoutes('/');
+  }
+
   return (
     <div className="carrinho-logar desktop">
       {isPopupOpen && <PopupCarrinhoVazio setIsPopupOpen={setIsPopupOpen} />}
@@ -91,20 +101,21 @@ function CartLoginIcons() {
           >
             <img
               src={PngUser}
+              className="pngUser"
               onClick={handleUserIconClick}
               alt="Ícone de Menu do Usuário"
             />
             <Dropdown isOpen={menuUserLogged}>
               <ul>
-                <li onClick={() => handleRoutes("/profile")}>Meu Perfil</li>
-                <li onClick={() => handleRoutes("/orders")}>Meus Pedidos</li>
-                <li onClick={() => localStorage.removeItem('user')}>Sair</li>
+                <li onClick={() => handleRoutes(`/profile/${localStorage.getItem('userId')}`)}>Meu Perfil</li>
+                <li onClick={handleLogout}>Sair</li>
               </ul>
             </Dropdown>
           </div>
         ) : (
           <img
             src={PngUser}
+            className="pngUser"
             onClick={() => handleRoutes("/login")}
             alt="Icone de Login"
           />
