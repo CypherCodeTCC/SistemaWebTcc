@@ -67,7 +67,7 @@ import { useNavigate } from "react-router-dom";
             {books.map((book) => (
               <Card
                 key={book.id}
-                imagem="/azulDeitado.png"
+                imagem={book.image.url}
                 id = {book.id}
                 name={book.name}
                 price={book.price}

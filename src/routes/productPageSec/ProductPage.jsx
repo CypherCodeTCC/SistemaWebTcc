@@ -41,12 +41,14 @@ export default function ProductPage() {
   const [book, setBook] = useState({});
   const { id } = useParams();
   const { addToCart } = useContext(CartContext); 
+  console.log(book);
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const res = await axios.get(`https://node-routes-mysql.vercel.app/book/${id}`);
         setBook(res.data);
+        console.log(book);
       } catch (err) {
         console.log(err);
       }
@@ -57,7 +59,7 @@ export default function ProductPage() {
   return (
     <>
       <Container>
-        <img src={PngImagem3} className="big-image" alt="Imagem do Produto" />
+        {book.image && <img src={book.image.url} className="big-image" alt="Imagem do Produto" />}
         <div className="container-product-img">
           <img src={PngImagem1} alt="Imagem do Produto" />
           <img src={PngImagem2} alt="Imagem do Produto" />

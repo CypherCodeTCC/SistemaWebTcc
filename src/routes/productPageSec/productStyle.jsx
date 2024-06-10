@@ -23,8 +23,8 @@ export const Container = styled.section`
   }
 
   .big-image {
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 30%;
   }
 
   .container-text {

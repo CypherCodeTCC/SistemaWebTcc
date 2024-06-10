@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import CartContext from "../../../context/cart/CartContext";
 
-import LivroPng from "../../../../public/azulDeitado.png";
 import {
   ButtonAddMobile,
   ButtonExcluirMobile,
@@ -16,18 +15,18 @@ import {
 } from "./cartMobileStyle";
 
 export default function CartMobileItem(props) {
-  const { id, name, price } = props.data;
+  const { id, name, price, image, author, genre } = props.data;
   const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
 
   return (
     <>
       <CartItemsMobile>
-        <ImageLivroMobile src={LivroPng} />
+        {image && <ImageLivroMobile src={image.url} />}
         <DescriptionMobile>
           <NomeEditoraMobile>Editora Wish</NomeEditoraMobile>
           <NomeLivroMobile>{name}</NomeLivroMobile>
-          <NomeAutorMobile>Autor: Juan</NomeAutorMobile>
-          <NomeAutorMobile>Gênero: Eduardo</NomeAutorMobile>
+          <NomeAutorMobile>Autor: {author.name}</NomeAutorMobile>
+          <NomeAutorMobile>Gênero: {genre.name}</NomeAutorMobile>
           <ButtonAddMobile onClick={() => addToCart(id)}>
             Adquirir
           </ButtonAddMobile>

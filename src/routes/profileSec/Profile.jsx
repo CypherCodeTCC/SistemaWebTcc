@@ -38,8 +38,6 @@ export default function Profile() {
     Estado: ""
   });
 
-  console.log(address);
-
   const [currentPassword, setCurrentPassword] = useState(""); //SENHA ATUAL
   const [newPassword, setNewPassword] = useState(""); //NOVA SENHA
   const [confirmNewPassword, setConfirmNewPassword] = useState(""); //CONFIRMAÇÃO DA NOVA SENHA
