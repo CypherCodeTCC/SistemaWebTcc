@@ -25,10 +25,13 @@ export const Card = styled.div`
   width: 100%;
   padding: 34px;
   border-radius: 8px;
+  background: #f0f0f0;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
 
-  &&:hover {
+  &:hover {
     cursor: pointer;
-    background-image: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
+    background: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
+    transform: scale(1.05);
   }
 
   @media (max-width: 767px) {
@@ -60,7 +63,7 @@ export const SubTitle = styled.p`
   width: max-content;
   padding-top: 10px;
 
-  &&:hover {
+  &:hover {
     font-weight: bold;
   }
 
@@ -90,7 +93,6 @@ export const MainContainerRight = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
   gap: 20px 0;
 
   @media (max-width: 767px) {
@@ -105,7 +107,6 @@ export const CardRight = styled.div`
   flex-grow: 1;
   width: 100%;
   height: 32.5vh;
-
   display: flex;
   flex-direction: column;
 `;
