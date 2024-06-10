@@ -107,7 +107,7 @@ function CartLoginIcons() {
             />
             <Dropdown isOpen={menuUserLogged}>
               <ul>
-                <li onClick={() => handleRoutes(`/profile/${localStorage.getItem('userId')}`)}>Meu Perfil</li>
+                <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
                 <li onClick={handleLogout}>Sair</li>
               </ul>
             </Dropdown>

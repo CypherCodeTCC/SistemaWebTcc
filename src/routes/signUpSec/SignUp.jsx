@@ -38,7 +38,7 @@ export default function SignUp() {
                 Complemento: complementoRef.current.value,      
             }
 
-            await axios.post("http://localhost:8081/client", data)
+            await axios.post("https://node-routes-mysql.vercel.app/client", data)
             navigate("/login");
         }
         catch(err){

@@ -27,7 +27,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:8081/client/login", user);
+      const res = await axios.post("https://node-routes-mysql.vercel.app/client/login", user);
       if (res.data.user) {
         localStorage.setItem("user", res.data.user.Email);
         localStorage.setItem("userId", res.data.user.Id);

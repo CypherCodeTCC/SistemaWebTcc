@@ -9,7 +9,7 @@ export default function CartProvider({ children }) {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:8081/book");
+        const res = await axios.get("https://node-routes-mysql.vercel.app/book");
         setItems(res.data);
       } catch (err) {
         console.log(err);

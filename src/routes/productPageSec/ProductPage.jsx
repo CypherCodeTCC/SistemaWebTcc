@@ -45,7 +45,7 @@ export default function ProductPage() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:8081/book/${id}`);
+        const res = await axios.get(`https://node-routes-mysql.vercel.app/book/${id}`);
         setBook(res.data);
       } catch (err) {
         console.log(err);

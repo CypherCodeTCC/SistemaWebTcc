@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/mobilemenu.css';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // Função para buscar o mainHeading pela classe e setar o z-index para -1 quando o menu estiver aberto
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
@@ -20,6 +22,18 @@ function ScreenOnClickMobile({ onClick }) {
 
 // Componente para o interior do menu mobile
 function MobileMenuInterior() {
+    const user = localStorage.getItem("user");
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("userId");
+        toast.info("Voce deslogou da sua conta." , {
+          closeOnClick: true
+        });
+        navigate('/');
+      }
+
     return (
         <section className='interior-menumobile'>
             <ul className="interior-menumobile-menu">
@@ -28,7 +42,12 @@ function MobileMenuInterior() {
                 <li className='li--menu'><a href="#" className='li--a--menu'>Ofertas</a></li>
                 <li className='li--menu'><a href="#" className='li--a--menu'>Eventos</a></li>
                 <div className='botoes-interior-menumobile'>
-                    <li className="li-botoes-menumobile"><a href="/" className="a--li--menumobile">Entrar</a></li>
+                    {user ? (
+                        <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
+                    ) : (
+                        <li className="li-botoes-menumobile"><a onClick={() => navigate("/login")} className="a--li--menumobile">Entrar</a></li>
+                    )}
+                    
                 </div>
             </ul>
         </section>

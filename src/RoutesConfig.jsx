@@ -79,7 +79,7 @@ export default function RoutesConfig() {
             }
           />
           <Route
-            path="/profile/:id"
+            path="/profile"
             element={
               <Layout>
                 <Profile />

@@ -52,7 +52,7 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8081/client/${localStorage.getItem("userId")}`
+          `https://node-routes-mysql.vercel.app/client/${localStorage.getItem("userId")}`
         );
         setUser(res.data);
       } catch (err) {
@@ -66,7 +66,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchAddress = async () => {
       try{
-        const res = await axios.get(`http://localhost:8081/client//address/${localStorage.getItem("userId")}`);
+        const res = await axios.get(`https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem("userId")}`);
         setAddress(res.data);
       }
       catch(err){
@@ -115,7 +115,7 @@ export default function Profile() {
 
     try {
       await axios.put(
-        `http://localhost:8081/client/${localStorage.getItem("userId")}`,
+        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem("userId")}`,
         updatedData
       );
       toast.success("Dados atualizados com sucesso!", {
@@ -131,7 +131,7 @@ export default function Profile() {
 
   const handleUpdateAddress = async () => {
     try{
-      await axios.put(`http://localhost:8081/client/address/${localStorage.getItem("userId")}`, address);
+      await axios.put(`https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem("userId")}`, address);
       toast.success("Endereço atualizado com sucesso!", {
         closeOnClick: true,
       });
