@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css/mobilemenu.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import CartContext from '../../../context/cart/CartContext';
 
 // Função para buscar o mainHeading pela classe e setar o z-index para -1 quando o menu estiver aberto
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
@@ -22,6 +23,9 @@ function ScreenOnClickMobile({ onClick }) {
 
 // Componente para o interior do menu mobile
 function MobileMenuInterior() {
+    const { getTotalCartAmount } = useContext(CartContext);
+    const totalAmount = getTotalCartAmount();
+
     const user = localStorage.getItem("user");
     const navigate = useNavigate();
 
@@ -37,10 +41,11 @@ function MobileMenuInterior() {
     return (
         <section className='interior-menumobile'>
             <ul className="interior-menumobile-menu">
-                <li className='li--menu'><a href="#" className='li--a--menu'>Home</a></li>
-                <li className='li--menu'><a href="#" className='li--a--menu'>Categorias</a></li>
-                <li className='li--menu'><a href="#" className='li--a--menu'>Ofertas</a></li>
-                <li className='li--menu'><a href="#" className='li--a--menu'>Eventos</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Home</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Categorias</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Ofertas</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Eventos</a></li>
+                <li className="li-botoes-menumobile"><a onClick={() => navigate('/cart')} className="a--li--menumobile">Carrinho</a></li>
                 <div className='botoes-interior-menumobile'>
                     {user ? (
                         <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
