@@ -30,13 +30,15 @@ export default function Profile() {
   });
 
   const [address, setAddress] = useState({
-    Cep: "",
+    CEP: "",
     Logradouro: "",
     Numero: "",
     Complemento: "",
     Cidade: "",
     Estado: ""
-  })
+  });
+
+  console.log(address);
 
   const [currentPassword, setCurrentPassword] = useState(""); //SENHA ATUAL
   const [newPassword, setNewPassword] = useState(""); //NOVA SENHA
@@ -221,8 +223,8 @@ export default function Profile() {
             <SubTitle>Cep</SubTitle>
             <Input
               type="text"
-              value={address.Cep}
-              name="Cep"
+              value={address.CEP}
+              name="CEP"
               onChange={handleChangedAddress}
             />
           </InputText>

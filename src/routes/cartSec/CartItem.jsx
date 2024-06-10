@@ -37,7 +37,7 @@ export default function CartItem(props) {
               onInput={handleChanged}
             />
           </CountHandler>
-          <NomeLivro>R$ 440.00</NomeLivro>
+          <NomeLivro>R${(price * cartItems[id]).toFixed(2)}</NomeLivro>
         </Description>
       </CartItems>
     </>
