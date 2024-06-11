@@ -1,81 +1,80 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
 
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+`;
 
-    .container-image{
-        width: 65%;
-    }
+export const ContainerImage = styled.div`
+  width: 65%;
 
-    .container-form{
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    display: none;
+  }
 
-        p{
-            color: #999BA1;
-            font-size: 15px;
-        }
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
 
-        .center{
-            text-align: center;
-        }
+export const ContainerForm = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
-        button{
-            border-radius: 8px;
-            padding: 7px;
-            cursor: pointer;
-        }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    width: 70%;
+  }
 
-        .btn-login{
-            background-color: #6236F5;
-            color: white;
-            padding: 10px
-        }
+  @media (max-width: 767px) {
+    width: 80%;
+  }
+`;
 
-        input{
-            border-radius: 8px;
-            border: 1px solid;
-            padding: 10px
-        }
+export const SubTitle = styled.p`
+  color: #999ba1;
+  font-size: 15px;
+`;
 
-        span{
-            color:#6236F5;
-            cursor: pointer;
-        }
-    }
+export const SubTitleCenter = styled.p`
+  color: #999ba1;
+  font-size: 15px;
+  text-align: center;
+`;
 
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+export const Button = styled.button`
+  border-radius: 8px;
+  padding: 7px;
+  cursor: pointer;
+`;
 
-@media (min-width: 801px) and (max-width: 1150px){
-    .container-image{
-        display: none;
-    }
+export const ButtonLogin = styled.button`
+  background-color: #6236f5;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+`;
 
-    .container-form{
-        width: 70%;
-    }
-}
+export const Input = styled.input`
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 10px;
+`;
 
-@media (max-width: 800px){
-    .container-image{
-        display: none;
-    }
+export const Span = styled.span`
+  color: #6236f5;
+  cursor: pointer;
+`;
 
-    .container-form{
-        width: 80%;
-    }
-}
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

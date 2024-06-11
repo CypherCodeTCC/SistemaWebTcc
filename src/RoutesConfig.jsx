@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-import './main.css';
+import "react-toastify/dist/ReactToastify.css";
+import "./main.css";
 
 import Navbar from "./componentes/nav/NavBar.jsx";
 import Home from "./routes/Home.jsx";
@@ -15,11 +15,12 @@ import { default as FilterPage } from "./routes/AllProductsPage/AllProductsPage.
 import CartProvider from "./context/cart/CartProvider.jsx";
 import Cart from "./routes/cartSec/Cart.jsx";
 import Profile from "./routes/profileSec/Profile.jsx";
+import FinalizeRegister from "./routes/finalizeRegisterSec/FinalizeRegister.jsx";
 
 const Layout = ({ children }) => (
   <div>
     <Navbar />
-    <ToastContainer toastClassName="toast-black"/>
+    <ToastContainer toastClassName="toast-black" />
     <div>{children}</div>
     <Footer />
   </div>
@@ -84,6 +85,14 @@ export default function RoutesConfig() {
             element={
               <Layout>
                 <Profile />
+              </Layout>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <Layout>
+                <FinalizeRegister />
               </Layout>
             }
           />

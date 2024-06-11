@@ -65,7 +65,7 @@ export default function Login() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const userGoogle = result.user;
-      console.log(userGoogle.email);
+      console.log(userGoogle);
       const token = await userGoogle.getIdToken();
 
       const res = await axios.post(
@@ -73,6 +73,13 @@ export default function Login() {
         { token }
       );
       localStorage.setItem("uId", res.data.uid);
+      localStorage.setItem(
+        "userGoogle",
+        JSON.stringify({
+          email: userGoogle.email,
+          nome: userGoogle.displayName,
+        })
+      );
 
       if (localStorage.getItem("uId")) {
         handleRoutes("/");

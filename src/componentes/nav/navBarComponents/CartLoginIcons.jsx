@@ -46,6 +46,7 @@ function CartLoginIcons() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const user = localStorage.getItem("user");
+  const userGoogle = localStorage.getItem("uId");
 
   const navigate = useNavigate();
 
@@ -73,11 +74,78 @@ function CartLoginIcons() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
-    toast.info("Voce deslogou da sua conta." , {
-      closeOnClick: true
+    localStorage.removeItem("uId");
+    toast.info("Voce deslogou da sua conta.", {
+      closeOnClick: true,
     });
-    handleRoutes('/');
-  }
+    handleRoutes("/");
+  };
+
+  const renderUserSection = () => {
+    if (user) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
+          <img
+            src={PngUser}
+            className="pngUser"
+            onClick={handleUserIconClick}
+            alt="Ícone de Menu do Usuário"
+          />
+          <Dropdown isOpen={menuUserLogged}>
+            <ul>
+              <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
+              <li onClick={handleLogout}>Sair</li>
+            </ul>
+          </Dropdown>
+        </div>
+      );
+    } else if (userGoogle) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
+          <img
+            src={PngUser}
+            className="pngUser"
+            onClick={handleUserIconClick}
+            alt="Ícone de Menu do Usuário"
+          />
+          <Dropdown isOpen={menuUserLogged}>
+            <ul>
+              <li onClick={() => handleRoutes("/register")}>
+                Cadastrar informações
+              </li>
+              <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
+              <li onClick={handleLogout}>Sair</li>
+            </ul>
+          </Dropdown>
+        </div>
+      );
+    } else {
+      return (
+        <img
+          src={PngUser}
+          className="pngUser"
+          onClick={() => handleRoutes("/login")}
+          alt="Icone de Login"
+        />
+      );
+    }
+  };
 
   return (
     <div className="carrinho-logar desktop">
@@ -89,37 +157,7 @@ function CartLoginIcons() {
           alt="Ícone de Carrinho"
           onClick={handleCartIconClick}
         />
-        {user ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "relative",
-            }}
-          >
-            <img
-              src={PngUser}
-              className="pngUser"
-              onClick={handleUserIconClick}
-              alt="Ícone de Menu do Usuário"
-            />
-            <Dropdown isOpen={menuUserLogged}>
-              <ul>
-                <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
-                <li onClick={handleLogout}>Sair</li>
-              </ul>
-            </Dropdown>
-          </div>
-        ) : (
-          <img
-            src={PngUser}
-            className="pngUser"
-            onClick={() => handleRoutes("/login")}
-            alt="Icone de Login"
-          />
-        )}
+        {renderUserSection()}
       </div>
     </div>
   );
