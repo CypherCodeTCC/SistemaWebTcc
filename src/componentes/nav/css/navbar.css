@@ -87,7 +87,7 @@
   width: 100%;
 }
 
-.dropdownUser.show ul li{
+.dropdownUser.show ul li {
   padding: 3px;
   border-radius: 8px;
   text-align: center;
@@ -178,7 +178,7 @@
   width: 1.8rem;
 }
 
-.pngUser{
+.pngUser {
   cursor: pointer;
 }
 

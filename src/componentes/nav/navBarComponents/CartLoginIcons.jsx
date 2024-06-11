@@ -73,11 +73,11 @@ function CartLoginIcons() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
-    toast.info("Voce deslogou da sua conta." , {
-      closeOnClick: true
+    toast.info("Voce deslogou da sua conta.", {
+      closeOnClick: true,
     });
-    handleRoutes('/');
-  }
+    handleRoutes("/");
+  };
 
   return (
     <div className="carrinho-logar desktop">
