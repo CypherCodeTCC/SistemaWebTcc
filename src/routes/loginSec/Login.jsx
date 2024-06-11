@@ -1,6 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import PngCelular from "../../../public/celular.png";
-import { Container } from "./loginStyle";
+import {
+  Button,
+  ButtonLogin,
+  Container,
+  ContainerForm,
+  ContainerImage,
+  Image,
+  Input,
+  Span,
+  SubTitle,
+  SubTitleCenter,
+} from "./loginStyle";
 import { useState } from "react";
 import axios from "axios";
 import { auth, googleProvider } from "../../config/firebase-config";
@@ -29,19 +40,21 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://node-routes-mysql.vercel.app/client/login", user);
+      const res = await axios.post(
+        "https://node-routes-mysql.vercel.app/client/login",
+        user
+      );
       if (res.data.user) {
         localStorage.setItem("user", res.data.user.Email);
         localStorage.setItem("userId", res.data.user.Id);
         toast.success("Login efetuado com sucesso.", {
-            closeOnClick: true,  
+          closeOnClick: true,
         });
-        handleRoutes('/');
-      }
-      else{
+        handleRoutes("/");
+      } else {
         toast.error("Email ou senha inválidos.", {
-          closeOnClick: true,  
-      });
+          closeOnClick: true,
+        });
       }
     } catch (err) {
       console.log("Erro ao logar o cliente.", err);
@@ -49,54 +62,62 @@ export default function Login() {
   };
 
   const signInWithGoogle = async () => {
-    try{
+    try {
       const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      const token = await user.getIdToken();
+      const userGoogle = result.user;
+      console.log(userGoogle.email);
+      const token = await userGoogle.getIdToken();
 
-      const res = axios.post("https://node-routes-mysql.vercel.app/client/login/auth/google", { token } );
-      console.log("Login bem sucedido", res.data);
-    }
-    catch(err){
+      const res = await axios.post(
+        "https://node-routes-mysql.vercel.app/client/login/auth/google",
+        { token }
+      );
+      localStorage.setItem("uId", res.data.uid);
+
+      if (localStorage.getItem("uId")) {
+        handleRoutes("/");
+        console.log("Login bem sucedido");
+      } else {
+        console.log("Credenciais invalidas.");
+      }
+    } catch (err) {
       console.log("Erro durante o login.", err);
     }
-  }
+  };
 
   return (
     <>
       <Container>
-        <div className="container-image">
-          <img src={PngCelular} alt="Imagem de Celular" />
-        </div>
-        <div className="container-form">
+        <ContainerImage>
+          <Image src={PngCelular} alt="Imagem de Celular" />
+        </ContainerImage>
+        <ContainerForm>
           <h3>Seja Bem-Vindo</h3>
-          <p>Faça login na sua conta Liber</p>
-          <button onClick={signInWithGoogle}>Prossiga com a Apple</button>
-          <button>Prossiga com o Google</button>
-          <button>Prossiga com o Facebook</button>
-          <p className="center">Ou</p>
+          <SubTitle>Faça login na sua conta Liber</SubTitle>
+          <Button>Prossiga com a Apple</Button>
+          <Button onClick={signInWithGoogle}>Prossiga com o Google</Button>
+          <Button>Prossiga com o Facebook</Button>
+          <SubTitleCenter>Ou</SubTitleCenter>
           <h4>E-mail</h4>
-          <input
+          <Input
             type="text"
             placeholder="Ex: meuemail@endereco.com"
             name="email"
             onChange={handleChange}
           />
           <h4>Senha</h4>
-          <input
+          <Input
             type="password"
             placeholder="Insira sua palavra-passe"
             name="password"
             onChange={handleChange}
           />
-          <button className="btn-login" onClick={handleSubmit}>
-            Login
-          </button>
-          <p className="center">
+          <ButtonLogin onClick={handleSubmit}>Login</ButtonLogin>
+          <SubTitleCenter>
             Não tem uma conta?{" "}
-            <span onClick={() => handleRoutes("/signup")}>Crie sua conta</span>
-          </p>
-        </div>
+            <Span onClick={() => handleRoutes("/signup")}>Crie sua conta</Span>
+          </SubTitleCenter>
+        </ContainerForm>
       </Container>
     </>
   );
