@@ -19,8 +19,9 @@ function ScreenOnClickMobile({ onClick }) {
     );
 }
 
-// Componente para o interior do menu mobile
-function MobileMenuInterior() {
+// Componente principal para o menu mobile
+function MobileMenu() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const user = localStorage.getItem("user");
     const navigate = useNavigate();
 
@@ -32,33 +33,6 @@ function MobileMenuInterior() {
         });
         navigate('/');
       }
-
-    return (
-        <section className='interior-menumobile'>
-            <ul className="interior-menumobile-menu">
-                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Home</a></li>
-                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Categorias</a></li>
-                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Ofertas</a></li>
-                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Eventos</a></li>
-                <li className="li-botoes-menumobile"><a onClick={() => navigate('/cart')} className="a--li--menumobile">Carrinho</a></li>
-                <div className='botoes-interior-menumobile'>
-                    {user ? (
-                        <div>
-                            <li className="li-botoes-menumobile"><a onClick={() => navigate('/profile')} className="a--li--menumobile">Meu Perfil</a></li>
-                            <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
-                        </div>
-                    ) : (
-                        <li className="li-botoes-menumobile"><a onClick={() => navigate("/login")} className="a--li--menumobile">Entrar</a></li>
-                    )}
-                    
-                </div>
-            </ul>
-        </section>
-    )
-}
-// Componente principal para o menu mobile
-function MobileMenu() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     // Função para lidar com o clique no ícone do menu
     const handleClick = () => {
@@ -85,7 +59,26 @@ function MobileMenu() {
                 <div className="line-menu half end"></div>
             </div>
             <div className={`fullscreen-menu ${isMenuOpen ? 'open' : ''}`}>
-                <MobileMenuInterior />
+            <section className='interior-menumobile'>
+            <ul className="interior-menumobile-menu" onClick={() => setIsMenuOpen(false)}>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Home</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Categorias</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Ofertas</a></li>
+                <li className='li--menu'><a onClick={() => navigate('/')} className='li--a--menu'>Eventos</a></li>
+                <li className="li-botoes-menumobile"><a onClick={() => navigate('/cart')} className="a--li--menumobile">Carrinho</a></li>
+                <div className='botoes-interior-menumobile'>
+                    {user ? (
+                        <div>
+                            <li className="li-botoes-menumobile"><a onClick={() => navigate('/profile')} className="a--li--menumobile">Meu Perfil</a></li>
+                            <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
+                        </div>
+                    ) : (
+                        <li className="li-botoes-menumobile"><a onClick={() => navigate("/login")} className="a--li--menumobile">Entrar</a></li>
+                    )}
+                    
+                </div>
+            </ul>
+        </section>
             </div>
         </div>
     );

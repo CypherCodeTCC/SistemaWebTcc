@@ -3,22 +3,37 @@ import styled from "styled-components";
 export const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 15px;
   padding: 40px;
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const Card = styled.div`
-  flex-grow: 1;
-  height: 260px;
-  width: 260px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px 32px;
+  gap: 16px;
   border-radius: 8px;
-  background-image: linear-gradient(to top, #f2f0f1 20%, #f2f0f1 100%);
+  background: rgba(208, 208, 208, 0.3);
+`;
+
+export const Title = styled.p`
+  font-family: 'Poppins'; 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #141718;
 `;
 
 export const SubTitle = styled.p`
-  width: max-content;
-  padding-top: 20px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #6C7275;
 `;
