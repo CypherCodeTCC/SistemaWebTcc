@@ -17,6 +17,23 @@ export const ContainerTextMobile = styled.div`
     height: 69px;
 `;
 
+export const ContainerOptionsMobile = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
+
+export const ButtonOptionsMobile = styled.button`
+    background-color: ${(props) => (props.isActive ? '#000000' : '#FFFFFF')};
+    color: ${(props) => (props.isActive ? '#FFFFFF' : '#000000')};
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    padding: 8px;
+    width: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+`;
+
 export const TitleMobile = styled.h1`
     font-size: 24px;
     font-weight: 500;

@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/mobilemenu.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import CartContext from '../../../context/cart/CartContext';
-
 // Função para buscar o mainHeading pela classe e setar o z-index para -1 quando o menu estiver aberto
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
     const mainHeadings = document.querySelectorAll('.mainHeading');
@@ -23,9 +21,6 @@ function ScreenOnClickMobile({ onClick }) {
 
 // Componente para o interior do menu mobile
 function MobileMenuInterior() {
-    const { getTotalCartAmount } = useContext(CartContext);
-    const totalAmount = getTotalCartAmount();
-
     const user = localStorage.getItem("user");
     const navigate = useNavigate();
 
@@ -48,7 +43,10 @@ function MobileMenuInterior() {
                 <li className="li-botoes-menumobile"><a onClick={() => navigate('/cart')} className="a--li--menumobile">Carrinho</a></li>
                 <div className='botoes-interior-menumobile'>
                     {user ? (
-                        <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
+                        <div>
+                            <li className="li-botoes-menumobile"><a onClick={() => navigate('/profile')} className="a--li--menumobile">Meu Perfil</a></li>
+                            <li className="li-botoes-menumobile"><a onClick={handleLogout} className="a--li--menumobile">Logout</a></li>
+                        </div>
                     ) : (
                         <li className="li-botoes-menumobile"><a onClick={() => navigate("/login")} className="a--li--menumobile">Entrar</a></li>
                     )}
