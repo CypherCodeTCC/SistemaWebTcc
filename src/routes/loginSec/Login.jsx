@@ -3,6 +3,8 @@ import PngCelular from "../../../public/celular.png";
 import { Container } from "./loginStyle";
 import { useState } from "react";
 import axios from "axios";
+import { auth, googleProvider } from "../../config/firebase-config";
+import { signInWithPopup } from "firebase/auth";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,6 +48,20 @@ export default function Login() {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try{
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      const token = await user.getIdToken();
+
+      const res = axios.post("https://node-routes-mysql.vercel.app/client/login/auth/google", { token } );
+      console.log("Login bem sucedido", res.data);
+    }
+    catch(err){
+      console.log("Erro durante o login.", err);
+    }
+  }
+
   return (
     <>
       <Container>
@@ -55,7 +71,7 @@ export default function Login() {
         <div className="container-form">
           <h3>Seja Bem-Vindo</h3>
           <p>Faça login na sua conta Liber</p>
-          <button>Prossiga com a Apple</button>
+          <button onClick={signInWithGoogle}>Prossiga com a Apple</button>
           <button>Prossiga com o Google</button>
           <button>Prossiga com o Facebook</button>
           <p className="center">Ou</p>
