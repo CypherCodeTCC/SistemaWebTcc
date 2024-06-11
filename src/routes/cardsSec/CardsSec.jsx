@@ -4,8 +4,8 @@ function Icons({ type }) {
   if (type === 1) {
     return (
       <svg
-        width="48"
-        height="48"
+        width="88"
+        height="88"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,8 +21,8 @@ function Icons({ type }) {
   } else if (type === 2) {
     return (
       <svg
-        width="48"
-        height="48"
+        width="88"
+        height="88"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@ function Icons({ type }) {
   } else if (type === 3) {
     return (
       <svg
-        width="48"
-        height="48"
+        width="88"
+        height="88"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +84,8 @@ function Icons({ type }) {
   } else if (type === 4) {
     return (
       <svg
-        width="48"
-        height="48"
+        width="88"
+        height="88"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
