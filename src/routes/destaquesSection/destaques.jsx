@@ -91,6 +91,9 @@ export const BigCard = styled.div`
   @media (max-width: 767px) {
     width: 100%;
   }
+
+  @media (max-width: 374px) {
+  }
 `;
 
 // Cartão padrão
@@ -119,6 +122,12 @@ export const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 `;
 
 // Botão do menu
@@ -134,6 +143,27 @@ export const Button = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+  @media (max-width: 650px) {
+    font-size: 0.9rem;
+    padding: 1rem;
+    font-weight: 600;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  @media (max-width: 500px) {
+    font-size: 0.9rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  @media (max-width: 374px) {
+    font-size: 0.9rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
   }
 `;
 
