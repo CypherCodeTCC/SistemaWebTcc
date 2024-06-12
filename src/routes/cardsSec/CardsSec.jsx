@@ -4,8 +4,8 @@ function Icons({ type }) {
   if (type === 1) {
     return (
       <svg
-        width="88"
-        height="88"
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,8 +21,8 @@ function Icons({ type }) {
   } else if (type === 2) {
     return (
       <svg
-        width="88"
-        height="88"
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@ function Icons({ type }) {
   } else if (type === 3) {
     return (
       <svg
-        width="88"
-        height="88"
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -84,8 +84,8 @@ function Icons({ type }) {
   } else if (type === 4) {
     return (
       <svg
-        width="88"
-        height="88"
+        width="48"
+        height="48"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -105,22 +105,22 @@ export default function Cards() {
     <>
       <Container>
         <Card>
-          <Icons type={4} />
+          <Icons type={2} />
           <Title>Entrega Grátis</Title>
-          <SubTitle>Pedidos acima de R$ 200,00</SubTitle>
+          <SubTitle>Pedidos acima de R$200,00</SubTitle>
         </Card>
         <Card>
-          <Icons type={1} />
+          <Icons type={4} />
           <Title>Dinheiro de Volta</Title>
           <SubTitle>Garantia de 30 dias</SubTitle>
         </Card>
         <Card>
-          <Icons type={2} />
+          <Icons type={3} />
           <Title>Pagamento Seguro</Title>
           <SubTitle>Certificado pela Visa</SubTitle>
         </Card>
         <Card>
-          <Icons type={3} />
+          <Icons type={1} />
           <Title>Atendimento 24/7</Title>
           <SubTitle>Suporte por telefone</SubTitle>
         </Card>

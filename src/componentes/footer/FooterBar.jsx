@@ -17,8 +17,8 @@ export default function FooterBar() {
   const navigate = useNavigate();
 
   const handleRoutes = (route) => {
-      navigate(route);
-  }
+    navigate(route);
+  };
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function FooterBar() {
           </div>
         </div>
         <div className="container-social-media">
-          <h4>Rede Sociais</h4>
+          <h4>Redes Sociais</h4>
           <p>Instagram</p>
           <p>Facebook</p>
           <p>X</p>
