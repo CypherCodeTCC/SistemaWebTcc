@@ -34,19 +34,23 @@ export default function FinalizeRegister() {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post("http://localhost:8081/client", user);
+      const res = await axios.post("https://node-routes-mysql.vercel.app/client", user);
       console.log(res.data);
-      toast.success("Cadastro realizado com sucesso!", {
-        closeOnClick: true,
-      });
-      console.log("Cadastro realizado com sucesso!");
+      if(res.data.user){
+        localStorage.setItem("userId", res.data.user.Id);
+        toast.success("Cadastro realizado com sucesso!", {
+          closeOnClick: true,
+        });
+        console.log("Cadastro realizado com sucesso!");
+      }
+      else{
+        toast.error("Ocorreu um erro.")
+      }
     } catch (err) {
       toast.error("Erro ao cadastrar os dados. Tente novamente mais tarde.");
       console.log("Erro ao cadastrar os dados.", err);
     }
   };
-
-  console.log(user);
 
   return (
     <>

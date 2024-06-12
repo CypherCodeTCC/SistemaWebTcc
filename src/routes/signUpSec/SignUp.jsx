@@ -100,14 +100,6 @@ export default function SignUp() {
         }
     };
 
-    const formatarCEP = (cep) => {
-        return cep.replace(/(\d{5})(\d{3})/, '$1-$2');
-    };
-    
-    const formatarTelefone = (telefone) => {
-        return telefone.replace(/(\d{4})(\d{4})/, '$1-$2');
-    };
-
     return (
         <>
             <Container>
@@ -135,9 +127,7 @@ export default function SignUp() {
                     </div>
                     <div className='input-text'>
                         <h4>Telefone</h4>
-                        <input type="tel" placeholder='Ex: 99999-9999' name="Telefone" ref={telefoneRef} onChange={(e) => {
-                            telefoneRef.current.value = formatarTelefone(e.target.value);
-                        }} />
+                        <input type="tel" placeholder='Ex: 99999-9999' name="Telefone" ref={telefoneRef} />
                     </div>
                     <div className='input-email'>
                         <h4>Seu E-mail</h4>
@@ -145,9 +135,7 @@ export default function SignUp() {
                     </div>
                     <div className='input-cep-num-uf'>
                         <h4>CEP</h4>
-                        <input type="text" placeholder='Ex: 12345-678' name='Cep' ref={cepRef} onChange={(e) => {
-                            cepRef.current.value = formatarCEP(e.target.value);
-                        }} />
+                        <input type="text" placeholder='Ex: 12345-678' name='Cep' ref={cepRef} />
                     </div>
                     <div className='input-text input-address'>
                         <h4>Logradouro</h4>

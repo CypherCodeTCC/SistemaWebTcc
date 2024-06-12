@@ -65,13 +65,15 @@ export default function Login() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const userGoogle = result.user;
-      console.log(userGoogle);
       const token = await userGoogle.getIdToken();
 
       const res = await axios.post(
         "https://node-routes-mysql.vercel.app/client/login/auth/google",
         { token }
       );
+      if(res.data.Id)
+        localStorage.setItem("userId", res.data.Id);
+      
       localStorage.setItem("uId", res.data.uid);
       localStorage.setItem(
         "userGoogle",

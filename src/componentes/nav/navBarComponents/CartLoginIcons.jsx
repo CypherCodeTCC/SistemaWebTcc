@@ -45,7 +45,7 @@ function CartLoginIcons() {
   const [menuUserLogged, setMenuUserLogged] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const user = localStorage.getItem("user");
+  const userId = localStorage.getItem("userId");
   const userGoogle = localStorage.getItem("uId");
 
   const navigate = useNavigate();
@@ -74,19 +74,15 @@ function CartLoginIcons() {
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
-<<<<<<< HEAD
     localStorage.removeItem("uId");
-=======
->>>>>>> 89dbb3ffd31cc3da4dc889407a3fc25d89bcc26f
     toast.info("Voce deslogou da sua conta.", {
       closeOnClick: true,
     });
     handleRoutes("/");
   };
-<<<<<<< HEAD
 
   const renderUserSection = () => {
-    if (user) {
+    if (userId) {
       return (
         <div
           style={{
@@ -150,8 +146,6 @@ function CartLoginIcons() {
       );
     }
   };
-=======
->>>>>>> 89dbb3ffd31cc3da4dc889407a3fc25d89bcc26f
 
   return (
     <div className="carrinho-logar desktop">
