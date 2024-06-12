@@ -28,8 +28,8 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  padding: 36px;
-  width: 400px;
+  padding: 28px;
+  width: 340px;
 }
 
 .dropdown.show {
@@ -40,15 +40,14 @@
 .dropdown a {
   display: flex;
   width: 100%;
-  color: #000;
-  padding: 1.2em;
+  color: #3d3d3d;
+  padding: 1em;
   text-decoration: none;
 }
 
 /* Estilos para os itens do dropdown ao passar o mouse */
 .dropdown a:hover {
-  background-color: #000;
-  color: #fff;
+  color: #000000;
   border-radius: 24px;
 }
 
@@ -82,7 +81,7 @@
 .dropdownUser.show ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   width: max-content;
   width: 100%;
 }

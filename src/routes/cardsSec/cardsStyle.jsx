@@ -78,9 +78,9 @@ export const Title = styled.p`
     font-size: 24px;
   }
   @media (max-width: 420px) {
-    font-size: 18px;
+    font-size: 20px;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 350px) {
     font-size: 16px;
   }
 `;
@@ -119,9 +119,9 @@ export const SubTitle = styled.p`
     font-size: 15px;
   }
   @media (max-width: 420px) {
-    font-size: 12px;
+    font-size: 14px;
   }
-  @media (max-width: 400px) {
-    font-size: 10px;
+  @media (max-width: 350px) {
+    font-size: 12px;
   }
 `;
