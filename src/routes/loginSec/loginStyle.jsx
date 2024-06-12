@@ -53,7 +53,15 @@ export const Button = styled.button`
   border-radius: 8px;
   padding: 7px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 `;
+
+export const ImageIcons = styled.img`
+  width: 16px;
+  height: 16px;
+`
 
 export const ButtonLogin = styled.button`
   background-color: #6236f5;

@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import PngCelular from "../../../public/celular.png";
+import PngApple from "../../../public/apple.png";
+import PngGoogle from "../../../public/google.png";
+import PngFacebook from "../../../public/facebook.png";
 import {
   Button,
   ButtonLogin,
@@ -7,6 +10,7 @@ import {
   ContainerForm,
   ContainerImage,
   Image,
+  ImageIcons,
   Input,
   Span,
   SubTitle,
@@ -85,9 +89,13 @@ export default function Login() {
 
       if (localStorage.getItem("uId")) {
         handleRoutes("/");
-        console.log("Login bem sucedido");
+        toast.success("Login efetuado com sucesso.", {
+          closeOnClick: true,
+        });
       } else {
-        console.log("Credenciais invalidas.");
+        toast.error("Credenciais inválidas.", {
+          closeOnClick: true,
+        });
       }
     } catch (err) {
       console.log("Erro durante o login.", err);
@@ -103,9 +111,9 @@ export default function Login() {
         <ContainerForm>
           <h3>Seja Bem-Vindo</h3>
           <SubTitle>Faça login na sua conta Liber</SubTitle>
-          <Button>Prossiga com a Apple</Button>
-          <Button onClick={signInWithGoogle}>Prossiga com o Google</Button>
-          <Button>Prossiga com o Facebook</Button>
+          <Button><ImageIcons src={PngApple} alt="Apple" />Prossiga com a Apple</Button>
+          <Button onClick={signInWithGoogle}><ImageIcons src={PngGoogle} alt="Google" />Prossiga com o Google</Button>
+          <Button><ImageIcons src={PngFacebook} alt="Facebook" />Prossiga com o Facebook</Button>
           <SubTitleCenter>Ou</SubTitleCenter>
           <h4>E-mail</h4>
           <Input
