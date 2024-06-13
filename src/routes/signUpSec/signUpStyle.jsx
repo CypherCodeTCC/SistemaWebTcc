@@ -1,109 +1,137 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    font-size: 14px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  font-size: 14px;
 
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+`;
 
-    .container-image{
-        width: 65%;
+export const ContainerImage = styled.div`
+  width: 65%;
 
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
+  @media (min-width: 751px) and (max-width: 1150px) {
+    display: none;
+  }
 
-    .container-form{
-        width: 34%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 25px;
+  @media (max-width: 750px) {
+    display: none;
+  }
+`;
 
-        .input-email{
-            width: 100%;
+export const Title = styled.h2`
+  width: 100%;
+`;
 
-            input{ 
-                width: 100%;
-            }
-        }
+export const SubTitle = styled.p`
+  color: ${(props) => (props.isError ? 'red' : "#999ba1")};
+`;
 
-        .input-text{
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            width: 45.5%;
-        }
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
-        .input-cep-num-uf{
-            display: flex;
-            flex-direction: column;
-            width: 20%;
-        }
+export const ContainerForm = styled.div`
+  width: 34%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 
-        .input-checkbox{
-            display: flex;
-            gap: 10px;
-        }
+  @media (min-width: 751px) and (max-width: 1150px) {
+    width: 70%;
+  }
 
-        input{
-            border-radius: 8px;
-            border: 1px solid;
-            padding: 10px
-        }
+  @media (max-width: 750px) {
+    width: 80%;
+  }
+`;
 
-        button{
-            width: 98%;
-            background-color: #6236F5;
-            border-radius: 8px;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-        }
+export const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 45.5%;
 
-        p{
-            color:#999BA1;
-        }
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`;
 
-        span{
-            color:#6236F5;
-        }
-        h2{
-            width: 100%;
-        }
-    }
+export const Input = styled.input`
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 10px;
+`;
 
-@media (min-width: 751px) and (max-width: 1150px){
-    .container-image{
-        display: none;
-    }
+export const Email = styled.div`
+  width: 100%;
 
-    .container-form{
-        width: 70%;
-    }
-}
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`;
 
-@media (max-width: 750px){
-    .container-image{
-        display: none;
-    }
+export const InputEmail = styled.input`
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 10px;
+`;
 
-    .container-form{
-        width: 80%;
+export const CepNumUf = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 
-        .input-text, .input-email, button{
-            width: 100%;
-        }
+  @media (max-width: 750px) {
+    width: 45.5%;
+    flex-grow: 1;
+  }
+`;
 
-        .input-address, .input-cep-num-uf, .input-city{
-            width: 45.5%;
-            flex-grow: 1;
-        }
-    }
-}
+export const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 45.5%;
+
+  @media (max-width: 750px) {
+    width: 45.5%;
+    flex-grow: 1;
+  }
+`;
+
+export const City = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 45.5%;
+
+  @media (max-width: 750px) {
+    width: 45.5%;
+    flex-grow: 1;
+  }
+`;
+
+export const ContainerCheckbox = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+export const Span = styled.span`
+  color: #6236f5;
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  background-color: #6236f5;
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
 `;

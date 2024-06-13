@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import PngCelular from "../../../public/celular.png";
-import { Container } from "./signUpStyle";
+import { Address, Button, CepNumUf, City, Container, ContainerCheckbox, ContainerForm, ContainerImage, Email, Image, Input, InputEmail, Span, SubTitle, Text, Title } from "./signUpStyle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import ReactInputMask from "react-input-mask";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
   const nomeRef = useRef(null);
@@ -22,7 +22,50 @@ export default function SignUp() {
 
   const navigate = useNavigate();
 
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+    setErrorMessage('');
+  }
+
   const handleSubmit = async () => {
+    const senha = senhaRef.current.value;
+    const confirmaSenha = confirmaSenhaRef.current.value;
+
+    if (
+      !nomeRef.current.value ||
+      !sobrenomeRef.current.value ||
+      !cpfRef.current.value ||
+      !telefoneRef.current.value ||
+      !emailRef.current.value ||
+      !cepRef.current.value ||
+      !logradouroRef.current.value ||
+      !numeroEndRef.current.value ||
+      !nomeCidRef.current.value ||
+      !ufRef.current.value ||
+      !senhaRef.current.value ||
+      !confirmaSenhaRef.current.value
+    ) {
+      toast.error("Por favor, preencha todos os campos obrigatórios.", {
+        closeOnClick: true,
+      });
+      return;
+    }
+  
+    if(senha !== confirmaSenha) {
+      toast.error("A senha e a confirmação não coincidem.", {
+        closeOnClick: true,
+      });
+      return;
+    }
+
+    if(!isChecked) {
+      setErrorMessage("Você deve aceitar os termos e condições antes de cadastrar.")
+      return;
+    }
+
     try {
       const data = {
         CPF: cpfRef.current.value,
@@ -84,7 +127,6 @@ export default function SignUp() {
   };
 
   const gerarNumero = () => {
-    const multiplicador = 9;
     return Math.floor(Math.random() * 1000).toString();
   };
 
@@ -127,17 +169,17 @@ export default function SignUp() {
   return (
     <>
       <Container>
-        <div className="container-image">
-          <img src={PngCelular} alt="Imagem de Celular" />
-        </div>
-        <div className="container-form">
-          <h2>Registre-se</h2>
-          <p>
+        <ContainerImage>
+          <Image src={PngCelular} alt="Imagem de Celular" />
+        </ContainerImage>
+        <ContainerForm>
+          <Title>Registre-se</Title>
+          <SubTitle isError={false}>
             Crie a sua própria conta Liber e tenha acesso a inúmeros benefícios
-          </p>
-          <div className="input-text">
+          </SubTitle>
+          <Text>
             <h4>Primeiro Nome</h4>
-            <input
+            <Input
               type="text"
               placeholder="Ex: Juan"
               name="Nome"
@@ -148,102 +190,103 @@ export default function SignUp() {
                 }
               }}
             />
-          </div>
-          <div className="input-text">
+          </Text>
+          <Text>
             <h4>Sobrenome</h4>
-            <input
+            <Input
               type="text"
               placeholder="Ex: Feitosa"
               name="Nome"
               ref={sobrenomeRef}
             />
-          </div>
-          <div className="input-text">
+          </Text>
+          <Text>
             <h4>CPF</h4>
-            <ReactInputMask
+            <Input
               mask="999.999.999-99"
               type="text"
               placeholder="Ex: 123.456.789-11"
               name="Cpf"
               ref={cpfRef}
             />
-          </div>
-          <div className="input-text">
+          </Text>
+          <Text>
             <h4>Telefone</h4>
-            <ReactInputMask
+            <Input
               mask="99999-9999"
               type="tel"
               placeholder="Ex: 99999-9999"
               name="Telefone"
               ref={telefoneRef}
             />
-          </div>
-          <div className="input-email">
+          </Text>
+          <Email>
             <h4>Seu E-mail</h4>
-            <input
+            <InputEmail
               type="email"
               placeholder="Ex: meuemail@endereco.com"
               name="Email"
               ref={emailRef}
             />
-          </div>
-          <div className="input-cep-num-uf">
+          </Email>
+          <CepNumUf>
             <h4>CEP</h4>
-            <ReactInputMask
+            <Input
               mask="99999-999"
               type="text"
               placeholder="Ex: 12345-678"
               name="Cep"
               ref={cepRef}
             />
-          </div>
-          <div className="input-text input-address">
+          </CepNumUf>
+          <Address>
             <h4>Logradouro</h4>
-            <input type="text" name="Logradouro" ref={logradouroRef} />
-          </div>
-          <div className="input-cep-num-uf">
+            <Input type="text" name="Logradouro" ref={logradouroRef} />
+          </Address>
+          <CepNumUf>
             <h4>Número</h4>
-            <input type="text" name="NumeroEnd" ref={numeroEndRef} />
-          </div>
-          <div className="input-cep-num-uf">
+            <Input type="text" name="NumeroEnd" ref={numeroEndRef} />
+          </CepNumUf>
+          <CepNumUf>
             <h4>Complem.</h4>
-            <input type="text" name="Complemento" ref={complementoRef} />
-          </div>
-          <div className="input-text input-city">
+            <Input type="text" name="Complemento" ref={complementoRef} />
+          </CepNumUf>
+          <City>
             <h4>Cidade</h4>
-            <input type="text" name="NomeCid" ref={nomeCidRef} />
-          </div>
-          <div className="input-cep-num-uf">
+            <Input type="text" name="NomeCid" ref={nomeCidRef} />
+          </City>
+          <CepNumUf>
             <h4>UF</h4>
-            <ReactInputMask mask="aa" type="text" name="Uf" ref={ufRef} />
-          </div>
-          <div className="input-text">
+            <Input mask="aa" type="text" name="Uf" ref={ufRef} />
+          </CepNumUf>
+          <Text>
             <h4>Senha</h4>
-            <input
+            <Input
               type="password"
               placeholder="Insira uma palavra-passe"
               name="Senha"
               ref={senhaRef}
             />
-          </div>
-          <div className="input-text">
+          </Text>
+          <Text>
             <h4>Confirme a Senha</h4>
-            <input
+            <Input
               type="password"
               placeholder="Confirme a senha"
               name="ConfirmaSenha"
               ref={confirmaSenhaRef}
             />
-          </div>
-          <div className="input-checkbox">
-            <input type="checkbox" />
-            <p>
+          </Text>
+          <ContainerCheckbox>
+            <Input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+            <SubTitle>
               Ao criar uma conta, você concorda com nossos{" "}
-              <span>Termos & Condições</span>
-            </p>
-          </div>
-          <button onClick={handleSubmit}>Registre-se</button>
-        </div>
+              <Span>Termos & Condições</Span>
+            </SubTitle>
+          </ContainerCheckbox>
+          {errorMessage && <SubTitle isError={true}>{errorMessage}</SubTitle>}
+          <Button onClick={handleSubmit}>Registre-se</Button>
+        </ContainerForm>
       </Container>
     </>
   );

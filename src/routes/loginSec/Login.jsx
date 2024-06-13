@@ -108,7 +108,7 @@ export default function Login() {
       const userFacebook = result.user;
       const token = await userFacebook.getIdToken();
 
-      const res = await axios.post("https://node-routes-mysql.vercel.app/login/auth/facebook", { token });
+      const res = await axios.post("https://node-routes-mysql.vercel.app/client/login/auth/facebook", { token });
 
       if(res.data.Id)
         localStorage.setItem("userId", res.data.Id);
