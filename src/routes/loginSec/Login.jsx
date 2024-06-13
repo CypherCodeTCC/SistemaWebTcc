@@ -18,7 +18,7 @@ import {
 } from "./loginStyle";
 import { useState } from "react";
 import axios from "axios";
-import { auth, googleProvider } from "../../config/firebase-config";
+import { auth, facebookProvider, googleProvider } from "../../config/firebase-config";
 import { signInWithPopup } from "firebase/auth";
 
 import { toast } from "react-toastify";
@@ -80,7 +80,7 @@ export default function Login() {
       
       localStorage.setItem("uId", res.data.uid);
       localStorage.setItem(
-        "userGoogle",
+        "user",
         JSON.stringify({
           email: userGoogle.email,
           nome: userGoogle.displayName,
@@ -102,6 +102,43 @@ export default function Login() {
     }
   };
 
+  const signInWithFacebook = async () => {
+    try{
+      const result = await signInWithPopup(auth, facebookProvider);
+      const userFacebook = result.user;
+      const token = await userFacebook.getIdToken();
+
+      const res = await axios.post("https://node-routes-mysql.vercel.app/login/auth/facebook", { token });
+
+      if(res.data.Id)
+        localStorage.setItem("userId", res.data.Id);
+
+      localStorage.setItem("uId", res.data.uid);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          email: userFacebook.email,
+          nome: userFacebook.displayName
+        })
+      );
+
+      if(localStorage.getItem("uId")) {
+        handleRoutes("/");
+        toast.success("Login efetuado com sucesso.", {
+          closeOnClick: true,
+        });
+      }
+      else {
+        toast.error("Credenciais inválidas.", {
+          closeOnClick: true,
+        });
+      }
+    }
+    catch(err){
+      console.log("Erro durante o login.", err)
+    }
+  }
+
   return (
     <>
       <Container>
@@ -113,7 +150,7 @@ export default function Login() {
           <SubTitle>Faça login na sua conta Liber</SubTitle>
           <Button><ImageIcons src={PngApple} alt="Apple" />Prossiga com a Apple</Button>
           <Button onClick={signInWithGoogle}><ImageIcons src={PngGoogle} alt="Google" />Prossiga com o Google</Button>
-          <Button><ImageIcons src={PngFacebook} alt="Facebook" />Prossiga com o Facebook</Button>
+          <Button onClick={signInWithFacebook}><ImageIcons src={PngFacebook} alt="Facebook" />Prossiga com o Facebook</Button>
           <SubTitleCenter>Ou</SubTitleCenter>
           <h4>E-mail</h4>
           <Input

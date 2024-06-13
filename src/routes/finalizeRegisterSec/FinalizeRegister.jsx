@@ -12,9 +12,11 @@ import { Cancelar } from "../profileSec/profileStyle";
 import { ContainerInputs, FormData } from "./finalizeRegisterStyle";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalizeRegister() {
-  const userData = JSON.parse(localStorage.getItem("userGoogle"));
+  const navigate = useNavigate();
+  const userData = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState({
     CPF: "",
     Nome: userData.nome,
@@ -41,10 +43,11 @@ export default function FinalizeRegister() {
         toast.success("Cadastro realizado com sucesso!", {
           closeOnClick: true,
         });
+        navigate('/');
         console.log("Cadastro realizado com sucesso!");
       }
       else{
-        toast.error("Ocorreu um erro.")
+        toast.error("Ocorreu um erro. Contate ao administrador.")
       }
     } catch (err) {
       toast.error("Erro ao cadastrar os dados. Tente novamente mais tarde.");
