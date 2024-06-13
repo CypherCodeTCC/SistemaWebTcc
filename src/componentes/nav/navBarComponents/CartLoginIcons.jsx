@@ -129,7 +129,6 @@ function CartLoginIcons() {
               <li onClick={() => handleRoutes("/register")}>
                 Cadastrar informações
               </li>
-              <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
               <li onClick={handleLogout}>Sair</li>
             </ul>
           </Dropdown>

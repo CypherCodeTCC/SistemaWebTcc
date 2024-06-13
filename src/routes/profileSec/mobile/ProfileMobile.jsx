@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfileMobile() {
+  const uId = localStorage.getItem("uId");
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -111,9 +112,7 @@ export default function ProfileMobile() {
 
     try {
       await axios.put(
-        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem(
-          "userId"
-        )}`,
+        `http://localhost:8081/client/${localStorage.getItem("userId")}`,
         updatedData
       );
       toast.success("Dados atualizados com sucesso!", {
@@ -130,7 +129,7 @@ export default function ProfileMobile() {
   const handleUpdateAddress = async () => {
     try {
       await axios.put(
-        `https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem(
+        `http://localhost:8081/client/address/${localStorage.getItem(
           "userId"
         )}`,
         address
@@ -155,60 +154,87 @@ export default function ProfileMobile() {
       case 1:
         return (
           <>
-            <FormDataMobile>
-              <div>
-                <SubTitleMobile>Nome</SubTitleMobile>
-                <InputMobile
-                  type="text"
-                  value={user.Nome}
-                  name="Nome"
-                  onChange={handleChanged}
-                />
-              </div>
-              <div>
-                <SubTitleMobile>E-mail</SubTitleMobile>
-                <InputMobile
-                  type="text"
-                  value={user.Email}
-                  name="Email"
-                  onChange={handleChanged}
-                />
-              </div>
-              <div>
-                <SubTitleMobile>Telefone</SubTitleMobile>
-                <InputMobile
-                  type="text"
-                  value={user.Telefone}
-                  name="Telefone"
-                  onChange={handleChanged}
-                />
-              </div>
-              <ContainerPasswordMobile>
-                <SubTitleMobile>Alteração de senha</SubTitleMobile>
-                <InputMobile
-                  type="password"
-                  placeholder="Senha atual"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                />
-                <InputMobile
-                  type="password"
-                  placeholder="Nova senha"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <InputMobile
-                  type="password"
-                  placeholder="Confirme a nova senha"
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                />
-              </ContainerPasswordMobile>
-              <ContainerButtonMobile>
-                <ButtonMobile onClick={handleUpdate}>Atualizar</ButtonMobile>
-                <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
-              </ContainerButtonMobile>
-            </FormDataMobile>
+            {!uId ? (
+              <FormDataMobile>
+                <div>
+                  <SubTitleMobile>Nome</SubTitleMobile>
+                  <InputMobile
+                    type="text"
+                    value={user.Nome}
+                    name="Nome"
+                    onChange={handleChanged}
+                  />
+                </div>
+                <div>
+                  <SubTitleMobile>E-mail</SubTitleMobile>
+                  <InputMobile
+                    type="text"
+                    value={user.Email}
+                    name="Email"
+                    onChange={handleChanged}
+                  />
+                </div>
+                <div>
+                  <SubTitleMobile>Telefone</SubTitleMobile>
+                  <InputMobile
+                    type="text"
+                    value={user.Telefone}
+                    name="Telefone"
+                    onChange={handleChanged}
+                  />
+                </div>
+                <ContainerPasswordMobile>
+                  <SubTitleMobile>Alteração de senha</SubTitleMobile>
+                  <InputMobile
+                    type="password"
+                    placeholder="Senha atual"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                  />
+                  <InputMobile
+                    type="password"
+                    placeholder="Nova senha"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                  <InputMobile
+                    type="password"
+                    placeholder="Confirme a nova senha"
+                    value={confirmNewPassword}
+                    onChange={(e) => setConfirmNewPassword(e.target.value)}
+                  />
+                </ContainerPasswordMobile>
+                <ContainerButtonMobile>
+                  <ButtonMobile onClick={handleUpdate}>Atualizar</ButtonMobile>
+                  <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
+                </ContainerButtonMobile>
+              </FormDataMobile>
+            ) : (
+              <FormDataMobile>
+                <div>
+                  <SubTitleMobile>Nome</SubTitleMobile>
+                  <InputMobile
+                    type="text"
+                    value={user.Nome}
+                    name="Nome"
+                    onChange={handleChanged}
+                  />
+                </div>
+                <div>
+                  <SubTitleMobile>Telefone</SubTitleMobile>
+                  <InputMobile
+                    type="text"
+                    value={user.Telefone}
+                    name="Telefone"
+                    onChange={handleChanged}
+                  />
+                </div>
+                <ContainerButtonMobile>
+                  <ButtonMobile onClick={handleUpdate}>Atualizar</ButtonMobile>
+                  <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
+                </ContainerButtonMobile>
+              </FormDataMobile>
+            )}
           </>
         );
       case 2:

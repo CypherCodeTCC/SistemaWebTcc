@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
+  const uId = localStorage.getItem("uId");
   const navigate = useNavigate();
   const [user, setUser] = useState({
     Nome: "",
@@ -35,7 +36,7 @@ export default function Profile() {
     Numero: "",
     Complemento: "",
     Cidade: "",
-    Estado: ""
+    Estado: "",
   });
 
   const [currentPassword, setCurrentPassword] = useState(""); //SENHA ATUAL
@@ -50,7 +51,9 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `https://node-routes-mysql.vercel.app/client/${localStorage.getItem("userId")}`
+          `https://node-routes-mysql.vercel.app/client/${localStorage.getItem(
+            "userId"
+          )}`
         );
         setUser(res.data);
       } catch (err) {
@@ -63,14 +66,17 @@ export default function Profile() {
   //PEGAR O ENDEREÇO DO USUARIO LOGADO
   useEffect(() => {
     const fetchAddress = async () => {
-      try{
-        const res = await axios.get(`https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem("userId")}`);
+      try {
+        const res = await axios.get(
+          `https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem(
+            "userId"
+          )}`
+        );
         setAddress(res.data);
+      } catch (err) {
+        console.log("Erro ao encontrar o endereço do usuário.", err);
       }
-      catch(err){
-        console.log("Erro ao encontrar o endereço do usuário.", err)
-      }
-    }
+    };
     fetchAddress();
   }, []);
 
@@ -80,8 +86,8 @@ export default function Profile() {
   };
 
   const handleChangedAddress = (e) => {
-    setAddress((prev) => ({...prev, [e.target.name] : e.target.value}));
-  }
+    setAddress((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleUpdate = async () => {
     const updatedData = { ...user };
@@ -113,7 +119,9 @@ export default function Profile() {
 
     try {
       await axios.put(
-        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem("userId")}`,
+        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem(
+          "userId"
+        )}`,
         updatedData
       );
       toast.success("Dados atualizados com sucesso!", {
@@ -128,19 +136,49 @@ export default function Profile() {
   };
 
   const handleUpdateAddress = async () => {
-    try{
-      await axios.put(`https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem("userId")}`, address);
+    try {
+      await axios.put(
+        `https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem(
+          "userId"
+        )}`,
+        address
+      );
       toast.success("Endereço atualizado com sucesso!", {
         closeOnClick: true,
       });
-    }
-    catch(err){
+    } catch (err) {
       toast.error("Erro ao atualizar o endereço. Tente novamente mais tarde.", {
         closeOnClick: true,
       });
-      console.log("Erro ao atualizar o endereço do usuário")
+      console.log("Erro ao atualizar o endereço do usuário");
     }
-  }
+  };
+
+  const handleUpdateGoogleOrFacebook = async () => {
+    try {
+      await axios.put(
+        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem(
+          "userId"
+        )}`,
+        user
+      );
+
+      await axios.put(
+        `https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem(
+          "userId"
+        )}`,
+        address
+      );
+      toast.success("Dados atualizados com sucesso!", {
+        closeOnClick: true,
+      });
+    } catch (err) {
+      toast.error("Erro ao atualizar os dados. Tente novamente mais tarde.", {
+        closeOnClick: true,
+      });
+      console.log("Erro ao atualizar os dados", err);
+    }
+  };
 
   if (width < 1024) return <ProfileMobile />;
 
@@ -153,130 +191,215 @@ export default function Profile() {
       case 1:
         return (
           <>
-            <FormUser>
-              <TitleForm>Alterar seu perfil</TitleForm>
-              <InputText>
-                <SubTitle>Nome</SubTitle>
-                <Input
-                  type="text"
-                  value={user.Nome}
-                  name="Nome"
-                  onChange={handleChanged}
-                />
-              </InputText>
-              <InputText>
-                <SubTitle>E-mail</SubTitle>
-                <Input
-                  type="text"
-                  value={user.Email}
-                  name="Email"
-                  onChange={handleChanged}
-                />
-              </InputText>
-              <InputText>
-                <SubTitle>Telefone</SubTitle>
-                <Input
-                  type="text"
-                  value={user.Telefone}
-                  name="Telefone"
-                  onChange={handleChanged}
-                />
-              </InputText>
-              <Password>
-                <SubTitle>Alteração de senha</SubTitle>
-                <Input
-                  type="password"
-                  placeholder="Senha atual"
-                  required
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Nova senha"
-                  required
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Confirme a nova senha"
-                  required
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                />
-              </Password>
-              <ContainerButtons>
-                <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
-                <Button onClick={handleUpdate}>Salvar Alterações</Button>
-              </ContainerButtons>
-            </FormUser>
+            {!uId ? (
+              <FormUser>
+                <TitleForm>Alterar seu perfil</TitleForm>
+                <InputText>
+                  <SubTitle>Nome</SubTitle>
+                  <Input
+                    type="text"
+                    value={user.Nome}
+                    name="Nome"
+                    onChange={handleChanged}
+                  />
+                </InputText>
+
+                <InputText>
+                  <SubTitle>E-mail</SubTitle>
+                  <Input
+                    type="text"
+                    value={user.Email}
+                    name="Email"
+                    onChange={handleChanged}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Telefone</SubTitle>
+                  <Input
+                    type="text"
+                    value={user.Telefone}
+                    name="Telefone"
+                    onChange={handleChanged}
+                  />
+                </InputText>
+                <Password>
+                  <SubTitle>Alteração de senha</SubTitle>
+                  <Input
+                    type="password"
+                    placeholder="Senha atual"
+                    required
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Nova senha"
+                    required
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Confirme a nova senha"
+                    required
+                    value={confirmNewPassword}
+                    onChange={(e) => setConfirmNewPassword(e.target.value)}
+                  />
+                </Password>
+                <ContainerButtons>
+                  <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
+                  <Button onClick={handleUpdate}>Salvar Alterações</Button>
+                </ContainerButtons>
+              </FormUser>
+            ) : (
+              <FormUser>
+                <TitleForm>Alterar seu perfil</TitleForm>
+                <InputText>
+                  <SubTitle>Nome</SubTitle>
+                  <Input
+                    type="text"
+                    value={user.Nome}
+                    name="Nome"
+                    onChange={handleChanged}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Telefone</SubTitle>
+                  <Input
+                    type="text"
+                    value={user.Telefone}
+                    name="Telefone"
+                    onChange={handleChanged}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Cep</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.CEP}
+                    name="CEP"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Logradouro</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.Logradouro}
+                    name="Logradouro"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Numero</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.Numero}
+                    name="Numero"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Complemento</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.Complemento}
+                    name="Complemento"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Cidade</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.Cidade}
+                    name="Cidade"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <InputText>
+                  <SubTitle>Estado</SubTitle>
+                  <Input
+                    type="text"
+                    value={address.Estado}
+                    name="Estado"
+                    onChange={handleChangedAddress}
+                  />
+                </InputText>
+                <ContainerButtons>
+                  <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
+                  <Button onClick={handleUpdateGoogleOrFacebook}>
+                    Salvar Alterações
+                  </Button>
+                </ContainerButtons>
+              </FormUser>
+            )}
           </>
         );
-        case 2:
-          return(
-            <FormUser>
-          <TitleForm>Alterar seu endereço</TitleForm>
-          <InputText>
-            <SubTitle>Cep</SubTitle>
-            <Input
-              type="text"
-              value={address.CEP}
-              name="CEP"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <InputText>
-            <SubTitle>Logradouro</SubTitle>
-            <Input
-              type="text"
-              value={address.Logradouro}
-              name="Logradouro"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <InputText>
-            <SubTitle>Numero</SubTitle>
-            <Input
-              type="text"
-              value={address.Numero}
-              name="Numero"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <InputText>
-            <SubTitle>Complemento</SubTitle>
-            <Input
-              type="text"
-              value={address.Complemento}
-              name="Complemento"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <InputText>
-            <SubTitle>Cidade</SubTitle>
-            <Input
-              type="text"
-              value={address.Cidade}
-              name="Cidade"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <InputText>
-            <SubTitle>Estado</SubTitle>
-            <Input
-              type="text"
-              value={address.Estado}
-              name="Estado"
-              onChange={handleChangedAddress}
-            />
-          </InputText>
-          <ContainerButtons>
-            <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
-            <Button onClick={handleUpdateAddress}>Salvar Alterações</Button>
-          </ContainerButtons>
-        </FormUser>
-          )
+      case 2:
+        return (
+          <FormUser>
+            <TitleForm>Alterar seu endereço</TitleForm>
+            <InputText>
+              <SubTitle>Cep</SubTitle>
+              <Input
+                type="text"
+                value={address.CEP}
+                name="CEP"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <InputText>
+              <SubTitle>Logradouro</SubTitle>
+              <Input
+                type="text"
+                value={address.Logradouro}
+                name="Logradouro"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <InputText>
+              <SubTitle>Numero</SubTitle>
+              <Input
+                type="text"
+                value={address.Numero}
+                name="Numero"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <InputText>
+              <SubTitle>Complemento</SubTitle>
+              <Input
+                type="text"
+                value={address.Complemento}
+                name="Complemento"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <InputText>
+              <SubTitle>Cidade</SubTitle>
+              <Input
+                type="text"
+                value={address.Cidade}
+                name="Cidade"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <InputText>
+              <SubTitle>Estado</SubTitle>
+              <Input
+                type="text"
+                value={address.Estado}
+                name="Estado"
+                onChange={handleChangedAddress}
+              />
+            </InputText>
+            <ContainerButtons>
+              <Cancelar onClick={() => navigate("/")}>Cancelar</Cancelar>
+              <Button onClick={handleUpdateAddress}>Salvar Alterações</Button>
+            </ContainerButtons>
+          </FormUser>
+        );
     }
   };
 
@@ -291,12 +414,14 @@ export default function Profile() {
           >
             Meu Perfil
           </ContainerSubTitleBlue>
-          <ContainerSubTitleBlue
-            isActive={optionColor === 2}
-            onClick={() => changeOptionColor(2)}
-          >
-            Meu Endereço
-          </ContainerSubTitleBlue>
+          {!uId && (
+            <ContainerSubTitleBlue
+              isActive={optionColor === 2}
+              onClick={() => changeOptionColor(2)}
+            >
+              Meu Endereço
+            </ContainerSubTitleBlue>
+          )}
         </ContainerTitle>
         {renderForm()}
       </Container>
