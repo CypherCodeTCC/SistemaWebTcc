@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   AuthorPublisherSection,
   BuyButton,
@@ -37,6 +38,7 @@ const ProductPage = () => {
   const [expandedGenre, setExpandedGenre] = useState(false);
   const [expandedPublisher, setExpandedPublisher] = useState(false);
   const [expandedPrice, setExpandedPrice] = useState(false);
+  const navigate = useNavigate();
 
   const toggleGenreMenu = () => {
     setExpandedGenre(!expandedGenre);
@@ -244,7 +246,9 @@ const ProductPage = () => {
                     à vista
                   </span>{" "}
                 </DiscountedPrice>
-                <BuyButton>Comprar agora</BuyButton>
+                <BuyButton onClick={() => navigate(`/produto/${produto.id}`)}>
+                  Comprar agora
+                </BuyButton>
                 <MoreInfoButton>Saiba mais</MoreInfoButton>
               </ProductPriceAndButtonsSection>
             </ProductCard>

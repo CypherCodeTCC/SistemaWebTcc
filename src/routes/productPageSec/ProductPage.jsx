@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import CartContext from "../../context/cart/CartContext";
 
@@ -17,6 +17,7 @@ import { Container } from "./productStyle";
 export default function ProductPage() {
   //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
   function Avaliacoes({ avaliacao }) {
+    const navigate = useNavigate();
     const estrelas = [];
 
     for (let i = 0; i < 5; i++) {

@@ -6,11 +6,17 @@ export const Container = styled.div`
   text-align: center;
   margin: 24px 60px 20px 200px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  @media (max-width: 1440px) {
+    min-width: 150px;
+    margin: 12px 30px 10px 100px;
+  }
 `;
 
 // Menu colapsável
 export const MenuContainer = styled.div`
   padding: 16px;
+  margin-right: 1rem;
   transition: transform 0.3s ease-in-out;
 
   &.expanded .MenuContent {
@@ -19,6 +25,10 @@ export const MenuContainer = styled.div`
 
   &.collapsed .MenuContent {
     transform: translateY(-100%);
+  }
+
+  @media (max-width: 1440px) {
+    padding: 0.5%;
   }
 `;
 
@@ -29,13 +39,21 @@ export const MenuItem = styled.div`
   align-items: center;
   padding: 12px 0;
   border-bottom: 1.2px solid #6d6d6d6c;
+
+  @media (max-width: 1440px) {
+    padding: 0.5%;
+  }
 `;
 
 export const MenuTitle = styled.h3`
-  margin: 0; 
-  font-size: 1.2rem; 
+  margin: 0;
+  font-size: 1.2rem;
   font-weight: 500;
-  padding: 1rem 4.4rem 0.4rem 0; 
+  padding: 1rem 4.4rem 0.4rem 0;
+
+  @media (max-width: 1440px) {
+    padding: 0.8rem 2.2rem 0.2rem 0;
+  }
 `;
 
 export const MenuContent = styled.div`
@@ -45,8 +63,12 @@ export const MenuContent = styled.div`
 // Seção de Filtros
 export const FilterSection = styled.section`
   display: grid;
-  margin: 20px 0;
-  width: 200px;
+  margin: 20px 0px;
+  width: 100%;
+
+  @media (max-width: 1440px) {
+    width: 150px;
+  }
 `;
 
 export const RadioContainer = styled.div`
@@ -59,7 +81,7 @@ export const RadioContainer = styled.div`
 export const RadioButtonLabel = styled.label`
   display: flex;
   margin: 0px;
-  font-weight: 400; 
+  font-weight: 400;
   color: #000;
   list-style: outside none none;
 
@@ -86,7 +108,6 @@ export const ProductList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   background-color: #f8f4f4;
-  
 `;
 
 // Card do Produto
@@ -99,10 +120,14 @@ export const ProductCard = styled.div`
   margin: 10px;
   margin-left: 2vw;
   padding: 20px;
-  width: 1200px; 
-  height: 260px;
+  width: 100%;
+  height: 45%;
   box-shadow: 10px 10px 30px #f2f2f2, -10px -10px 30px #ffffff;
   background: #ffffff;
+
+  @media (max-width: 1420px) {
+    height: 40%;
+  }
 `;
 
 // Seção da Imagem
@@ -127,40 +152,54 @@ export const ProductDetailsSection = styled.div`
 `;
 
 // Nome do produto
-  export const ProductName = styled.h1`
-    margin-bottom: 20px; 
-  `;
+export const ProductName = styled.h1`
+  margin-bottom: 20px;
+  font-size: 150%;
+  @media (max-width: 1420px) {
+    font-size: 145%;
+  }
+  @media (max-width: 1150px) {
+    font-size: 135%;
+  }
+`;
 
 // Sinopse
 export const ProductSynopsis = styled.p`
-  max-width: calc(80% - 1px); 
+  max-width: calc(80% - 1px);
   height: 400px;
-  overflow-wrap: break-word; 
-  margin-top: 20px; 
-  text-align: justify; 
+  overflow-wrap: break-word;
+  margin-top: 20px;
+  text-align: justify;
+  font-size: 90%;
+
+  @media (max-width: 1420px) {
+    font-size: 85%;
+  }
+  @media (max-width: 1420px) {
+    font-size: 70%;
+  }
 `;
 
 // Autor
 export const ProductAuthor = styled.span`
-  margin-top: 30px; 
+  margin-top: 30px;
   margin-right: 1.6vw;
 `;
 
 // Editora
 export const ProductPublisher = styled.span`
-  margin-top: 30px; 
+  margin-top: 30px;
 `;
-
 
 // Seção de Preço e Botões
 export const ProductPriceAndButtonsSection = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   border-left: 1.2px solid #c0c0c0;
-  position: relative; 
   padding-left: 12px;
+  width: 25%;
 `;
 
 // Seção de Autor e Editora
@@ -184,7 +223,7 @@ export const DiscountedPrice = styled.p`
 `;
 
 export const BuyButton = styled.button`
-  width: 240px;
+  width: 100%;
   height: 40px;
   background-color: black;
   color: white;
@@ -196,12 +235,12 @@ export const BuyButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #333; 
+    background-color: #333;
   }
 `;
 
 export const MoreInfoButton = styled.button`
-  width: 240px;
+  width: 100%;
   height: 40px;
   background-color: white;
   color: black;
@@ -213,7 +252,7 @@ export const MoreInfoButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
   }
 `;
 
@@ -223,7 +262,7 @@ export const ErrorMessage = styled.div`
   background-color: #ffe6e6;
   border: 1px solid red;
   padding: 10px;
-  margin: 10px 0; 
+  margin: 10px 0;
   border-radius: 5px;
   font-weight: bold;
 `;
