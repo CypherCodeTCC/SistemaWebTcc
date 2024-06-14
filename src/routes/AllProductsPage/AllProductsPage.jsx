@@ -43,27 +43,32 @@ const ProductPage = () => {
   const handleRadioChange = (e) => {
     // Atualiza o estado
     setFiltroGenero(e.target.value);
-  
+
     // Atualiza a URL
-    navigate(`?genero=${e.target.value}&editora=${filtroEditora}&preco=${filtroPreco}`);
+    navigate(
+      `?genero=${e.target.value}&editora=${filtroEditora}&preco=${filtroPreco}`
+    );
   };
-  
+
   const handlePublisherChange = (e) => {
     // Atualiza o estado
     setFiltroEditora(e.target.value);
-  
+
     // Atualiza a URL
-    navigate(`?genero=${filtroGenero}&editora=${e.target.value}&preco=${filtroPreco}`);
+    navigate(
+      `?genero=${filtroGenero}&editora=${e.target.value}&preco=${filtroPreco}`
+    );
   };
-  
+
   const handlePriceChange = (e) => {
     // Atualiza o estado
     setFiltroPreco(e.target.value);
-  
+
     // Atualiza a URL
-    navigate(`?genero=${filtroGenero}&editora=${filtroEditora}&preco=${e.target.value}`);
+    navigate(
+      `?genero=${filtroGenero}&editora=${filtroEditora}&preco=${e.target.value}`
+    );
   };
-  
 
   const toggleGenreMenu = () => {
     setExpandedGenre(!expandedGenre);
@@ -81,56 +86,86 @@ const ProductPage = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const toggleMenu = (menuName, isOpen) => {
+    switch (menuName) {
+      case "genero":
+        setExpandedGenre(isOpen);
+        break;
+      case "editora":
+        setExpandedPublisher(isOpen);
+        break;
+      case "preco":
+        setExpandedPrice(isOpen);
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     // Obtém os parâmetros da URL
     const params = new URLSearchParams(location.search);
-    const genero = params.get('genero');
-    const editora = params.get('editora');
-    const preco = params.get('preco');
-  
-    axios
-      .get("https://node-routes-mysql.vercel.app/book/")
-      .then((response) => {
-        let produtosFiltrados = response.data;
-  
-        // Filtra os produtos com base no gênero
-        if (genero) {
-          produtosFiltrados = produtosFiltrados.filter(
-            (produto) => produto.genre.name === genero
-          );
-        }
-  
-        // Filtra os produtos com base na editora
-        if (editora) {
-          produtosFiltrados = produtosFiltrados.filter(
-            (produto) => produto.publishing_company.name === editora
-          );
-        }
-  
-        // Filtra os produtos com base no preço
-        if (preco) {
-          produtosFiltrados = produtosFiltrados.filter((produto) => {
-            switch (preco) {
-              case "10":
-                return produto.price <= 10;
-              case "50":
-                return produto.price > 10 && produto.price <= 50;
-              case "100":
-                return produto.price > 50 && produto.price <= 100;
-              default:
-                return produto.price > 100;
-            }
-          });
-        }
-  
-        // Atualiza o estado dos produtos
-        setProdutos(produtosFiltrados);
-      })
-      .catch((error) => {
-        // Trata o erro
-        setErro("Erro ao buscar produtos");
-      });
-  }, [location.search]); // Dependência atualizada para refletir a mudança na URL
+    const genero = params.get("genero");
+    const editora = params.get("editora");
+    const preco = params.get("preco");
+
+    // Verifica se os valores estão presentes na URL e abre os menus correspondentes
+    if (genero) {
+      toggleMenu("genero", true);
+      // Se o valor do gênero estiver presente, marque o RadioButton correspondente
+      setFiltroGenero(genero);
+    }
+    if (editora) {
+      toggleMenu("editora", true);
+      // Se o valor da editora estiver presente, marque o RadioButton correspondente
+      setFiltroEditora(editora);
+    }
+    if (preco) {
+      toggleMenu("preco", true);
+      // Se o valor do preço estiver presente, marque o RadioButton correspondente
+      setFiltroPreco(preco);
+    }
+
+    axios.get("https://node-routes-mysql.vercel.app/book/").then((response) => {
+      let produtosFiltrados = response.data;
+
+      // Filtra os produtos com base no gênero
+      if (genero) {
+        produtosFiltrados = produtosFiltrados.filter(
+          (produto) => produto.genre.name === genero
+        );
+      }
+
+      // Filtra os produtos com base na editora
+      if (editora) {
+        produtosFiltrados = produtosFiltrados.filter(
+          (produto) => produto.publishing_company.name === editora
+        );
+      }
+
+      // Filtra os produtos com base no preço
+      if (preco) {
+        produtosFiltrados = produtosFiltrados.filter((produto) => {
+          switch (preco) {
+            case "10":
+              return produto.price <= 10;
+            case "50":
+              return produto.price > 10 && produto.price <= 50;
+            case "100":
+              return produto.price > 50 && produto.price <= 100;
+            case "*":
+              return true; // Mostra todos os produtos
+            case "plus100":
+              return produto.price > 100; // Mostra apenas os produtos com preço > 100
+            default:
+              return false;
+          }
+        });
+      }
+      // Atualiza o estado dos produtos
+      setProdutos(produtosFiltrados);
+    });
+  }, [location.search]);
 
   return (
     <Container>
@@ -149,6 +184,7 @@ const ProductPage = () => {
                     value="Suspense"
                     name="genero"
                     onChange={handleRadioChange}
+                    checked={filtroGenero === "Suspense"}
                   />{" "}
                   Suspense
                 </RadioButtonLabel>
@@ -158,6 +194,7 @@ const ProductPage = () => {
                     value="Terror"
                     name="genero"
                     onChange={handleRadioChange}
+                    checked={filtroGenero === "Terror"}
                   />{" "}
                   Terror
                 </RadioButtonLabel>
@@ -175,6 +212,7 @@ const ProductPage = () => {
                     value="rocco"
                     name="editora"
                     onChange={handlePublisherChange}
+                    checked={filtroEditora === "rocco"} // Verifica se o filtroEditora é 'rocco'
                   />{" "}
                   Rocco
                 </RadioButtonLabel>
@@ -184,6 +222,7 @@ const ProductPage = () => {
                     value="Wish"
                     name="editora"
                     onChange={handlePublisherChange}
+                    checked={filtroEditora === "Wish"} // Verifica se o filtroEditora é 'Wish'
                   />{" "}
                   Wish
                 </RadioButtonLabel>
@@ -193,23 +232,25 @@ const ProductPage = () => {
                     value="CDL"
                     name="editora"
                     onChange={handlePublisherChange}
+                    checked={filtroEditora === "CDL"} // Verifica se o filtroEditora é 'CDL'
                   />{" "}
                   CDL
                 </RadioButtonLabel>
               </RadioContainer>
             )}
-            <MenuItem onClick={togglePriceMenu}>
+              <MenuItem onClick={togglePriceMenu}>  
               <MenuTitle>Preço</MenuTitle>
-              <span>{expandedPrice ? "-" : "+"}</span>
+              <span>{expandedPublisher ? "-" : "+"}</span>
             </MenuItem>
             {expandedPrice && (
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
                     type="radio"
-                    value=""
+                    value="*"
                     name="preco"
                     onChange={handlePriceChange}
+                    checked={filtroPreco === "*"} // Verifica se o filtroPreco é '*'
                   />{" "}
                   Qualquer
                 </RadioButtonLabel>
@@ -219,6 +260,7 @@ const ProductPage = () => {
                     value="10"
                     name="preco"
                     onChange={handlePriceChange}
+                    checked={filtroPreco === "10"} // Verifica se o filtroPreco é '10'
                   />{" "}
                   Até R$10
                 </RadioButtonLabel>
@@ -228,6 +270,7 @@ const ProductPage = () => {
                     value="50"
                     name="preco"
                     onChange={handlePriceChange}
+                    checked={filtroPreco === "50"} // Verifica se o filtroPreco é '50'
                   />{" "}
                   R$10 até R$50
                 </RadioButtonLabel>
@@ -237,15 +280,17 @@ const ProductPage = () => {
                     value="100"
                     name="preco"
                     onChange={handlePriceChange}
+                    checked={filtroPreco === "100"} // Verifica se o filtroPreco é '100'
                   />{" "}
                   R$50 até R$100
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
                     type="radio"
-                    value="mais"
+                    value="plus100"
                     name="preco"
                     onChange={handlePriceChange}
+                    checked={filtroPreco === "plus100"} // Verifica se o filtroPreco é 'plus100'
                   />{" "}
                   Mais que R$100
                 </RadioButtonLabel>
