@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Dropdown({ isOpen, children }) {
-  return (
-    <div className={`dropdown ${isOpen ? "show" : ""}`}>
-      {children}
-    </div>
-  );
+  return <div className={`dropdown ${isOpen ? "show" : ""}`}>{children}</div>;
 }
 
 function MenuLinks() {
@@ -15,8 +11,8 @@ function MenuLinks() {
 
   // Função para ajustar o z-index do cabeçalho principal
   const setMainHeadingZIndexBasedOnState = (isMenuOpen) => {
-    const mainHeadings = document.querySelectorAll('.mainHeading');
-    mainHeadings.forEach(mainHeading => {
+    const mainHeadings = document.querySelectorAll(".mainHeading");
+    mainHeadings.forEach((mainHeading) => {
       mainHeading.style.zIndex = isMenuOpen ? -1 : 1;
     });
   };
@@ -26,23 +22,23 @@ function MenuLinks() {
   return (
     <div className="navbar-links desktop">
       <ul className="lista">
-        <li onClick={() => navigate('/')}>
+        <li onClick={() => navigate("/")}>
           <a>Home</a>
         </li>
         <li
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
         >
           <a>Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
             <a href="/">Desenvolvimento Pessoal</a>
           </Dropdown>
         </li>
-        <li onClick={() => navigate('/')}>
+        <li onClick={() => navigate("/")}>
           <a>Ofertas</a>
         </li>
-        <li onClick={() => navigate('/')}>
+        <li onClick={() => navigate("/")}>
           <a>Eventos</a>
         </li>
       </ul>
