@@ -26,23 +26,24 @@ function MenuLinks() {
   return (
     <div className="navbar-links desktop">
       <ul className="lista">
-        <li>
-          <a onClick={() => navigate('/')}>Home</a>
+        <li onClick={() => navigate('/')}>
+          <a>Home</a>
         </li>
         <li
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
+          onClick={() => navigate('/')}
         >
-          <a onClick={() => navigate('/')}>Categorias</a>
+          <a>Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
             <a href="/">Desenvolvimento Pessoal</a>
           </Dropdown>
         </li>
-        <li>
-          <a onClick={() => navigate('/')}>Ofertas</a>
+        <li onClick={() => navigate('/')}>
+          <a>Ofertas</a>
         </li>
-        <li>
-          <a onClick={() => navigate('/')}>Eventos</a>
+        <li onClick={() => navigate('/')}>
+          <a>Eventos</a>
         </li>
       </ul>
     </div>

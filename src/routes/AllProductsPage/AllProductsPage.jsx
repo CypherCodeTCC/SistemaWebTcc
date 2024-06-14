@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   AuthorPublisherSection,
   BuyButton,
@@ -40,6 +40,31 @@ const ProductPage = () => {
   const [expandedPrice, setExpandedPrice] = useState(false);
   const navigate = useNavigate();
 
+  const handleRadioChange = (e) => {
+    // Atualiza o estado
+    setFiltroGenero(e.target.value);
+  
+    // Atualiza a URL
+    navigate(`?genero=${e.target.value}&editora=${filtroEditora}&preco=${filtroPreco}`);
+  };
+  
+  const handlePublisherChange = (e) => {
+    // Atualiza o estado
+    setFiltroEditora(e.target.value);
+  
+    // Atualiza a URL
+    navigate(`?genero=${filtroGenero}&editora=${e.target.value}&preco=${filtroPreco}`);
+  };
+  
+  const handlePriceChange = (e) => {
+    // Atualiza o estado
+    setFiltroPreco(e.target.value);
+  
+    // Atualiza a URL
+    navigate(`?genero=${filtroGenero}&editora=${filtroEditora}&preco=${e.target.value}`);
+  };
+  
+
   const toggleGenreMenu = () => {
     setExpandedGenre(!expandedGenre);
   };
@@ -57,23 +82,35 @@ const ProductPage = () => {
   };
 
   useEffect(() => {
+    // Obtém os parâmetros da URL
+    const params = new URLSearchParams(location.search);
+    const genero = params.get('genero');
+    const editora = params.get('editora');
+    const preco = params.get('preco');
+  
     axios
       .get("https://node-routes-mysql.vercel.app/book/")
       .then((response) => {
         let produtosFiltrados = response.data;
-        if (filtroGenero) {
+  
+        // Filtra os produtos com base no gênero
+        if (genero) {
           produtosFiltrados = produtosFiltrados.filter(
-            (produto) => produto.genre.name === filtroGenero
+            (produto) => produto.genre.name === genero
           );
         }
-        if (filtroEditora) {
+  
+        // Filtra os produtos com base na editora
+        if (editora) {
           produtosFiltrados = produtosFiltrados.filter(
-            (produto) => produto.publishing_company.name === filtroEditora
+            (produto) => produto.publishing_company.name === editora
           );
         }
-        if (filtroPreco) {
+  
+        // Filtra os produtos com base no preço
+        if (preco) {
           produtosFiltrados = produtosFiltrados.filter((produto) => {
-            switch (filtroPreco) {
+            switch (preco) {
               case "10":
                 return produto.price <= 10;
               case "50":
@@ -85,12 +122,15 @@ const ProductPage = () => {
             }
           });
         }
+  
+        // Atualiza o estado dos produtos
         setProdutos(produtosFiltrados);
       })
       .catch((error) => {
+        // Trata o erro
         setErro("Erro ao buscar produtos");
       });
-  }, [filtroGenero, filtroEditora, filtroPreco]);
+  }, [location.search]); // Dependência atualizada para refletir a mudança na URL
 
   return (
     <Container>
@@ -108,7 +148,7 @@ const ProductPage = () => {
                     type="radio"
                     value="Suspense"
                     name="genero"
-                    onChange={(e) => setFiltroGenero(e.target.value)}
+                    onChange={handleRadioChange}
                   />{" "}
                   Suspense
                 </RadioButtonLabel>
@@ -117,7 +157,7 @@ const ProductPage = () => {
                     type="radio"
                     value="Terror"
                     name="genero"
-                    onChange={(e) => setFiltroGenero(e.target.value)}
+                    onChange={handleRadioChange}
                   />{" "}
                   Terror
                 </RadioButtonLabel>
@@ -134,7 +174,7 @@ const ProductPage = () => {
                     type="radio"
                     value="rocco"
                     name="editora"
-                    onChange={(e) => setFiltroEditora(e.target.value)}
+                    onChange={handlePublisherChange}
                   />{" "}
                   Rocco
                 </RadioButtonLabel>
@@ -143,7 +183,7 @@ const ProductPage = () => {
                     type="radio"
                     value="Wish"
                     name="editora"
-                    onChange={(e) => setFiltroEditora(e.target.value)}
+                    onChange={handlePublisherChange}
                   />{" "}
                   Wish
                 </RadioButtonLabel>
@@ -152,7 +192,7 @@ const ProductPage = () => {
                     type="radio"
                     value="CDL"
                     name="editora"
-                    onChange={(e) => setFiltroEditora(e.target.value)}
+                    onChange={handlePublisherChange}
                   />{" "}
                   CDL
                 </RadioButtonLabel>
@@ -169,7 +209,7 @@ const ProductPage = () => {
                     type="radio"
                     value=""
                     name="preco"
-                    onChange={(e) => setFiltroPreco(e.target.value)}
+                    onChange={handlePriceChange}
                   />{" "}
                   Qualquer
                 </RadioButtonLabel>
@@ -178,7 +218,7 @@ const ProductPage = () => {
                     type="radio"
                     value="10"
                     name="preco"
-                    onChange={(e) => setFiltroPreco(e.target.value)}
+                    onChange={handlePriceChange}
                   />{" "}
                   Até R$10
                 </RadioButtonLabel>
@@ -187,7 +227,7 @@ const ProductPage = () => {
                     type="radio"
                     value="50"
                     name="preco"
-                    onChange={(e) => setFiltroPreco(e.target.value)}
+                    onChange={handlePriceChange}
                   />{" "}
                   R$10 até R$50
                 </RadioButtonLabel>
@@ -196,7 +236,7 @@ const ProductPage = () => {
                     type="radio"
                     value="100"
                     name="preco"
-                    onChange={(e) => setFiltroPreco(e.target.value)}
+                    onChange={handlePriceChange}
                   />{" "}
                   R$50 até R$100
                 </RadioButtonLabel>
@@ -205,7 +245,7 @@ const ProductPage = () => {
                     type="radio"
                     value="mais"
                     name="preco"
-                    onChange={(e) => setFiltroPreco(e.target.value)}
+                    onChange={handlePriceChange}
                   />{" "}
                   Mais que R$100
                 </RadioButtonLabel>

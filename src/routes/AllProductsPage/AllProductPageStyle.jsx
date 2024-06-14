@@ -125,7 +125,7 @@ export const ProductCard = styled.div`
   box-shadow: 10px 10px 30px #f2f2f2, -10px -10px 30px #ffffff;
   background: #ffffff;
 
-  @media (max-width: 1420px) {
+  @media (max-width: 1440px) {
     height: 40%;
   }
 `;
@@ -155,11 +155,8 @@ export const ProductDetailsSection = styled.div`
 export const ProductName = styled.h1`
   margin-bottom: 20px;
   font-size: 150%;
-  @media (max-width: 1420px) {
+  @media (max-width: 1440px) {
     font-size: 145%;
-  }
-  @media (max-width: 1150px) {
-    font-size: 135%;
   }
 `;
 
@@ -172,11 +169,8 @@ export const ProductSynopsis = styled.p`
   text-align: justify;
   font-size: 90%;
 
-  @media (max-width: 1420px) {
+  @media (max-width: 1440px) {
     font-size: 85%;
-  }
-  @media (max-width: 1420px) {
-    font-size: 70%;
   }
 `;
 
