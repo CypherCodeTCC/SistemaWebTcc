@@ -13,6 +13,34 @@ export const Container = styled.div`
   }
 `;
 
+// Estilização dos filtros e recomendados
+export const TabsContainer = styled.div`
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+`;
+
+export const Tab = styled.button`
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Icon = styled.span`
+  margin-right: 5px;
+`;
 // Menu colapsável
 export const MenuContainer = styled.div`
   padding: 16px;
@@ -29,6 +57,10 @@ export const MenuContainer = styled.div`
 
   @media (max-width: 1440px) {
     padding: 0.5%;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -108,9 +140,15 @@ export const ProductList = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   background-color: #f8f4f4;
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
 `;
 
-// Card do Produto
+// Card do produto
 export const ProductCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -118,15 +156,70 @@ export const ProductCard = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   margin: 10px;
-  margin-left: 2vw;
   padding: 20px;
   width: 100%;
-  height: 45%;
+  height: 36vh;
   box-shadow: 10px 10px 30px #f2f2f2, -10px -10px 30px #ffffff;
   background: #ffffff;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 300px;
+    height: auto;
+  }
+`;
+
+// Nome do produto
+export const ProductName = styled.h1`
+  margin-bottom: 20px;
+  font-size: 1.6vw;
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
+
   @media (max-width: 1440px) {
-    height: 40%;
+    font-size: 2vw;
+  }
+`;
+
+// Sinopse
+export const ProductSynopsis = styled.p`
+  max-width: calc(80% - 1px);
+  height: 400px;
+  overflow-wrap: break-word;
+  margin-top: 20px;
+  text-align: justify;
+  font-size: 125%;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 1440px) {
+    font-size: 95%;
+  }
+`;
+
+// Autor
+export const ProductAuthor = styled.span`
+  margin-top: 30px;
+  margin-right: 1.6vw;
+  font-size: 125%;
+
+  @media (max-width: 1024px) {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+`;
+
+// Editora
+export const ProductPublisher = styled.span`
+  margin-top: 30px;
+  font-size: 125%;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
   }
 `;
 
@@ -141,6 +234,10 @@ export const ProductImageSection = styled.div`
 export const ProductImage = styled.img`
   max-width: 50%;
   height: auto;
+
+  @media (max-width: 1024px) {
+    max-width: 75%;
+  }
 `;
 
 export const ProductDetailsSection = styled.div`
@@ -149,40 +246,6 @@ export const ProductDetailsSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-`;
-
-// Nome do produto
-export const ProductName = styled.h1`
-  margin-bottom: 20px;
-  font-size: 150%;
-  @media (max-width: 1440px) {
-    font-size: 145%;
-  }
-`;
-
-// Sinopse
-export const ProductSynopsis = styled.p`
-  max-width: calc(80% - 1px);
-  height: 400px;
-  overflow-wrap: break-word;
-  margin-top: 20px;
-  text-align: justify;
-  font-size: 90%;
-
-  @media (max-width: 1440px) {
-    font-size: 85%;
-  }
-`;
-
-// Autor
-export const ProductAuthor = styled.span`
-  margin-top: 30px;
-  margin-right: 1.6vw;
-`;
-
-// Editora
-export const ProductPublisher = styled.span`
-  margin-top: 30px;
 `;
 
 // Seção de Preço e Botões
@@ -260,3 +323,12 @@ export const ErrorMessage = styled.div`
   border-radius: 5px;
   font-weight: bold;
 `;
+
+// Seçao de estilizaçao mobile
+export const MobileMenu = styled.div`
+
+`
+
+export const MelanciaSonica = styled.div`
+  display: grid;
+`

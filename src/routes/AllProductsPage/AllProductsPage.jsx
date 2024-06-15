@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import CartContext from "../../context/cart/CartContext";
 import {
   AuthorPublisherSection,
   BuyButton,
@@ -8,6 +9,8 @@ import {
   DiscountedPrice,
   ErrorMessage,
   FilterSection,
+  Icon,
+  MelanciaSonica,
   MenuContainer,
   MenuContent,
   MenuItem,
@@ -26,7 +29,10 @@ import {
   ProductSynopsis,
   RadioButtonLabel,
   RadioContainer,
+  Tab,
+  TabsContainer,
 } from "./AllProductPageStyle.jsx";
+import { FaFilter } from 'react-icons/fa';
 
 const ProductPage = () => {
   const [produtos, setProdutos] = useState([]);
@@ -38,7 +44,14 @@ const ProductPage = () => {
   const [expandedGenre, setExpandedGenre] = useState(false);
   const [expandedPublisher, setExpandedPublisher] = useState(false);
   const [expandedPrice, setExpandedPrice] = useState(false);
+  const { addToCart } = useContext(CartContext); 
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleRadioChange = (e) => {
     // Atualiza o estado
@@ -167,9 +180,179 @@ const ProductPage = () => {
     });
   }, [location.search]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 767);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Limpeza do evento de escuta ao desmontar o componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
   return (
+    <MelanciaSonica>
+      <TabsContainer>
+          <Tab onClick={isMobile ? toggleMobileMenu : null}>
+            <Icon><FaFilter /></Icon>
+            Filtros
+          </Tab>
+          <Tab>
+            Recomendado
+            <Icon>▼</Icon>
+          </Tab>
+        </TabsContainer>
+        <MenuContainer
+          style={{
+            minHeight: "700px",
+            position: isMobileMenuOpen ? "fixed" : "relative",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 1000,
+            display: isMobileMenuOpen ? "block" : "none",
+          }}
+        >
+        <MenuContent expanded={expanded}>
+          <FilterSection>
+            <MenuItem onClick={toggleGenreMenu}>
+              <MenuTitle>Gênero</MenuTitle>
+              <span>{expandedGenre ? "-" : "+"}</span>
+            </MenuItem>
+            {expandedGenre && (
+              <RadioContainer>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="Suspense"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero === "Suspense"}
+                  />{" "}
+                  Suspense
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="Terror"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero === "Terror"}
+                  />{" "}
+                  Terror
+                </RadioButtonLabel>
+              </RadioContainer>
+            )}
+            <MenuItem onClick={togglePublisherMenu}>
+              <MenuTitle>Editora</MenuTitle>
+              <span>{expandedPublisher ? "-" : "+"}</span>
+            </MenuItem>
+            {expandedPublisher && (
+              <RadioContainer>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="rocco"
+                    name="editora"
+                    onChange={handlePublisherChange}
+                    checked={filtroEditora === "rocco"} // Verifica se o filtroEditora é 'rocco'
+                  />{" "}
+                  Rocco
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="EditoraWish"
+                    name="editora"
+                    onChange={handlePublisherChange}
+                    checked={filtroEditora === "Wish"} // Verifica se o filtroEditora é 'Wish'
+                  />{" "}
+                  Wish
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="CDL"
+                    name="editora"
+                    onChange={handlePublisherChange}
+                    checked={filtroEditora === "CDL"} // Verifica se o filtroEditora é 'CDL'
+                  />{" "}
+                  CDL
+                </RadioButtonLabel>
+              </RadioContainer>
+            )}
+              <MenuItem onClick={togglePriceMenu}>  
+              <MenuTitle>Preço</MenuTitle>
+              <span>{expandedPublisher ? "-" : "+"}</span>
+            </MenuItem>
+            {expandedPrice && (
+              <RadioContainer>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="*"
+                    name="preco"
+                    onChange={handlePriceChange}
+                    checked={filtroPreco === "*"} // Verifica se o filtroPreco é '*'
+                  />{" "}
+                  Qualquer
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="10"
+                    name="preco"
+                    onChange={handlePriceChange}
+                    checked={filtroPreco === "10"} // Verifica se o filtroPreco é '10'
+                  />{" "}
+                  Até R$10
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="50"
+                    name="preco"
+                    onChange={handlePriceChange}
+                    checked={filtroPreco === "50"} // Verifica se o filtroPreco é '50'
+                  />{" "}
+                  R$10 até R$50
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="100"
+                    name="preco"
+                    onChange={handlePriceChange}
+                    checked={filtroPreco === "100"} // Verifica se o filtroPreco é '100'
+                  />{" "}
+                  R$50 até R$100
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="radio"
+                    value="plus100"
+                    name="preco"
+                    onChange={handlePriceChange}
+                    checked={filtroPreco === "plus100"} // Verifica se o filtroPreco é 'plus100'
+                  />{" "}
+                  Mais que R$100
+                </RadioButtonLabel>
+              </RadioContainer>
+            )}
+          </FilterSection>
+        </MenuContent>
+      </MenuContainer>
     <Container>
-      <MenuContainer style={{ minHeight: "700px" }}>
+      <MenuContainer
+          style={{
+            minHeight: "700px"
+          }}
+        >
         <MenuContent expanded={expanded}>
           <FilterSection>
             <MenuItem onClick={toggleGenreMenu}>
@@ -299,7 +482,6 @@ const ProductPage = () => {
           </FilterSection>
         </MenuContent>
       </MenuContainer>
-
       <ProductList>
         {produtos.length > 0 ? (
           produtos.map((produto) => (
@@ -331,10 +513,10 @@ const ProductPage = () => {
                     à vista
                   </span>{" "}
                 </DiscountedPrice>
-                <BuyButton onClick={() => navigate(`/produto/${produto.id}`)}>
+                <BuyButton onClick={() => addToCart(produto.id)}>
                   Comprar agora
                 </BuyButton>
-                <MoreInfoButton>Saiba mais</MoreInfoButton>
+                <MoreInfoButton onClick={() => navigate(`/produto/${produto.id}`)}>Saiba mais</MoreInfoButton>
               </ProductPriceAndButtonsSection>
             </ProductCard>
           ))
@@ -345,6 +527,7 @@ const ProductPage = () => {
         )}
       </ProductList>
     </Container>
+    </MelanciaSonica>
   );
 };
 
