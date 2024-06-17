@@ -146,6 +146,10 @@ export const ProductList = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
+
+  @media (max-width: 425px) {
+    margin: 0;
+  }
 `;
 
 // Card do produto
@@ -164,8 +168,15 @@ export const ProductCard = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    width: 300px;
+    width: 500px;
     height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 425px) {
+    width: 300px;
+    padding: 36px;
+    margin: 0;
   }
 `;
 
@@ -174,12 +185,12 @@ export const ProductName = styled.h1`
   margin-bottom: 20px;
   font-size: 1.6vw;
 
-  @media (max-width: 1024px) {
-    font-size: 24px;
+  @media (max-width: 1440px) {
+    font-size: 22px;
   }
 
-  @media (max-width: 1440px) {
-    font-size: 2vw;
+  @media (max-width: 768px) {
+    margin: 20px 0px 0px 20px;
   }
 `;
 
@@ -192,16 +203,19 @@ export const ProductSynopsis = styled.p`
   text-align: justify;
   font-size: 125%;
 
+
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 95%;
   }
 
-  @media (max-width: 1440px) {
-    font-size: 95%;
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-left: 20px;
+
   }
 `;
 
-// Autor
+// Autor....  \\ 
 export const ProductAuthor = styled.span`
   margin-top: 30px;
   margin-right: 1.6vw;
@@ -238,6 +252,9 @@ export const ProductImage = styled.img`
   @media (max-width: 1024px) {
     max-width: 75%;
   }
+  @media (max-width: 768px) {
+     
+  }
 `;
 
 export const ProductDetailsSection = styled.div`
@@ -257,6 +274,10 @@ export const ProductPriceAndButtonsSection = styled.div`
   border-left: 1.2px solid #c0c0c0;
   padding-left: 12px;
   width: 25%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 // Seção de Autor e Editora

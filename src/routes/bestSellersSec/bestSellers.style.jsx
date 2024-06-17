@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 // Cards
 export const CardContainer = styled.div`
-  display: flex;
   flex-direction: column;
-  align-items: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
-  padding: 0px 0px 40px 15%;
-  border-radius: 5px;
+  //padding: 0px 0px 40px 15%;
   max-width: 300px;
   min-width: 250px;
   cursor: pointer; // largura mínima para evitar que o card diminua absurdamente
@@ -33,7 +33,7 @@ export const Avaliacoes = styled.div`
 export const NomeLivro = styled.p`
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   color: #000;
   margin-top: 12px;
   font-weight: 600;
@@ -93,6 +93,7 @@ export const Fileira = styled.div`
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   justify-content: space-between;
+  justify-items: center;
   width: 100%;
   overflow-x: auto; // torna a fileira roláve
 `;
