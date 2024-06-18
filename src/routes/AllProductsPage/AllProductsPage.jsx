@@ -32,7 +32,7 @@ import {
   Tab,
   TabsContainer,
 } from "./AllProductPageStyle.jsx";
-import { FaFilter } from 'react-icons/fa';
+import { FaFilter } from "react-icons/fa";
 
 const ProductPage = () => {
   const [produtos, setProdutos] = useState([]);
@@ -74,7 +74,7 @@ const ProductPage = () => {
     e.preventDefault();
     e.returnValue = "";
   };
-  
+
   const handleRadioChange = (e) => {
     // Atualiza o estado
     setFiltroGenero(e.target.value);
@@ -112,6 +112,12 @@ const ProductPage = () => {
   const togglePublisherMenu = () => {
     setExpandedPublisher(!expandedPublisher);
   };
+  <Tab onClick={isMobile ? toggleMobileMenu : null}>
+    <Icon>
+      <FaFilter />
+    </Icon>
+    Filtros
+  </Tab>;
 
   const togglePriceMenu = () => {
     setExpandedPrice(!expandedPrice);
@@ -204,14 +210,14 @@ const ProductPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 767);
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Limpeza do evento de escuta ao desmontar o componente
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -219,7 +225,9 @@ const ProductPage = () => {
     <MelanciaSonica>
       <TabsContainer>
         <Tab onClick={isMobile ? toggleMobileMenu : null}>
-          <Icon><FaFilter /></Icon>
+          <Icon>
+            <FaFilter />
+          </Icon>
           Filtros
         </Tab>
         <Tab>
@@ -240,6 +248,12 @@ const ProductPage = () => {
           display: isMobileMenuOpen ? "block" : "none",
         }}
       >
+        <Tab onClick={isMobile ? toggleMobileMenu : null}>
+          <Icon>
+            <FaFilter />
+          </Icon>
+          Filtros
+        </Tab>
         <MenuContent expanded={expanded}>
           <FilterSection>
             <MenuItem onClick={toggleGenreMenu}>
@@ -299,12 +313,12 @@ const ProductPage = () => {
                 <RadioButtonLabel>
                   <input
                     type="radio"
-                    value="CDL"
+                    value="Companhia das Letras"
                     name="editora"
                     onChange={handlePublisherChange}
-                    checked={filtroEditora === "CDL"} // Verifica se o filtroEditora é 'CDL'
+                    checked={filtroEditora === "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
                   />{" "}
-                  CDL
+                  Companhia das Letras
                 </RadioButtonLabel>
               </RadioContainer>
             )}
@@ -372,7 +386,7 @@ const ProductPage = () => {
       <Container>
         <MenuContainer
           style={{
-            minHeight: "700px"
+            minHeight: "700px",
           }}
         >
           <MenuContent expanded={expanded}>
@@ -444,10 +458,10 @@ const ProductPage = () => {
                   <RadioButtonLabel>
                     <input
                       type="radio"
-                      value="CDL"
+                      value="Companhia das Letras"
                       name="editora"
                       onChange={handlePublisherChange}
-                      checked={filtroEditora === "CDL"} // Verifica se o filtroEditora é 'CDL'
+                      checked={filtroEditora === "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
                     />{" "}
                     CDL
                   </RadioButtonLabel>
@@ -548,7 +562,11 @@ const ProductPage = () => {
                   <BuyButton onClick={() => addToCart(produto.id)}>
                     Comprar agora
                   </BuyButton>
-                  <MoreInfoButton onClick={() => navigate(`/produto/${produto.id}`)}>Saiba mais</MoreInfoButton>
+                  <MoreInfoButton
+                    onClick={() => navigate(`/produto/${produto.id}`)}
+                  >
+                    Saiba mais
+                  </MoreInfoButton>
                 </ProductPriceAndButtonsSection>
               </ProductCard>
             ))

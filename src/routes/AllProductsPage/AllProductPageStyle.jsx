@@ -11,6 +11,15 @@ export const Container = styled.div`
     min-width: 150px;
     margin: 12px 30px 10px 100px;
   }
+  @media (max-width: 425px) {
+    margin: 6px 15px 5px 30px;
+  }
+  @media (max-width: 375px) {
+    margin: 6px 15px 5px 5px;
+  }
+  @media (max-width: 320px) {
+    margin: 6px 15px 5px 10px;
+  }
 `;
 
 // Estilização dos filtros e recomendados
@@ -19,6 +28,9 @@ export const TabsContainer = styled.div`
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
+
+  @media (max-width: 425px) {
+  }
 `;
 
 export const Tab = styled.button`
@@ -62,6 +74,10 @@ export const MenuContainer = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
+  @media (max-width: 425px) {
+    justify-content: "center";
+    display: "flex";
+  }
 `;
 
 export const MenuItem = styled.div`
@@ -75,6 +91,20 @@ export const MenuItem = styled.div`
   @media (max-width: 1440px) {
     padding: 0.5%;
   }
+  @media (max-width: 768px) {
+    width: 580px;
+    padding: 0px 10px 10px 10px;
+  }
+  @media (max-width: 425px) {
+    width: 220%;
+    padding: 0px 10px 10px 10px;
+  }
+  @media (max-width: 375px) {
+    width: 300%;
+  }
+  @media (max-width: 425px) {
+    width: 200%;
+  }
 `;
 
 export const MenuTitle = styled.h3`
@@ -85,6 +115,12 @@ export const MenuTitle = styled.h3`
 
   @media (max-width: 1440px) {
     padding: 0.8rem 2.2rem 0.2rem 0;
+  }
+  @media (max-width: 768px) {
+    padding: 2rem 4rem 2rem 0;
+  }
+  @media (max-width: 425px) {
+    padding: 2rem 4rem 2rem 0;
   }
 `;
 
@@ -101,6 +137,19 @@ export const FilterSection = styled.section`
   @media (max-width: 1440px) {
     width: 150px;
   }
+  @media (max-width: 768px) {
+    padding-left: 10px;
+  }
+  @media (max-width: 425px) {
+    padding-left: 10px;
+    width: 205px;
+  }
+  @media (max-width: 375px) {
+    width: 185px;
+  }
+  @media (max-width: 320px) {
+    width: 155px;
+  }
 `;
 
 export const RadioContainer = styled.div`
@@ -108,6 +157,15 @@ export const RadioContainer = styled.div`
   margin: 20px 0;
   gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+  @media (max-width: 768px) {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(1000px, 1fr));
+  }
+  @media (max-width: 425px) {
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -174,9 +232,10 @@ export const ProductCard = styled.div`
     justify-content: center;
   }
   @media (max-width: 425px) {
-    width: 300px;
-    padding: 36px;
-    margin: 0;
+    width: 350px;
+  }
+  @media (max-width: 320px) {
+    width: 280px;
   }
 `;
 
@@ -203,7 +262,6 @@ export const ProductSynopsis = styled.p`
   text-align: justify;
   font-size: 125%;
 
-
   @media (max-width: 1024px) {
     font-size: 95%;
   }
@@ -211,11 +269,10 @@ export const ProductSynopsis = styled.p`
   @media (max-width: 768px) {
     font-size: 20px;
     margin-left: 20px;
-
   }
 `;
 
-// Autor....  \\ 
+// Autor....  \\
 export const ProductAuthor = styled.span`
   margin-top: 30px;
   margin-right: 1.6vw;
@@ -253,7 +310,6 @@ export const ProductImage = styled.img`
     max-width: 75%;
   }
   @media (max-width: 768px) {
-     
   }
 `;
 
@@ -346,10 +402,8 @@ export const ErrorMessage = styled.div`
 `;
 
 // Seçao de estilizaçao mobile
-export const MobileMenu = styled.div`
-
-`
+export const MobileMenu = styled.div``;
 
 export const MelanciaSonica = styled.div`
   display: grid;
-`
+`;

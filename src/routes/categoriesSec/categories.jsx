@@ -62,7 +62,7 @@ export const SubTitle = styled.p`
   width: max-content;
   padding-top: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  text-decoration: underline;
 
   &:hover {
     font-weight: bold;

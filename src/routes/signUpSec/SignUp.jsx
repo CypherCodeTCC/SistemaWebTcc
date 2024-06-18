@@ -1,6 +1,23 @@
 import { useRef, useState, useEffect } from "react";
 import PngCelular from "../../../public/celular.png";
-import { Address, Button, CepNumUf, City, Container, ContainerCheckbox, ContainerForm, ContainerImage, Email, Image, Input, InputEmail, Span, SubTitle, Text, Title } from "./signUpStyle";
+import {
+  Address,
+  Button,
+  CepNumUf,
+  City,
+  Container,
+  ContainerCheckbox,
+  ContainerForm,
+  ContainerImage,
+  Email,
+  Image,
+  Input,
+  InputEmail,
+  Span,
+  SubTitle,
+  Text,
+  Title,
+} from "./signUpStyle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -23,12 +40,12 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const [isChecked, setIsChecked] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
-    setErrorMessage('');
-  }
+    setErrorMessage("");
+  };
 
   const handleSubmit = async () => {
     const senha = senhaRef.current.value;
@@ -53,16 +70,18 @@ export default function SignUp() {
       });
       return;
     }
-  
-    if(senha !== confirmaSenha) {
+
+    if (senha !== confirmaSenha) {
       toast.error("A senha e a confirmação não coincidem.", {
         closeOnClick: true,
       });
       return;
     }
 
-    if(!isChecked) {
-      setErrorMessage("Você deve aceitar os termos e condições antes de cadastrar.")
+    if (!isChecked) {
+      setErrorMessage(
+        "Você deve aceitar os termos e condições antes de cadastrar."
+      );
       return;
     }
 
@@ -203,7 +222,7 @@ export default function SignUp() {
           <Text>
             <h4>CPF</h4>
             <Input
-              mask="999.999.999-99"
+              mask="000.000.000-00"
               type="text"
               placeholder="Ex: 123.456.789-11"
               name="Cpf"
@@ -213,7 +232,7 @@ export default function SignUp() {
           <Text>
             <h4>Telefone</h4>
             <Input
-              mask="99999-9999"
+              mask="00000-0000"
               type="tel"
               placeholder="Ex: 99999-9999"
               name="Telefone"
@@ -232,7 +251,7 @@ export default function SignUp() {
           <CepNumUf>
             <h4>CEP</h4>
             <Input
-              mask="99999-999"
+              mask="00000-000"
               type="text"
               placeholder="Ex: 12345-678"
               name="Cep"
@@ -278,7 +297,11 @@ export default function SignUp() {
             />
           </Text>
           <ContainerCheckbox>
-            <Input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+            <Input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
             <SubTitle>
               Ao criar uma conta, você concorda com nossos{" "}
               <Span>Termos & Condições</Span>

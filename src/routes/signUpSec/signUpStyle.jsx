@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IMaskInput } from 'react-imask';
 
 export const Container = styled.section`
   padding: 30px;
@@ -62,7 +63,7 @@ export const Text = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled(IMaskInput)`
   border-radius: 8px;
   border: 1px solid;
   padding: 10px;
