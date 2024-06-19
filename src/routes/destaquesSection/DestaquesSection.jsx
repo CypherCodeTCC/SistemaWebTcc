@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Container,
   Title,
@@ -9,26 +10,58 @@ import {
   Card,
   Imagem,
   CardTitle,
-  CardSubTitle,
   Fileira,
-  CardPrincipal,
   CardsSecundarios,
-  BigCard,
 } from "./destaques.jsx";
 
 function DestaquesSection() {
+  const [books, setBooks] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(null);
   const [lastClickedButton, setLastClickedButton] = useState(null);
 
-  const handleButtonClick = (buttonId) => {
-    console.log(buttonId, "| teste");
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
+  async function fetchBooks() {
+    try {
+      const res = await axios.get("https://node-routes-mysql.vercel.app/book");
+      setBooks(res.data);
+    } catch (err) {
+      console.error("Error fetching books:", err);
+    }
+  }
+
+  function handleButtonClick(buttonId) {
+    let genre = null;
+    switch (buttonId) {
+      case 1:
+        genre = "Suspense";
+        break;
+      case 2:
+        genre = "Romance";
+        break;
+      case 3:
+        genre = null; // "Todos os Livros"
+        break;
+      default:
+        break;
+    }
+    setSelectedGenre(genre);
     setLastClickedButton(buttonId);
-  };
+  }
+
+  const filteredBooks = selectedGenre !== null
+    ? books.filter((book) => selectedGenre === null || book.genre.name === selectedGenre)
+    : books;
+
+  const otherBooks = filteredBooks;
 
   return (
     <Container>
       <Title>Destaques</Title>
       <MenuContainer>
-        {[1, 2, 3, 4, 5].map((item) => (
+        {[1, 2, 3].map((item) => (
           <Button
             key={item}
             onClick={() => handleButtonClick(item)}
@@ -37,25 +70,20 @@ function DestaquesSection() {
               color: lastClickedButton === item ? "white" : "",
             }}
           >
-            <Option>Livros</Option>
+            <Option>
+              {item === 1 ? "Suspense" : item === 2 ? "Romance" : "Todos os Livros"}
+            </Option>
           </Button>
         ))}
       </MenuContainer>
       <CardsContainer>
-        <CardPrincipal>
-          <BigCard>
-            <Imagem className="big-image" />
-            <CardTitle>Hello World</CardTitle>
-            <CardSubTitle>Descriçao especial + desconto</CardSubTitle>
-          </BigCard>
-        </CardPrincipal>
         <CardsSecundarios>
-          {[1, 2].map((row) => (
+          {[1].map((row) => (
             <Fileira key={row}>
-              {[1, 2].map((col) => (
-                <Card key={col}>
-                  <Imagem />
-                  <CardTitle>Hello World!</CardTitle>
+              {otherBooks.map((book, index) => (
+                <Card key={index}>
+                  {book.image && <Imagem src={book.image.url} />}
+                  <CardTitle>{book.name}</CardTitle>
                 </Card>
               ))}
             </Fileira>

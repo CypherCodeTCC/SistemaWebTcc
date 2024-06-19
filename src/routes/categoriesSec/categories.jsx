@@ -31,7 +31,6 @@ export const Card = styled.div`
   &:hover {
     cursor: pointer;
     background: linear-gradient(to top, #cecbcc 20%, #bdbabc 100%);
-    transform: scale(1.05);
   }
 
   @media (max-width: 767px) {
