@@ -51,9 +51,12 @@ function DestaquesSection() {
     setLastClickedButton(buttonId);
   }
 
-  const filteredBooks = selectedGenre !== null
-    ? books.filter((book) => selectedGenre === null || book.genre.name === selectedGenre)
-    : books;
+  const filteredBooks =
+    selectedGenre !== null
+      ? books.filter(
+          (book) => selectedGenre === null || book.genre.name === selectedGenre
+        )
+      : books;
 
   const otherBooks = filteredBooks;
 
@@ -71,7 +74,11 @@ function DestaquesSection() {
             }}
           >
             <Option>
-              {item === 1 ? "Suspense" : item === 2 ? "Romance" : "Todos os Livros"}
+              {item === 1
+                ? "Suspense"
+                : item === 2
+                ? "Romance"
+                : "Todos os Livros"}
             </Option>
           </Button>
         ))}

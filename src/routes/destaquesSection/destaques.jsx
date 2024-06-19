@@ -11,18 +11,10 @@ export const Container = styled.section`
 export const CardsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0.8em 8rem;
+  margin: 0.8em 6.99%;
   gap: 1.25rem;
-
-  @media (max-width: 58.75rem) {
-    flex-direction: column;
-    margin: 0.8em 0.625rem;
-  }
-
-  @media (max-width: 767px) {
-    margin: 0;
-    padding: 1.875rem;
-  }
+  background-color: rgba(208, 208, 208, 0.3);
+  overflow-x: auto;
 `;
 
 // Container para os cartões secundários
@@ -32,10 +24,6 @@ export const CardsSecundarios = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1.25rem;
-
-  @media (max-width: 767px) {
-    width: 100%;
-  }
 `;
 
 // Container para uma fileira de cartões
@@ -69,9 +57,7 @@ export const Card = styled.div`
     max-height: 425px; /* altura máxima para manter consistência */
     overflow-x: auto;
     display: flex;
-    
   }
-
 `;
 
 // Imagem do cartão
@@ -81,7 +67,7 @@ export const Imagem = styled.img`
   object-fit: cover;
   margin-bottom: 1rem; /* margem inferior para separar do texto */
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     width: 100%; /* largura total em telas menores */
     height: auto; /* altura automática para conteúdo responsivo */
   }
@@ -93,9 +79,8 @@ export const CardTitle = styled.h1`
   margin-top: 1rem;
   text-align: center;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     font-size: 1rem;
-    overflow-x: auto;
   }
 `;
 
@@ -112,13 +97,7 @@ export const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 500px) {
-    width: 60%;
-    overflow-x: auto;
-    white-space: nowrap;
-    overflow-x: auto;
-  }
+  overflow-x: auto;
 `;
 
 // Botão do menu
@@ -144,11 +123,12 @@ export const Button = styled.button`
   @media (max-width: 500px) {
     font-size: 0.9rem;
     padding: 1rem;
+    margin-bottom: 10px;
   }
 
-  @media (max-width: 374px) {
+  @media (max-width: 375px) {
     font-size: 0.9rem;
-    padding: 1rem;
+    padding: 0.7rem;
   }
 `;
 

@@ -8,8 +8,8 @@ export const CardContainer = styled.div`
   align-items: center;
   margin: 20px;
   //padding: 0px 0px 40px 15%;
-  max-width: 300px;
-  min-width: 250px;
+  max-width: 400px;
+  min-width: 150px;
   cursor: pointer; // largura mínima para evitar que o card diminua absurdamente
 
   @media (max-width: 600px) {
@@ -33,7 +33,7 @@ export const Avaliacoes = styled.div`
 export const NomeLivro = styled.p`
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  font-size: 15px;
+  font-size: 13.5px;
   color: #000;
   margin-top: 12px;
   font-weight: 600;
@@ -64,6 +64,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
 `;
 
 export const Titulo = styled.span`
@@ -91,9 +92,17 @@ export const Titulo = styled.span`
 
 export const Fileira = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Colunas auto-ajustáveis */
   justify-content: space-between;
   justify-items: center;
-  width: 100%;
-  overflow-x: auto; // torna a fileira roláve
+  gap: 50px; /* Espaçamento entre os itens */
+  width: 91.8%;
+  overflow-x: auto; /* Torna a fileira rolável horizontalmente */
+
+  @media (max-width: 768px) {
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
+  }
 `;

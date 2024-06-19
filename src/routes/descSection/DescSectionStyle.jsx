@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 export const ContainerDesc = styled.div`
   padding: 50px;
@@ -25,6 +25,9 @@ export const ContentDesc = styled.div`
   width: 100%;
   animation: ${cardAnimation} 1.9s ease-in-out;
 
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
   @media (max-width: 768px) {
     flex-wrap: wrap;
   }
@@ -65,8 +68,13 @@ export const SectionDesc = styled.section`
   order: 0;
   flex-grow: 0;
 
+  @media (max-width: 1024px) {
+    width: 33%;
+    padding: 0;
+    gap: 10px;
+  }
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 15px 20px;
     width: 100%;
   }
 `;
@@ -74,7 +82,7 @@ export const SectionDesc = styled.section`
 export const TitleDesc = styled.h1`
   font-size: 40px;
   text-align: center;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: normal;
   margin: 0;
 
@@ -84,7 +92,7 @@ export const TitleDesc = styled.h1`
 `;
 
 export const SpanDesc = styled.span`
-  color: #172B85;
+  color: #172b85;
 `;
 
 export const LeftDesc = styled.div`
@@ -104,16 +112,12 @@ export const LeftDesc = styled.div`
   }
 `;
 
-export const CenterDesc = styled(LeftDesc)`
- 
-`;
+export const CenterDesc = styled(LeftDesc)``;
 
-export const RightDesc = styled(LeftDesc)`
- 
-`;
+export const RightDesc = styled(LeftDesc)``;
 
 export const DescP = styled.p`
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #020200;
   overflow-wrap: break-word;
   width: 100%;
@@ -126,7 +130,7 @@ export const DescP = styled.p`
 `;
 
 export const DescH2 = styled.h2`
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
   font-style: normal;
   font-weight: 600;
@@ -145,6 +149,5 @@ export const DescImg = styled.img`
   max-width: 100%;
 
   @media (max-width: 480px) {
-   
   }
 `;
