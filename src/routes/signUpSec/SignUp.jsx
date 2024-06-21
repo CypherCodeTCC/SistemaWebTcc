@@ -99,20 +99,6 @@ export default function SignUp() {
     const senha = senhaValue;
     const confirmaSenha = confirmaSenhaValue;
 
-    console.log("--- Values ---");
-    console.log("Nome Value:", nomeValue);
-    console.log("Sobrenome Value:", sobrenomeValue);
-    console.log("CPF Value:", cpfValue);
-    console.log("Telefone Value:", telefoneValue);
-    console.log("Email Value:", emailValue);
-    console.log("CEP Value:", cepValue);
-    console.log("Logradouro Value:", logradouro);
-    console.log("Número Endereço Value:", numeroEndValue);
-    console.log("Nome Cidade Value:", nomeCid);
-    console.log("UF Value:", uf);
-    console.log("Senha Value:", senhaValue);
-    console.log("Confirma Senha Value:", confirmaSenhaValue);
-
     if (
       !nomeValue ||
       !sobrenomeValue ||
