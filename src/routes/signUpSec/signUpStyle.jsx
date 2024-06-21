@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IMaskInput } from 'react-imask';
+import { IMaskInput } from "react-imask";
 
 export const Container = styled.section`
   padding: 30px;
@@ -29,7 +29,7 @@ export const Title = styled.h2`
 `;
 
 export const SubTitle = styled.p`
-  color: ${(props) => (props.isError ? 'red' : "#999ba1")};
+  color: ${(props) => (props.isError ? "red" : "#999ba1")};
 `;
 
 export const Image = styled.img`
