@@ -4,6 +4,8 @@ import axios from "axios";
 import CartItem from "./CartItem";
 import CartMobile from "./mobile/CartMobile";
 import useWindowWidth from "../../hooks/useWindowWidth";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   ButtonCart,
   CartEmpty,
@@ -23,6 +25,9 @@ import {
 export default function Cart() {
   const [items, setItems] = useState([]);
   const { cartItems, getTotalCartAmount } = useContext(CartContext);
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+  const userGoogle = localStorage.getItem("uId");
 
   const totalAmount = getTotalCartAmount();
 
@@ -40,6 +45,22 @@ export default function Cart() {
     fetchAllBooks();
   }, []);
 
+  const handleClick = () => {
+    // Verifica se o usuário está logado
+    
+    if(userGoogle){
+      toast.error("é necessário fazer o registro antes de finalizar a compra!", {
+        closeOnClick: true,
+      });
+      navigate("/register")
+    }
+    else if (!userId){
+      toast.error("é necessário logar antes de finalizar a compra!", {
+        closeOnClick: true,
+      });
+      navigate("/login");
+    }
+  };
   if (width < 1024)
     return <CartMobile />
 
@@ -73,7 +94,7 @@ export default function Cart() {
                 <SubTitle>Total:</SubTitle>
                 <PrecoTotal>R${totalAmount.toFixed(2)}</PrecoTotal>
               </Infos>
-              <ButtonCart>Finalizar Compra</ButtonCart>
+              <ButtonCart onClick={handleClick}>Finalizar Compra</ButtonCart>
             </Checkout>
           </ContainerCheckout>
         </Container>

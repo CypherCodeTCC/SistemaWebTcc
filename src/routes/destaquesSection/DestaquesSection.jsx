@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Title,
@@ -18,6 +19,7 @@ function DestaquesSection() {
   const [books, setBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [lastClickedButton, setLastClickedButton] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBooks();
@@ -87,13 +89,17 @@ function DestaquesSection() {
         <CardsSecundarios>
           {[1].map((row) => (
             <Fileira key={row}>
-              {otherBooks.map((book, index) => (
-                <Card key={index}>
-                  {book.image && <Imagem src={book.image.url} />}
-                  <CardTitle>{book.name}</CardTitle>
-                </Card>
-              ))}
-            </Fileira>
+            {otherBooks.map((book, index) => (
+              <Card key={index} onClick={() => navigate(`/produto/${produto.id}`)}>
+                {book.image && (
+                  <Imagem
+                    src={book.image.url}
+                  />
+                )}
+                <CardTitle>{book.name}</CardTitle>
+              </Card>
+            ))}
+          </Fileira>
           ))}
         </CardsSecundarios>
       </CardsContainer>

@@ -438,7 +438,7 @@ const ProductPage = () => {
                   <RadioButtonLabel>
                     <input
                       type="radio"
-                      value="rocco"
+                      value="Editora Rocco"
                       name="editora"
                       onChange={handlePublisherChange}
                       checked={filtroEditora === "rocco"} // Verifica se o filtroEditora é 'rocco'
