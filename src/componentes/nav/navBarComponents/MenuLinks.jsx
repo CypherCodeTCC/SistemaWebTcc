@@ -28,11 +28,12 @@ function MenuLinks() {
         <li
           onMouseEnter={() => setIsDropdownOpen(true)}
           onMouseLeave={() => setIsDropdownOpen(false)}
-          onClick={() => navigate("/")}
         >
           <a>Categorias</a>
           <Dropdown isOpen={isDropdownOpen}>
-            <a href="/">Desenvolvimento Pessoal</a>
+            <p onClick={() => navigate("/produto/geral?genero=Suspense&editora=&preco=")}>Suspense</p>
+            <p onClick={() => navigate("/produto/geral?genero=Terror&editora=&preco=")}>Terror</p>
+            <p onClick={() => navigate("/produto/geral?genero=Romance&editora=&preco=")}>Romance</p>
           </Dropdown>
         </li>
         <li onClick={() => navigate("/")}>

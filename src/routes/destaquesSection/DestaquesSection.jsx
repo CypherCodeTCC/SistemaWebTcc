@@ -18,7 +18,7 @@ import {
 function DestaquesSection() {
   const [books, setBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
-  const [lastClickedButton, setLastClickedButton] = useState(null);
+  const [lastClickedButton, setLastClickedButton] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,10 @@ function DestaquesSection() {
   async function fetchBooks() {
     try {
       const res = await axios.get("https://node-routes-mysql.vercel.app/book");
-      setBooks(res.data);
+      const filteredBooks = res.data.filter(book => 
+        book.genre.name === "Suspense" || book.genre.name === "Romance"
+      );
+      setBooks(filteredBooks);
     } catch (err) {
       console.error("Error fetching books:", err);
     }
@@ -38,13 +41,13 @@ function DestaquesSection() {
     let genre = null;
     switch (buttonId) {
       case 1:
-        genre = "Suspense";
+        genre = null; // "Todos os Livros"
         break;
       case 2:
         genre = "Romance";
         break;
       case 3:
-        genre = null; // "Todos os Livros"
+        genre = "Suspense";
         break;
       default:
         break;
@@ -77,10 +80,10 @@ function DestaquesSection() {
           >
             <Option>
               {item === 1
-                ? "Suspense"
+                ? "Todos os Livros"
                 : item === 2
                 ? "Romance"
-                : "Todos os Livros"}
+                : "Suspense"}
             </Option>
           </Button>
         ))}

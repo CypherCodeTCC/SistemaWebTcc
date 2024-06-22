@@ -53,7 +53,7 @@ export default function BestSellers() {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        setBooks(res.data);
+        setBooks(res.data.slice(0, 8));
       } catch (err) {
         console.log(err);
       }

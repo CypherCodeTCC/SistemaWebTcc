@@ -5,7 +5,6 @@ import CartContext from "../../context/cart/CartContext";
 
 import PngImagem1 from "../../../public/produto1.png";
 import PngImagem2 from "../../../public/produto2.png";
-import PngImagem3 from "../../../public/produto3.png";
 import PngRocco from "../../../public/rocco.png";
 import PngWish from "../../../public/wish.png";
 
@@ -17,7 +16,6 @@ import { Container } from "./productStyle";
 export default function ProductPage() {
   //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
   function Avaliacoes({ avaliacao }) {
-    const navigate = useNavigate();
     const estrelas = [];
 
     for (let i = 0; i < 5; i++) {
@@ -39,17 +37,17 @@ export default function ProductPage() {
     );
   }
 
+  const navigate = useNavigate();
   const [book, setBook] = useState({});
   const { id } = useParams();
-  const { addToCart } = useContext(CartContext); 
-  console.log(book);
+  const { addToCart, cartItems } = useContext(CartContext); 
+  const cartItemsAmount = cartItems[id];
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
         const res = await axios.get(`https://node-routes-mysql.vercel.app/book/${id}`);
         setBook(res.data);
-        console.log(book);
       } catch (err) {
         console.log(err);
       }
@@ -83,11 +81,12 @@ export default function ProductPage() {
             <button className="big-button" onClick={() => addToCart(book.id)}>
               <FaRegPlusSquare /> Adicionar ao carrinho
             </button>
-            <button className="small-button">
-              <IoCartOutline />
+            <button className="small-button" onClick={() => navigate('/cart')}>
+              <IoCartOutline/>
+              {cartItemsAmount > 0 && <>({cartItemsAmount})</>}
             </button>
           </div>
-          <button className="button-alone">Veja produtos semelhantes</button>
+          <button className="button-alone" onClick={() => navigate(`/produto/geral?genero=${book.genre.name}&editora=${book.publishing_company.name}&preco=`)}>Veja produtos semelhantes</button>
         </div>
       </Container>
     </>

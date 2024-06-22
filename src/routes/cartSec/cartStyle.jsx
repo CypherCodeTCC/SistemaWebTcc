@@ -116,10 +116,11 @@ export const CartItems = styled.section`
 export const NomeAutor = styled.p`
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  min-width: 180px;
+  width: 160px;
   color: #000;
   font-weight: 600;
   margin-top: 12px;
+  word-wrap: break-word;
 `;
 
 export const NomeLivro = styled.p`

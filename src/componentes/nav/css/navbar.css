@@ -28,8 +28,7 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  padding: 28px;
-  width: 340px;
+  padding: 15px;
 }
 
 .dropdown.show {
@@ -37,18 +36,19 @@
 }
 
 /* Estilos para os itens do dropdown */
-.dropdown a {
+.dropdown p {
   display: flex;
   width: 100%;
   color: #3d3d3d;
-  padding: 1em;
+  padding: 12px;
   text-decoration: none;
 }
 
 /* Estilos para os itens do dropdown ao passar o mouse */
-.dropdown a:hover {
-  color: #000000;
-  border-radius: 24px;
+.dropdown p:hover {
+  color: white;
+  background-color: black;
+  border-radius: 12px;
 }
 
 /* Estilos para o container do dropdown */
