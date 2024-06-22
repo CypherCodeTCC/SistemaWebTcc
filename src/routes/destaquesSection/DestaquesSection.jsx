@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
@@ -90,7 +90,7 @@ function DestaquesSection() {
           {[1].map((row) => (
             <Fileira key={row}>
             {otherBooks.map((book, index) => (
-              <Card key={index} onClick={() => navigate(`/produto/${produto.id}`)}>
+              <Card key={index} onClick={() => navigate(`/produto/${book.id}`)}>
                 {book.image && (
                   <Imagem
                     src={book.image.url}

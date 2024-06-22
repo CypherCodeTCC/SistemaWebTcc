@@ -15,9 +15,12 @@ export const Footer = styled.section`
   .container-aboutUs,
   .container-client,
   .container-social-media,
-  .container-know-more,
-  .container-payment {
+  .container-know-more {
     width: 200px;
+  }
+  
+  .container-payment{
+    width: max-content;
   }
 
   .container-rights-reserved {
@@ -68,5 +71,15 @@ export const Footer = styled.section`
 
   @media (max-width: 1300px) {
     text-align: center;
+  }
+`;
+
+export const Payment = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+
+  img{
+    width: 61px;
+    height: 42px;
   }
 `;

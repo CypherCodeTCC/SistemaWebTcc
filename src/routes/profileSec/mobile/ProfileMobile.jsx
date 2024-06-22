@@ -112,7 +112,7 @@ export default function ProfileMobile() {
 
     try {
       await axios.put(
-        `http://localhost:8081/client/${localStorage.getItem("userId")}`,
+        `https://node-routes-mysql.vercel.app/client/${localStorage.getItem("userId")}`,
         updatedData
       );
       toast.success("Dados atualizados com sucesso!", {
@@ -129,7 +129,7 @@ export default function ProfileMobile() {
   const handleUpdateAddress = async () => {
     try {
       await axios.put(
-        `http://localhost:8081/client/address/${localStorage.getItem(
+        `https://node-routes-mysql.vercel.app/client/address/${localStorage.getItem(
           "userId"
         )}`,
         address
@@ -148,6 +148,62 @@ export default function ProfileMobile() {
   const changeOptionColor = (id) => {
     setOptionColor(id);
   };
+
+  const clearCep = () => {
+    setAddress((prev) => ({
+      ...prev,
+      Logradouro: "",
+      NomeCid: "",
+      Uf: ""
+    }));
+  };
+
+  const myCallback = (content) => {
+    if(!("erro" in content)) {
+      setAddress((prev) => ({
+        ...prev,
+        Logradouro: content.logradouro,
+        Cidade: content.localidade,
+        Estado: content.uf,
+      }));
+    }
+    else{
+      clearCep();
+      alert("CEP não encontrado.");
+    }
+  };
+
+  const searchCep = async (value) => {
+    const cep = value.replace(/\D/g, "");
+
+    if(cep !== ""){
+      const confirmCep = /^[0-9]{8}$/; 
+
+      if(confirmCep.test(cep)){
+        try{
+          const res = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+          const data = await res.json();
+          myCallback(data);
+        }
+        catch(err){
+          clearCep();
+          console.log("Erro ao buscar CEP.", err);
+          alert("Erro ao buscar CEP. Tente novamente.");
+        }
+      }
+      else{
+        clearCep();
+        alert("Formato do CEP inválido.")
+      }
+    }
+    else clearCep()
+  }
+
+  const handleBlur = (e) => {
+    const cepValue = e.target.value;
+    setAddress((prev) => ({...prev, CEP: cepValue}));
+    searchCep(cepValue);
+  }
 
   const renderForm = () => {
     switch (optionColor) {
@@ -177,6 +233,7 @@ export default function ProfileMobile() {
                 <div>
                   <SubTitleMobile>Telefone</SubTitleMobile>
                   <InputMobile
+                    mask="00000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -223,6 +280,7 @@ export default function ProfileMobile() {
                 <div>
                   <SubTitleMobile>Telefone</SubTitleMobile>
                   <InputMobile
+                    mask="00000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -244,10 +302,12 @@ export default function ProfileMobile() {
               <div>
                 <SubTitleMobile>Cep</SubTitleMobile>
                 <InputMobile
+                  mask="00000-000"
                   type="text"
                   name="CEP"
                   value={address.CEP}
                   onChange={handleChangedAddress}
+                  onBlur={handleBlur}
                 />
               </div>
               <div>
@@ -256,7 +316,7 @@ export default function ProfileMobile() {
                   type="text"
                   name="Logradouro"
                   value={address.Logradouro}
-                  onChange={handleChangedAddress}
+                  readOnly
                 />
               </div>
               <div>
@@ -284,6 +344,7 @@ export default function ProfileMobile() {
                   name="Cidade"
                   value={address.Cidade}
                   onChange={handleChangedAddress}
+                  readOnly
                 />
               </div>
               <div>
@@ -293,6 +354,7 @@ export default function ProfileMobile() {
                   name="Estado"
                   value={address.Estado}
                   onChange={handleChangedAddress}
+                  readOnly
                 />
               </div>
               <ContainerButtonMobile>

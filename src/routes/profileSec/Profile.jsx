@@ -186,6 +186,63 @@ export default function Profile() {
     setOptionColor(id);
   };
 
+  const clearCep = () => {
+    setAddress((prev) => ({
+      ...prev,
+      Logradouro: "",
+      NomeCid: "",
+      Uf: ""
+    }));
+  };
+
+  const myCallback = (content) => {
+    if(!("erro" in content)) {
+      setAddress((prev) => ({
+        ...prev,
+        Logradouro: content.logradouro,
+        Cidade: content.localidade,
+        Estado: content.uf,
+      }));
+    }
+    else{
+      clearCep();
+      alert("CEP não encontrado.");
+    }
+  };
+
+  const searchCep = async (value) => {
+    const cep = value.replace(/\D/g, "");
+
+    if(cep !== ""){
+      const confirmCep = /^[0-9]{8}$/; 
+
+      if(confirmCep.test(cep)){
+        try{
+          const res = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+          const data = await res.json();
+          myCallback(data);
+        }
+        catch(err){
+          clearCep();
+          console.log("Erro ao buscar CEP.", err);
+          alert("Erro ao buscar CEP. Tente novamente.");
+        }
+      }
+      else{
+        clearCep();
+        alert("Formato do CEP inválido.")
+      }
+    }
+    else clearCep()
+  }
+
+  const handleBlur = (e) => {
+    const cepValue = e.target.value;
+    setAddress((prev) => ({...prev, CEP: cepValue}));
+    searchCep(cepValue);
+  }
+
+
   const renderForm = () => {
     switch (optionColor) {
       case 1:
@@ -216,6 +273,7 @@ export default function Profile() {
                 <InputText>
                   <SubTitle>Telefone</SubTitle>
                   <Input
+                    mask="00000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -266,6 +324,7 @@ export default function Profile() {
                 <InputText>
                   <SubTitle>Telefone</SubTitle>
                   <Input
+                    mask="00000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -275,9 +334,11 @@ export default function Profile() {
                 <InputText>
                   <SubTitle>Cep</SubTitle>
                   <Input
+                    mask="00000-000"
                     type="text"
                     value={address.CEP}
                     name="CEP"
+                    onBlur={handleBlur}
                     onChange={handleChangedAddress}
                   />
                 </InputText>
@@ -287,7 +348,7 @@ export default function Profile() {
                     type="text"
                     value={address.Logradouro}
                     name="Logradouro"
-                    onChange={handleChangedAddress}
+                    readOnly
                   />
                 </InputText>
                 <InputText>
@@ -297,6 +358,7 @@ export default function Profile() {
                     value={address.Numero}
                     name="Numero"
                     onChange={handleChangedAddress}
+                    maxLenght="5"
                   />
                 </InputText>
                 <InputText>
@@ -306,6 +368,7 @@ export default function Profile() {
                     value={address.Complemento}
                     name="Complemento"
                     onChange={handleChangedAddress}
+                    maxLenght="10"
                   />
                 </InputText>
                 <InputText>
@@ -314,7 +377,7 @@ export default function Profile() {
                     type="text"
                     value={address.Cidade}
                     name="Cidade"
-                    onChange={handleChangedAddress}
+                    readOnly
                   />
                 </InputText>
                 <InputText>
@@ -323,7 +386,7 @@ export default function Profile() {
                     type="text"
                     value={address.Estado}
                     name="Estado"
-                    onChange={handleChangedAddress}
+                    readOnly
                   />
                 </InputText>
                 <ContainerButtons>
@@ -343,9 +406,11 @@ export default function Profile() {
             <InputText>
               <SubTitle>Cep</SubTitle>
               <Input
+                mask="00000-000"
                 type="text"
                 value={address.CEP}
                 name="CEP"
+                onBlur={handleBlur}
                 onChange={handleChangedAddress}
               />
             </InputText>
@@ -355,7 +420,7 @@ export default function Profile() {
                 type="text"
                 value={address.Logradouro}
                 name="Logradouro"
-                onChange={handleChangedAddress}
+                readOnly
               />
             </InputText>
             <InputText>
@@ -365,6 +430,7 @@ export default function Profile() {
                 value={address.Numero}
                 name="Numero"
                 onChange={handleChangedAddress}
+                maxLength="5"
               />
             </InputText>
             <InputText>
@@ -374,6 +440,7 @@ export default function Profile() {
                 value={address.Complemento}
                 name="Complemento"
                 onChange={handleChangedAddress}
+                maxLength="20"
               />
             </InputText>
             <InputText>
@@ -382,7 +449,7 @@ export default function Profile() {
                 type="text"
                 value={address.Cidade}
                 name="Cidade"
-                onChange={handleChangedAddress}
+                readOnly
               />
             </InputText>
             <InputText>
@@ -391,7 +458,7 @@ export default function Profile() {
                 type="text"
                 value={address.Estado}
                 name="Estado"
-                onChange={handleChangedAddress}
+                readOnly
               />
             </InputText>
             <ContainerButtons>

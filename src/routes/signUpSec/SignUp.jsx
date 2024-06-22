@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PngCelular from "../../../public/celular.png";
 import {
   Address,
@@ -27,6 +27,7 @@ export default function SignUp() {
 
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
 
   const [logradouro, setLogradouro] = useState("");
   const [nomeCid, setNomeCid] = useState("");
@@ -95,6 +96,11 @@ export default function SignUp() {
     pesquisacep(cepValue);
   };
 
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }
+
   const handleSubmit = async () => {
     const senha = senhaValue;
     const confirmaSenha = confirmaSenhaValue;
@@ -147,6 +153,11 @@ export default function SignUp() {
         NumeroEnd: numeroEndValue,
         Complemento: complementoValue,
       };
+
+      if(!validateEmail(data.Email)){
+        setEmailErrorMessage("Formato de email inválido.");
+        return;
+      }
 
       await axios.post("https://node-routes-mysql.vercel.app/client", data);
       navigate("/login");
@@ -217,6 +228,7 @@ export default function SignUp() {
               value={emailValue}
               onChange={(e) => setEmailValue(e.target.value)}
             />
+            {emailErrorMessage && <SubTitle isError={true}>{emailErrorMessage}</SubTitle>}
           </Email>
           <CepNumUf>
             <h4>CEP</h4>
@@ -239,6 +251,7 @@ export default function SignUp() {
               name="NumeroEnd"
               value={numeroEndValue}
               onChange={(e) => setNumeroEndValue(e.target.value)}
+              maxLength="5"
             />
           </CepNumUf>
           <CepNumUf>
@@ -248,6 +261,7 @@ export default function SignUp() {
               name="Complemento"
               value={complementoValue}
               onChange={(e) => setComplementoValue(e.target.value)}
+              maxLength="20"
             />
           </CepNumUf>
           <City>
