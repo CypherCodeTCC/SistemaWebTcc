@@ -3,6 +3,11 @@ import { Container } from './vananciesStyle';
 import pngContratando from '../../../public/contratando.png'
 
 export default function Vanancies() {
+    const handleButtonClick = () => {
+        const defaultMessage = encodeURIComponent("Olá, estou interessado nas vagas de emprego.");
+        window.open(`https://wa.me/11984847576?text=${defaultMessage}`, "_blank");
+    };
+
     return (
         <>
             <Container>
@@ -10,8 +15,8 @@ export default function Vanancies() {
                     <p>Home &gt; <span>Quem Somos</span></p>
                     <h1>Estamos contratando.</h1>
                     <h1>Veja se você se adequa aos cargos</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                    <button>Veja as Vagas -&gt;</button>
+                    <p>Entre em contato com nosso WhatsApp de atendimento.</p>
+                    <button onClick={handleButtonClick}>Veja as Vagas -&gt;</button>
                 </div>
                 <div className="content-image">
                     <img src={pngContratando} alt="Homem com gravata"/>

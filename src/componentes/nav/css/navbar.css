@@ -50,7 +50,6 @@
   background-color: black;
   border-radius: 12px;
 }
-
 /* Estilos para o container do dropdown */
 .dropdown-container {
   position: relative;
@@ -97,6 +96,48 @@
   cursor: pointer;
   background-color: black;
   color: white;
+}
+
+.dropdownInput {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  width: 350px;
+  padding: 20px;
+}
+
+.dropdownInput.show{
+  display: block;
+}
+
+.container-search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.align-image-title{
+  display: flex;
+  align-items: center;
+}
+
+.container-search p{
+  max-width: 150px;
+}
+
+.container-search img{
+  width: 200px;
+}
+
+.container-search p:hover{
+  text-decoration: underline;
 }
 
 /* Logo */

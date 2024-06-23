@@ -59,7 +59,7 @@ export default function BestSellers() {
       }
     };
     fetchAllBooks();
-  }, []);
+  });
 
   return (
     <Container>

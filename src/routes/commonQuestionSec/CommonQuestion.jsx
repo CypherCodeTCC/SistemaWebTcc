@@ -24,24 +24,21 @@ export default function CommonQuestion() {
           </ContentTitle>
           <h1>Perguntas Frequentes</h1>
           <Details>
-            <Summary>Smod tempor incididunt ut labore et dolore</Summary>
+            <Summary>Vocês oferecem opções de frete grátis?</Summary>
             <ul>
-              <li>Hello</li>
-              <li>World</li>
+              <li>Sim, oferecemos frete grátis para todas as compras realizadas.</li>
             </ul>
           </Details>
           <Details>
-            <Summary>Smod tempor incididunt ut labore et dolore</Summary>
+            <Summary>Quais são as opções de pagamento aceitas?</Summary>
             <ul>
-              <li>Hello</li>
-              <li>World</li>
+              <li>Aceitamos pagamentos por cartão de crédito, débito e boleto bancário, oferecendo segurança e praticidade em todas as transações.</li>
             </ul>
           </Details>
           <Details>
-            <Summary>Smod tempor incididunt ut labore et dolore</Summary>
+            <Summary>Qual é a política de devolução?</Summary>
             <ul>
-              <li>Hello</li>
-              <li>World</li>
+              <li>Aceitamos devoluções dentro de um prazo determinado para troca ou reembolso, sujeito a condições específicas.</li>
             </ul>
           </Details>
         </ContainerText>

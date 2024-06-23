@@ -21,6 +21,7 @@ export const Container = styled.section`
             width: 35%;
             padding: 10px;
             border-radius: 18px;
+            cursor: pointer;
         }
     }
 

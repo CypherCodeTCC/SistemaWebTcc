@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import CartIcon from "../../../../public/carrinho.svg";
 import SearchIcon from "../../../../public/search.svg";
 import PngUser from "../../../../public/user.png";
 import { useNavigate } from "react-router-dom";
 import CartContext from "../../../context/cart/CartContext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 function PopupCarrinhoVazio({ setIsPopupOpen }) {
   const handleFechar = () => {
@@ -31,6 +32,12 @@ function Dropdown({ isOpen, children }) {
   );
 }
 
+function Search({ isOpen, children }) {
+  return (
+    <div className={`dropdownInput ${isOpen ? "show" : ""}`}>{children}</div>
+  );
+}
+
 function setMainHeadingZIndexBasedOnState(isMenuOpen) {
   const mainHeadings = document.querySelectorAll(".mainHeading");
   mainHeadings.forEach((mainHeading) => {
@@ -39,11 +46,17 @@ function setMainHeadingZIndexBasedOnState(isMenuOpen) {
 }
 
 function CartLoginIcons() {
+  const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const { getTotalCartAmount } = useContext(CartContext);
   const totalAmount = getTotalCartAmount();
 
   const [menuUserLogged, setMenuUserLogged] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [input, setInput] = useState({
+    title: "",
+  });
 
   const userId = localStorage.getItem("userId");
   const userGoogle = localStorage.getItem("uId");
@@ -54,10 +67,19 @@ function CartLoginIcons() {
     navigate(route);
   };
 
+  const handleSearchClick = () => {
+    if (!isPopupOpen) {
+      setSearch((prevState) => !prevState);
+      setMainHeadingZIndexBasedOnState(!search);
+      setMenuUserLogged(false);
+    }
+  };
+
   const handleUserIconClick = () => {
     if (!isPopupOpen) {
       setMenuUserLogged((prevState) => !prevState);
       setMainHeadingZIndexBasedOnState(!menuUserLogged);
+      setSearch(false);
     }
   };
 
@@ -66,6 +88,7 @@ function CartLoginIcons() {
       handleRoutes("/cart");
     } else {
       setMenuUserLogged(false);
+      setSearch(false);
       setIsPopupOpen(true);
       setMainHeadingZIndexBasedOnState(true);
     }
@@ -79,6 +102,45 @@ function CartLoginIcons() {
       closeOnClick: true,
     });
     handleRoutes("/");
+  };
+
+  const handleChange = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const res = await axios.get(
+          "https://node-routes-mysql.vercel.app/book"
+        );
+        setBooks(res.data);
+      } catch (err) {
+        console.log("Erro ao encontrar os livros.", err);
+      }
+    };
+    fetchBooks();
+  }, []);
+
+  useEffect(() => {
+    if (input.title) {
+      const filtered = books.filter((book) =>
+        book.name.toLowerCase().includes(input.title.toLowerCase())
+      );
+      if (filtered.length > 0) {
+        setFilteredBooks(filtered.slice(0, 8));
+      } else {
+        setFilteredBooks([{ id: 0, name: "Nenhum resultado encontrado." }]);
+      }
+    } else {
+      setFilteredBooks([]);
+    }
+  }, [input, books]);
+
+  const handleBookClick = (bookId) => {
+    navigate(`/produto/${bookId}`);
+    setSearch(false); // Fechar o menu de busca após clicar em um livro
+    setMainHeadingZIndexBasedOnState(false);
   };
 
   const renderUserSection = () => {
@@ -150,7 +212,52 @@ function CartLoginIcons() {
     <div className="carrinho-logar desktop">
       {isPopupOpen && <PopupCarrinhoVazio setIsPopupOpen={setIsPopupOpen} />}
       <div className="icones">
-        <img src={SearchIcon} alt="Ícone de busca" />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
+          <img
+            src={SearchIcon}
+            alt="Ícone de busca"
+            onClick={handleSearchClick}
+          />
+          <Search isOpen={search}>
+            <input
+              type="text"
+              placeholder="Faça sua busca..."
+              onChange={handleChange}
+              name="title"
+            />
+            {filteredBooks.map((book) => (
+              <div
+                key={book.id}
+                onClick={() => handleBookClick(book.id)}
+              >
+                {book.id !== 0 ? (
+                  <div className="container-search">
+                    <div className="align-image-title">
+                      {book.image && (
+                        <img src={book.image.url} alt="Imagem do Produto" />
+                      )}
+                      <p>{book.name}</p>
+                    </div>
+                    <p>R${book.price.toFixed(2)}</p>
+                  </div>
+                ) : (
+                  <div className="container-search">
+                      <p>{book.name}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </Search>
+        </div>
+
         <img
           src={CartIcon}
           alt="Ícone de Carrinho"

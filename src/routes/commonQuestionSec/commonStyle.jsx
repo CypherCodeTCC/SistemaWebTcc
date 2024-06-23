@@ -57,6 +57,18 @@ export const ContentTitle = styled.div`
 
 export const Details = styled.details`
   padding-top: 20px;
+
+  &[open] ul {
+    max-height: 500px;
+    transition: max-height 0.5s ease; /* Transição suave da altura */
+  }
+
+  ul{
+    max-height: 0;
+    overflow: hidden;
+    padding: 12px;
+    transition: max-height 0.5s ease; /* Transição suave da altura */
+  }
 `;
 
 export const Summary = styled.summary`
