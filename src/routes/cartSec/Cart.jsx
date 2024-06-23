@@ -48,7 +48,7 @@ export default function Cart() {
   const handleClick = () => {
     // Verifica se o usuário está logado
     
-    if(userGoogle){
+    if(userGoogle && !userId){
       toast.error("é necessário fazer o registro antes de finalizar a compra!", {
         closeOnClick: true,
       });

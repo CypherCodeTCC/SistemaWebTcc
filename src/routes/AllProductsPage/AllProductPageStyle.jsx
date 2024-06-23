@@ -91,6 +91,9 @@ export const MenuItem = styled.div`
   @media (max-width: 1440px) {
     padding: 0.5%;
   }
+  @media (max-width: 954px) {
+    padding: 0px 0px 0px 0px;
+  }
   @media (max-width: 768px) {
     width: 580px;
     padding: 0px 10px 10px 10px;
@@ -137,6 +140,9 @@ export const FilterSection = styled.section`
   @media (max-width: 1440px) {
     width: 150px;
   }
+  @media (max-width: 954px) {
+    width: 100px;
+  }
   @media (max-width: 768px) {
     padding-left: 10px;
   }
@@ -174,7 +180,13 @@ export const RadioButtonLabel = styled.label`
   font-weight: 400;
   color: #000;
   list-style: outside none none;
-
+  
+  @media (max-width: 940px) {
+    font-size: 12px;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
   input[type="radio"] {
     margin-right: 8px;
     background-color: #f0f0f0;
@@ -201,7 +213,7 @@ export const ProductList = styled.div`
 
   @media (max-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
   }
 
@@ -224,19 +236,19 @@ export const ProductCard = styled.div`
   box-shadow: 10px 10px 30px #f2f2f2, -10px -10px 30px #ffffff;
   background: #ffffff;
 
+  @media (max-width: 940px) {
+    width: 100%;
+  }
+  
   @media (max-width: 768px) {
     flex-direction: column;
-    width: 500px;
+    width: 80vw;
     height: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
-  @media (max-width: 425px) {
-    width: 350px;
-  }
-  @media (max-width: 320px) {
-    width: 280px;
-  }
+  
 `;
 
 // Nome do produto
@@ -245,31 +257,31 @@ export const ProductName = styled.h1`
   font-size: 1.6vw;
 
   @media (max-width: 1440px) {
-    font-size: 22px;
+    font-size: 18px;
+  }
+  @media (max-width: 1100px) {
+    font-size: 16px;
+  }
+  @media (max-width: 940px) {
+    font-size: 12px;
   }
 
   @media (max-width: 768px) {
+    font-size: 26px;
+    margin: 20px 0px 0px 20px;
+  }
+  @media (max-width: 680px) {
+    font-size: 24px;
+  }
+  @media (max-width: 425px) {
+    font-size: 20px;
     margin: 20px 0px 0px 20px;
   }
 `;
 
 // Sinopse
 export const ProductSynopsis = styled.p`
-  max-width: calc(80% - 1px);
-  height: 400px;
-  overflow-wrap: break-word;
-  margin-top: 20px;
-  text-align: justify;
-  font-size: 125%;
-
-  @media (max-width: 1024px) {
-    font-size: 95%;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-    margin-left: 20px;
-  }
+  display: none;
 `;
 
 // Autor....  \\
@@ -278,9 +290,15 @@ export const ProductAuthor = styled.span`
   margin-right: 1.6vw;
   font-size: 125%;
 
+  @media (max-width: 1154px) {
+    font-size: 12px;
+  }
   @media (max-width: 1024px) {
     margin-right: 20px;
     font-size: 16px;
+  }
+  @media (max-width: 950px) {
+    font-size: 12px;
   }
 `;
 
@@ -289,8 +307,15 @@ export const ProductPublisher = styled.span`
   margin-top: 30px;
   font-size: 125%;
 
+  @media (max-width: 1154px) {
+    font-size: 12px;
+  }
   @media (max-width: 1024px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 950px) {
+    font-size: 12px;
   }
 `;
 
@@ -310,6 +335,7 @@ export const ProductImage = styled.img`
     max-width: 75%;
   }
   @media (max-width: 768px) {
+    width: 50vw;
   }
 `;
 
@@ -331,6 +357,9 @@ export const ProductPriceAndButtonsSection = styled.div`
   padding-left: 12px;
   width: 25%;
 
+  @media (max-width: 940px) {
+    font-size: 14px;
+  }
   @media (max-width: 768px) {
     width: 100%;
   }
