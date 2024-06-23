@@ -25,13 +25,12 @@ export const Card = styled.div`
   }
   @media (max-width: 1300px) {
     gap: 8%;
-    height: 20vh;
+    height: auto;
     padding-left: 20px;
   }
   @media (max-width: 1050px) {
     width: 33%;
     gap: 2%;
-    height: 24vh;
   }
 
   @media (max-width: 580px) {

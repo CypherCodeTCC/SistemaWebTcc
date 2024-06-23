@@ -19,9 +19,9 @@ import SvgPessoas from "../../../public/pessoas.svg";
 
 export default function DescSection() {
   const descriptions = [
-    { id: 1, title: "Entrega Segura", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 2, title: "Variedade Imensa", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 3, title: "Você no", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    { id: 1, title: "Entrega Segura", desc: " confiança garantida." },
+    { id: 2, title: "Variedade Imensa", desc: "opções sem fim." },
+    { id: 3, title: "Você no", desc: "nossa prioridade." },
   ];
 
   return (
