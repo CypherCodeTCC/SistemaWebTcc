@@ -14,17 +14,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 //Estrelas do ReactIcons
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loadingSec/Loading";
+
+function AvaliacaoAleatoria(){
+  return Math.floor(Math.random() * 2) + 4;
+}
 
 function Avaliacoes({ avaliacao }) {
   const estrelas = [];
 
   for (let i = 0; i < 5; i++) {
-    if (i < avaliacao) {
+    if (i < Math.floor(avaliacao)) {
       estrelas.push(<FaStar key={i} color="black" />);
-    } else {
+    } else if (i === Math.ceil(avaliacao)) {
+      estrelas.push(<FaStarHalf key={i} color="black" />);
+    } else{
       estrelas.push(<FaStar key={i} color="lightgray" />);
     }
   }
@@ -56,7 +62,13 @@ export default function BestSellers() {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        setBooks(res.data.slice(0, 8));
+        const bookWithRatings = res.data.slice(0, 8).map(book => ({
+          ...book,
+          avaliacoes: AvaliacaoAleatoria()
+        }));
+          // Ordena os livros pelos ratings em ordem decrescente
+        const sortedBooks = bookWithRatings.sort((a, b) => b.avaliacoes - a.avaliacoes);
+        setBooks(sortedBooks);
       } catch (err) {
         console.log(err);
       } finally{
@@ -78,7 +90,7 @@ export default function BestSellers() {
             id={book.id}
             name={book.name}
             price={book.price}
-            avaliacoes={4.2} // Supondo que a avaliação seja 4.2
+            avaliacoes={book.avaliacoes} // Supondo que a avaliação seja 4.2
           />
         ))}
       </Fileira>

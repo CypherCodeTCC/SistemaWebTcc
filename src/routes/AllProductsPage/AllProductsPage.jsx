@@ -282,6 +282,46 @@ const ProductPage = () => {
                   />{" "}
                   Terror
                 </RadioButtonLabel>
+                <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Romance"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Romance"}
+                    />{" "}
+                    Romance
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Dev. Pessoal"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Dev. Pessoal"}
+                    />{" "}
+                    Dev. Pessoal
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Classico"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Classico"}
+                    />{" "}
+                    Clássico
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Geek"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Geek"}
+                    />{" "}
+                    Geek
+                  </RadioButtonLabel>
               </RadioContainer>
             )}
             <MenuItem onClick={togglePublisherMenu}>
@@ -293,10 +333,10 @@ const ProductPage = () => {
                 <RadioButtonLabel>
                   <input
                     type="radio"
-                    value="rocco"
+                    value="Editora Rocco"
                     name="editora"
                     onChange={handlePublisherChange}
-                    checked={filtroEditora === "rocco"} // Verifica se o filtroEditora é 'rocco'
+                    checked={filtroEditora === "Editora Rocco"} // Verifica se o filtroEditora é 'rocco'
                   />{" "}
                   Rocco
                 </RadioButtonLabel>
@@ -426,6 +466,36 @@ const ProductPage = () => {
                       checked={filtroGenero === "Romance"}
                     />{" "}
                     Romance
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Dev. Pessoal"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Dev. Pessoal"}
+                    />{" "}
+                    Dev. Pessoal
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Classico"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Classico"}
+                    />{" "}
+                    Clássico
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="radio"
+                      value="Geek"
+                      name="genero"
+                      onChange={handleRadioChange}
+                      checked={filtroGenero === "Geek"}
+                    />{" "}
+                    Geek
                   </RadioButtonLabel>
                 </RadioContainer>
               )}

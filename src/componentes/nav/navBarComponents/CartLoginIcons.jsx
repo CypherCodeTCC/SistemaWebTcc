@@ -164,6 +164,7 @@ function CartLoginIcons() {
           <Dropdown isOpen={menuUserLogged}>
             <ul>
               <li onClick={() => handleRoutes(`/profile`)}>Meu Perfil</li>
+              <li onClick={() => handleRoutes(`/meuspagamentos`)}>Meus Pagamentos</li>
               <li onClick={handleLogout}>Sair</li>
             </ul>
           </Dropdown>

@@ -34,6 +34,9 @@ function MenuLinks() {
             <p onClick={() => navigate("/produto/geral?genero=Suspense&editora=&preco=")}>Suspense</p>
             <p onClick={() => navigate("/produto/geral?genero=Terror&editora=&preco=")}>Terror</p>
             <p onClick={() => navigate("/produto/geral?genero=Romance&editora=&preco=")}>Romance</p>
+            <p onClick={() => navigate("/produto/geral?genero=Dev.%20Pessoal&editora=&preco=")}>Dev. Pessoal</p>
+            <p onClick={() => navigate("/produto/geral?genero=Classico&editora=&preco=")}>Clássico</p>
+            <p onClick={() => navigate("/produto/geral?genero=Geek&editora=&preco=")}>Geek</p>
           </Dropdown>
         </li>
         <li onClick={() => navigate("/")}>

@@ -22,9 +22,9 @@ export default function BooksSection() {
     <Container>
       <MainContainerLeft>
         <Card>
-          <CardLeft>
+          <CardLeft onClick={() => navigate("/produto/geral?genero=Dev.%20Pessoal&editora=&preco=")}>
             <Title>Desenvolvimento Pessoal</Title>
-            <SubTitle onClick={() => navigate("/produto/geral?genero=Terror")}>
+            <SubTitle>
               Compre Agora
             </SubTitle>
             <ImageAlign>
@@ -35,23 +35,19 @@ export default function BooksSection() {
       </MainContainerLeft>
       <MainContainerRight>
         <Card>
-          <CardRight>
+          <CardRight onClick={() => navigate("/produto/geral?genero=Classico&editora=&preco=")}>
             <BookImage src={bookImg3} alt="Livro Roxo Flutuando" />
             <Title>Clássicos</Title>
-            <SubTitle
-              onClick={() => navigate("/produto/geral?genero=Suspense")}
-            >
+            <SubTitle>
               Compre Agora
             </SubTitle>
           </CardRight>
         </Card>
         <Card>
-          <CardRight>
+          <CardRight onClick={() => navigate("/produto/geral?genero=Geek&editora=&preco=")}>
             <BookImage src={bookImg} alt="Livro Roxo Flutuando" />
             <Title>Geek</Title>
-            <SubTitle
-              onClick={() => navigate("/produto/geral?genero=Suspense")}
-            >
+            <SubTitle>
               Compre Agora
             </SubTitle>
           </CardRight>

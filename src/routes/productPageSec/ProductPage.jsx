@@ -13,6 +13,10 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { Container } from "./productStyle";
 
+function AvaliacaoAleatoria(){
+  return Math.floor(Math.random() * 2) + 4;
+}
+
 export default function ProductPage() {
   //FUNÇÃO PARA ATRIBUIR AS ESTRELAS AO COMPONENTE. LAÇO CRIADO PARA SEMPRE PINTAR AS ESTRELAS DE ACORDO COM O NUMERO DA AVALIAÇÃO.
   function Avaliacoes({ avaliacao }) {
@@ -47,7 +51,11 @@ export default function ProductPage() {
     const fetchBook = async () => {
       try {
         const res = await axios.get(`https://node-routes-mysql.vercel.app/book/${id}`);
-        setBook(res.data);
+        const bookWithRatings = {
+          ...res.data,
+          avaliacoes: AvaliacaoAleatoria()
+        };
+        setBook(bookWithRatings);
       } catch (err) {
         console.log(err);
       }
@@ -68,7 +76,7 @@ export default function ProductPage() {
         </div>
         <div className="container-text">
           <h2>{book.name}</h2>
-          <Card avaliacoes={4} />
+          <Card avaliacoes={book.avaliacoes} />
           <h2>R$ {book.price}</h2>
           <h3>Descrição</h3>
           <p>{book.synopsis}</p>
