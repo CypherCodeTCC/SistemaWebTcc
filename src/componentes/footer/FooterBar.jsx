@@ -33,8 +33,7 @@ export default function FooterBar() {
         <div className="container-aboutUs">
           <h4>Liber</h4>
           <p>
-            aliquam ultrices sagittis orci a scelerisque purus semper eget duis
-            at tellus at urna pellentesque id nibh
+            Somos uma livraria, que busca sempre trazer os melhores livros do mercado!
           </p>
           <button onClick={scrollToTop}>Retornar ao topo</button>
         </div>

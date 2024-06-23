@@ -15,21 +15,21 @@ export default function Publishing() {
                             <img src={SvgCiaLetras} className="cia-image" alt="Editora Companhia das Letras"/>
                         </div>
                         <h2>Companhia das Letras</h2>
-                        <p>Sed architecto quidem vel magnam earum ab necessitatibus dolorum hic cumque veritatis ut assumenda magnam. Et consequatur corporis et quia omnis ex saepe doloremque.</p>
+                        <p>A editora Companhia das Letras destaca-se no cenário editorial brasileiro e internacional como uma referência de qualidade e diversidade literária.</p>
                     </div>
                     <div className="cards">
                         <div className="card-image">
                             <img src={SvgRocco} className="rocco-image" alt="Editora Rocco"/>
                         </div>
                         <h2>Editora Rocco</h2>
-                        <p>Sed architecto quidem vel magnam earum ab necessitatibus dolorum hic cumque veritatis ut assumenda magnam. Et consequatur corporis et quia omnis ex saepe doloremque.</p>
+                        <p>A editora Rocco se destaca no cenário editorial pela sua meticulosa seleção de obras que enriquecem o panorama literário.</p>
                     </div>
                     <div className="cards">
                         <div className="card-image">
                             <img src={SvgWish} className="wish-image" alt="Editora Wish"/>
                         </div>
                         <h2>Editora Wish</h2>
-                        <p>Sed architecto quidem vel magnam earum ab necessitatibus dolorum hic cumque veritatis ut assumenda magnam. Et consequatur corporis et quia omnis ex saepe doloremque.</p>
+                        <p>A Wish é conhecida por promover histórias que exploram diferentes gêneros e temáticas, sempre buscando inspirar e emocionar seus leitores.</p>
                     </div>
                 </div>
             </Container>

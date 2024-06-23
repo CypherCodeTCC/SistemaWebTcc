@@ -9,11 +9,11 @@ function HeroSection() {
       <header className="mainHeading">
         <div className="mainHeading__content">
           <article className="mainHeading__text">
-            <p className="mainHeading__preTitle">Lorem</p>
-            <h2 className="mainHeading__title">Lorem de Ipsur</h2>
+            <p className="mainHeading__preTitle">Diversidade</p>
+            <h2 className="mainHeading__title">Opções Variadas</h2>
             <p className="mainHeading__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Pellentesque et mi nec neque fermentum vehicula.
+            Nossas opções são variadas e qualificadas 
+            para atender a todos os gostos e necessidades.
             </p>
             <button className="cta" onClick={() => navigate("/produto/geral")}>
               Explorar opções

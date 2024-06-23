@@ -252,7 +252,7 @@ const ProductPage = () => {
           <Icon>
             <FaFilter />
           </Icon>
-          Filtros
+          Fechar
         </Tab>
         <MenuContent expanded={expanded}>
           <FilterSection>
@@ -622,11 +622,9 @@ const ProductPage = () => {
                 </ProductDetailsSection>
 
                 <ProductPriceAndButtonsSection>
-                  <ProductPrice>R$ {produto.price}</ProductPrice>
                   <DiscountedPrice>
-                    R$ {produto.price - ((produto.price * 10) / 100).toFixed(2)}{" "}
+                    R$ {(produto.price).toFixed(2)}{" "}
                     <span style={{ color: "#b8b8b8", fontSize: ".80vw" }}>
-                      à vista
                     </span>{" "}
                   </DiscountedPrice>
                   <BuyButton onClick={() => addToCart(produto.id)}>
