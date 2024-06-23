@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 //Estrelas do ReactIcons
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Loading from "../loadingSec/Loading";
 
 function Avaliacoes({ avaliacao }) {
   const estrelas = [];
@@ -46,24 +47,29 @@ function Card({ id, imagem, name, price, avaliacoes }) {
 
 export default function BestSellers() {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
+        setIsLoading(true);
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
         setBooks(res.data.slice(0, 8));
       } catch (err) {
         console.log(err);
+      } finally{
+        setIsLoading(false);
       }
     };
     fetchAllBooks();
-  });
+  }, []);
 
   return (
     <Container>
       <Titulo>Mais Vendidos</Titulo>
+      {isLoading && <Loading />}
       <Fileira>
         {books.map((book) => (
           <Card

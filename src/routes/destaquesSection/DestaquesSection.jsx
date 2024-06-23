@@ -14,12 +14,14 @@ import {
   Fileira,
   CardsSecundarios,
 } from "./destaques.jsx";
+import Loading from "../loadingSec/Loading.jsx";
 
 function DestaquesSection() {
   const [books, setBooks] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [lastClickedButton, setLastClickedButton] = useState(1);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchBooks();
@@ -27,6 +29,7 @@ function DestaquesSection() {
 
   async function fetchBooks() {
     try {
+      setIsLoading(true);
       const res = await axios.get("https://node-routes-mysql.vercel.app/book");
       const filteredBooks = res.data.filter(book => 
         book.genre.name === "Suspense" || book.genre.name === "Romance"
@@ -34,6 +37,8 @@ function DestaquesSection() {
       setBooks(filteredBooks);
     } catch (err) {
       console.error("Error fetching books:", err);
+    } finally{
+      setIsLoading(false);
     }
   }
 
@@ -89,6 +94,7 @@ function DestaquesSection() {
         ))}
       </MenuContainer>
       <CardsContainer>
+        {isLoading && <Loading />}
         <CardsSecundarios>
           {[1].map((row) => (
             <Fileira key={row}>
