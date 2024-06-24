@@ -10,18 +10,6 @@ export const Container = styled.section`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 
-  .container-product-img {
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    width: 5%;
-    order: -1;
-
-    img {
-      width: 100%;
-    }
-  }
-
   .big-image {
     width: 30%;
     height: 30%;
@@ -64,7 +52,7 @@ export const Container = styled.section`
     }
   }
 
-  @media (min-width: 802px) and (max-width: 1150px){
+  @media (min-width: 802px) and (max-width: 1150px) {
     flex-direction: column;
     align-items: center;
 
@@ -74,7 +62,7 @@ export const Container = styled.section`
     }
 
     //REORDENANDO A ORDEM ORIGINAL E AJUSTANDO A DIREÇÃO
-    .container-product-img{
+    .container-product-img {
       width: 12%;
       justify-content: center;
       flex-direction: initial;
@@ -112,7 +100,7 @@ export const Container = styled.section`
 
     // QUANDO DEFINIMOS ESTILOS PARA UM ELEMENTO, POR MEIO DE CLASSES OU IDS, O NAVEGADOR DETERMINA A ESTILIZAÇÃO COM BASE NO SELETOR.
     // NESSE CASO PRECISAMOS AUMENTAR A ESPECIFICIDADE PARA O BOTÃO ISOLADO PARA APLICAR A ESTILIZAÇÃO DESEJADA.
-    .container-text .button-alone{
+    .container-text .button-alone {
       background-color: black;
       color: white;
     }

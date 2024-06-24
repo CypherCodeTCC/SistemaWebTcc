@@ -33,7 +33,7 @@ const fetchPayments = async (setMyPayments) => {
 export default function MyPayments() {
   const [myPayments, setMyPayments] = useState([]);
   const [timeoutWs, setTimeoutWs] = useState();
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
 
   useEffect(() => {
     fetchPayments(setMyPayments);
@@ -60,7 +60,7 @@ export default function MyPayments() {
           acc[key] = 0;
           return acc;
         }, {});
-        setCartItems(clearedCart);
+        clearCart(clearedCart);
       }
       console.log(e.data);
     },

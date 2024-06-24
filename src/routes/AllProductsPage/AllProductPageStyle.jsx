@@ -179,11 +179,10 @@ export const RadioButtonLabel = styled.label`
   @media (max-width: 768px) {
     font-size: 18px;
   }
-  input[type="radio"] {
+  input[type="checkbox"] {
     margin-right: 8px;
     background-color: #f0f0f0;
     transition: 0.2s all linear;
-    border: none;
     cursor: pointer;
     width: 1.2rem;
     height: auto;

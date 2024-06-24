@@ -75,35 +75,23 @@ const ProductPage = () => {
   };
 
   const handleRadioChange = (e) => {
-    // Atualiza o estado
-    setFiltroGenero(e.target.value);
-
-    // Atualiza a URL
-    navigate(
-      `?genero=${e.target.value}&editora=${filtroEditora}&preco=${filtroPreco}`
-    );
+    const genero = e.target.value === filtroGenero ? '' : e.target.value;
+    setFiltroGenero(genero);
+    navigate(`?genero=${genero}&editora=${filtroEditora}&preco=${filtroPreco}`);
   };
-
+  
   const handlePublisherChange = (e) => {
-    // Atualiza o estado
-    setFiltroEditora(e.target.value);
-
-    // Atualiza a URL
-    navigate(
-      `?genero=${filtroGenero}&editora=${e.target.value}&preco=${filtroPreco}`
-    );
+    const editora = e.target.value === filtroEditora ? '' : e.target.value;
+    setFiltroEditora(editora);
+    navigate(`?genero=${filtroGenero}&editora=${editora}&preco=${filtroPreco}`);
   };
-
+  
   const handlePriceChange = (e) => {
-    // Atualiza o estado
-    setFiltroPreco(e.target.value);
-
-    // Atualiza a URL
-    navigate(
-      `?genero=${filtroGenero}&editora=${filtroEditora}&preco=${e.target.value}`
-    );
+    const preco = e.target.value === filtroPreco ? '' : e.target.value;
+    setFiltroPreco(preco);
+    navigate(`?genero=${filtroGenero}&editora=${filtroEditora}&preco=${preco}`);
   };
-
+  
   const toggleGenreMenu = () => {
     setExpandedGenre(!expandedGenre);
   };
@@ -111,6 +99,7 @@ const ProductPage = () => {
   const togglePublisherMenu = () => {
     setExpandedPublisher(!expandedPublisher);
   };
+
   <Tab onClick={isMobile ? toggleMobileMenu : null}>
     <Icon>
       <FaFilter />
@@ -118,14 +107,14 @@ const ProductPage = () => {
     Filtros
   </Tab>;
 
-  const togglePriceMenu = () => {
-    setExpandedPrice(!expandedPrice);
-  };
-
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const togglePriceMenu = () => {
+    setExpandedPrice(!expandedPrice);
+  };
+  
   const toggleMenu = (menuName, isOpen) => {
     switch (menuName) {
       case "genero":
@@ -172,14 +161,14 @@ const ProductPage = () => {
       // Filtra os produtos com base no gênero
       if (genero) {
         produtosFiltrados = produtosFiltrados.filter(
-          (produto) => produto.genre.name === genero
+          (produto) => produto.genre.name == genero
         );
       }
 
       // Filtra os produtos com base na editora
       if (editora) {
         produtosFiltrados = produtosFiltrados.filter(
-          (produto) => produto.publishing_company.name === editora
+          (produto) => produto.publishing_company.name == editora
         );
       }
 
@@ -219,7 +208,7 @@ const ProductPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   return (
     <MelanciaSonica>
       <TabsContainer>
@@ -236,23 +225,15 @@ const ProductPage = () => {
       </TabsContainer>
       <MenuContainer
         style={{
-          minHeight: "700px",
-          position: isMobileMenuOpen ? "fixed" : "relative",
-          top: 0,
+          position: "relative", // Sempre relativo para permitir o empurrão para baixo
           left: 0,
           width: "100%",
           height: "100%",
           backgroundColor: "white",
           zIndex: 1000,
-          display: isMobileMenuOpen ? "block" : "none",
-        }}
-      >
-        <Tab onClick={isMobile ? toggleMobileMenu : null}>
-          <Icon>
-            <FaFilter />
-          </Icon>
-          Filtros
-        </Tab>
+          display: isMobileMenuOpen ? "block" : "none", // Sempre visível para permitir o empurrão para baixo
+          transition: "top 0.3s ease-in-out", // Efeito de transição suave para a animação
+      }}>
         <MenuContent expanded={expanded}>
           <FilterSection>
             <MenuItem onClick={toggleGenreMenu}>
@@ -263,61 +244,61 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="Suspense"
                     name="genero"
                     onChange={handleRadioChange}
-                    checked={filtroGenero === "Suspense"}
+                    checked={filtroGenero == "Suspense"}
                   />{" "}
                   Suspense
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="Terror"
-                    name="genero"
+                    name="genero" 
                     onChange={handleRadioChange}
-                    checked={filtroGenero === "Terror"}
+                    checked={filtroGenero == "Terror"}
                   />{" "}
                   Terror
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Romance"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Romance"}
+                      checked={filtroGenero == "Romance"}
                     />{" "}
                     Romance
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Dev. Pessoal"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Dev. Pessoal"}
+                      checked={filtroGenero == "Dev. Pessoal"}
                     />{" "}
                     Dev. Pessoal
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Classico"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Classico"}
+                      checked={filtroGenero == "Classico"}
                     />{" "}
                     Clássico
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Geek"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Geek"}
+                      checked={filtroGenero == "Geek"}
                     />{" "}
                     Geek
                   </RadioButtonLabel>
@@ -331,31 +312,31 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="Editora Rocco"
                     name="editora"
                     onChange={handlePublisherChange}
-                    checked={filtroEditora === "Editora Rocco"} // Verifica se o filtroEditora é 'rocco'
+                    checked={filtroEditora == "Editora Rocco"} // Verifica se o filtroEditora é 'rocco'
                   />{" "}
                   Rocco
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="Editora Wish"
                     name="editora"
                     onChange={handlePublisherChange}
-                    checked={filtroEditora === "Editora Wish"} // Verifica se o filtroEditora é 'Wish'
+                    checked={filtroEditora == "Editora Wish"} // Verifica se o filtroEditora é 'Wish'
                   />{" "}
                   Wish
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="Companhia das Letras"
                     name="editora"
                     onChange={handlePublisherChange}
-                    checked={filtroEditora === "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
+                    checked={filtroEditora == "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
                   />{" "}
                   Companhia das Letras
                 </RadioButtonLabel>
@@ -369,51 +350,51 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="*"
                     name="preco"
                     onChange={handlePriceChange}
-                    checked={filtroPreco === "*"} // Verifica se o filtroPreco é '*'
+                    checked={filtroPreco == "*"} // Verifica se o filtroPreco é '*'
                   />{" "}
                   Qualquer
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="10"
                     name="preco"
                     onChange={handlePriceChange}
-                    checked={filtroPreco === "10"} // Verifica se o filtroPreco é '10'
+                    checked={filtroPreco == "10"} // Verifica se o filtroPreco é '10'
                   />{" "}
                   Até R$10
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="50"
                     name="preco"
                     onChange={handlePriceChange}
-                    checked={filtroPreco === "50"} // Verifica se o filtroPreco é '50'
+                    checked={filtroPreco == "50"} // Verifica se o filtroPreco é '50'
                   />{" "}
                   R$10 até R$50
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="100"
                     name="preco"
                     onChange={handlePriceChange}
-                    checked={filtroPreco === "100"} // Verifica se o filtroPreco é '100'
+                    checked={filtroPreco == "100"} // Verifica se o filtroPreco é '100'
                   />{" "}
                   R$50 até R$100
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type="radio"
+                    type='checkbox'
                     value="plus100"
                     name="preco"
                     onChange={handlePriceChange}
-                    checked={filtroPreco === "plus100"} // Verifica se o filtroPreco é 'plus100'
+                    checked={filtroPreco == "plus100"} // Verifica se o filtroPreco é 'plus100'
                   />{" "}
                   Mais que R$100
                 </RadioButtonLabel>
@@ -438,61 +419,61 @@ const ProductPage = () => {
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Suspense"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Suspense"}
+                      checked={filtroGenero == "Suspense"}
                     />{" "}
                     Suspense
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Terror"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Terror"}
+                      checked={filtroGenero == "Terror"}
                     />{" "}
                     Terror
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Romance"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Romance"}
+                      checked={filtroGenero == "Romance"}
                     />{" "}
                     Romance
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Dev. Pessoal"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Dev. Pessoal"}
+                      checked={filtroGenero == "Dev. Pessoal"}
                     />{" "}
                     Dev. Pessoal
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Classico"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Classico"}
+                      checked={filtroGenero == "Classico"}
                     />{" "}
                     Clássico
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Geek"
                       name="genero"
                       onChange={handleRadioChange}
-                      checked={filtroGenero === "Geek"}
+                      checked={filtroGenero == "Geek"}
                     />{" "}
                     Geek
                   </RadioButtonLabel>
@@ -502,35 +483,35 @@ const ProductPage = () => {
                 <MenuTitle>Editora</MenuTitle>
                 <span>{expandedPublisher ? "-" : "+"}</span>
               </MenuItem>
-              {expandedPublisher && (
+                {expandedPublisher && (
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Editora Rocco"
                       name="editora"
                       onChange={handlePublisherChange}
-                      checked={filtroEditora === "rocco"} // Verifica se o filtroEditora é 'rocco'
+                      checked={filtroEditora == "Editora Rocco"} // Verifica se o filtroEditora é 'rocco'
                     />{" "}
                     Rocco
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Editora Wish"
                       name="editora"
                       onChange={handlePublisherChange}
-                      checked={filtroEditora === "Editora Wish"} // Verifica se o filtroEditora é 'Wish'
+                      checked={filtroEditora == "Editora Wish"} // Verifica se o filtroEditora é 'Wish'
                     />{" "}
                     Wish
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="Companhia das Letras"
                       name="editora"
                       onChange={handlePublisherChange}
-                      checked={filtroEditora === "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
+                      checked={filtroEditora == "Companhia das Letras"} // Verifica se o filtroEditora é 'Companhia das Letras'
                     />{" "}
                     CDL
                   </RadioButtonLabel>
@@ -544,51 +525,51 @@ const ProductPage = () => {
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="*"
                       name="preco"
                       onChange={handlePriceChange}
-                      checked={filtroPreco === "*"} // Verifica se o filtroPreco é '*'
+                      checked={filtroPreco == "*"} // Verifica se o filtroPreco é '*'
                     />{" "}
                     Qualquer
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="10"
                       name="preco"
                       onChange={handlePriceChange}
-                      checked={filtroPreco === "10"} // Verifica se o filtroPreco é '10'
+                      checked={filtroPreco == "10"} // Verifica se o filtroPreco é '10'
                     />{" "}
                     Até R$10
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="50"
                       name="preco"
                       onChange={handlePriceChange}
-                      checked={filtroPreco === "50"} // Verifica se o filtroPreco é '50'
+                      checked={filtroPreco == "50"} // Verifica se o filtroPreco é '50'
                     />{" "}
                     R$10 até R$50
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="100"
                       name="preco"
                       onChange={handlePriceChange}
-                      checked={filtroPreco === "100"} // Verifica se o filtroPreco é '100'
+                      checked={filtroPreco == "100"} // Verifica se o filtroPreco é '100'
                     />{" "}
                     R$50 até R$100
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type="radio"
+                      type='checkbox'
                       value="plus100"
                       name="preco"
                       onChange={handlePriceChange}
-                      checked={filtroPreco === "plus100"} // Verifica se o filtroPreco é 'plus100'
+                      checked={filtroPreco == "plus100"} // Verifica se o filtroPreco é 'plus100'
                     />{" "}
                     Mais que R$100
                   </RadioButtonLabel>

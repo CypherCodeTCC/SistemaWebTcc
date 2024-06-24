@@ -3,8 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import CartContext from "../../context/cart/CartContext";
 
-import PngImagem1 from "../../../public/produto1.png";
-import PngImagem2 from "../../../public/produto2.png";
 import PngRocco from "../../../public/rocco.png";
 import PngWish from "../../../public/wish.png";
 
@@ -13,7 +11,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegPlusSquare } from "react-icons/fa";
 import { Container } from "./productStyle";
 
-function AvaliacaoAleatoria(){
+function AvaliacaoAleatoria() {
   return Math.floor(Math.random() * 2) + 4;
 }
 
@@ -44,16 +42,18 @@ export default function ProductPage() {
   const navigate = useNavigate();
   const [book, setBook] = useState({});
   const { id } = useParams();
-  const { addToCart, cartItems } = useContext(CartContext); 
+  const { addToCart, cartItems } = useContext(CartContext);
   const cartItemsAmount = cartItems[id];
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`https://node-routes-mysql.vercel.app/book/${id}`);
+        const res = await axios.get(
+          `https://node-routes-mysql.vercel.app/book/${id}`
+        );
         const bookWithRatings = {
           ...res.data,
-          avaliacoes: AvaliacaoAleatoria()
+          avaliacoes: AvaliacaoAleatoria(),
         };
         setBook(bookWithRatings);
       } catch (err) {
@@ -66,14 +66,13 @@ export default function ProductPage() {
   return (
     <>
       <Container>
-        {book.image && <img src={book.image.url} className="big-image" alt="Imagem do Produto" />}
-        <div className="container-product-img">
-          <img src={PngImagem1} alt="Imagem do Produto" />
-          <img src={PngImagem2} alt="Imagem do Produto" />
-          <img src={PngImagem2} alt="Imagem do Produto" />
-          <img src={PngImagem2} alt="Imagem do Produto" />
-          <img src={PngImagem2} alt="Imagem do Produto" />
-        </div>
+        {book.image && (
+          <img
+            src={book.image.url}
+            className="big-image"
+            alt="Imagem do Produto"
+          />
+        )}
         <div className="container-text">
           <h2>{book.name}</h2>
           <Card avaliacoes={book.avaliacoes} />
@@ -89,12 +88,21 @@ export default function ProductPage() {
             <button className="big-button" onClick={() => addToCart(book.id)}>
               <FaRegPlusSquare /> Adicionar ao carrinho
             </button>
-            <button className="small-button" onClick={() => navigate('/cart')}>
-              <IoCartOutline/>
+            <button className="small-button" onClick={() => navigate("/cart")}>
+              <IoCartOutline />
               {cartItemsAmount > 0 && <>({cartItemsAmount})</>}
             </button>
           </div>
-          <button className="button-alone" onClick={() => navigate(`/produto/geral?genero=${book.genre.name}&editora=${book.publishing_company.name}&preco=`)}>Veja produtos semelhantes</button>
+          <button
+            className="button-alone"
+            onClick={() =>
+              navigate(
+                `/produto/geral?genero=${book.genre.name}&editora=${book.publishing_company.name}&preco=`
+              )
+            }
+          >
+            Veja produtos semelhantes
+          </button>
         </div>
       </Container>
     </>

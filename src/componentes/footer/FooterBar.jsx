@@ -12,7 +12,6 @@ import PngApplePay from "../../../public/applePay.png";
 import PngGooglePay from "../../../public/googlePay.png";
 import PngAmazon from "../../../public/amazon.png";
 
-
 export default function FooterBar() {
   const scrollToTop = () => {
     window.scrollTo({
@@ -24,6 +23,7 @@ export default function FooterBar() {
   const navigate = useNavigate();
 
   const handleRoutes = (route) => {
+    scrollToTop();
     navigate(route);
   };
 
@@ -33,7 +33,8 @@ export default function FooterBar() {
         <div className="container-aboutUs">
           <h4>Liber</h4>
           <p>
-            Somos uma livraria, que busca sempre trazer os melhores livros do mercado!
+            Somos uma livraria, que busca sempre trazer os melhores livros do
+            mercado!
           </p>
           <button onClick={scrollToTop}>Retornar ao topo</button>
         </div>
@@ -54,10 +55,38 @@ export default function FooterBar() {
         </div>
         <div className="container-social-media">
           <h4>Redes Sociais</h4>
-          <p><a href="https://www.instagram.com/liberlivrariaoficial/?utm_source=qr&igsh=MWRodW1xMTd1eXA0dA%3D%3D" target="_blank">Instagram</a></p>
-          <p><a href="https://www.facebook.com/profile.php?id=61560973754056&is_tour_dismissed" target="_blank">Facebook</a></p>
-          <p><a href="https://x.com/Liber5017717167?t=71rOSDv7gmiwi_mOu_-0ZQ&s=08" target="_blank">X</a></p>
-          <p><a href="https://www.tiktok.com/@livrarialiber?_t=8nAgvQUPdHq&_r=1" target="_blank">TikTok</a></p>
+          <p>
+            <a
+              href="https://www.instagram.com/liberlivrariaoficial/?utm_source=qr&igsh=MWRodW1xMTd1eXA0dA%3D%3D"
+              target="_blank"
+            >
+              Instagram
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.facebook.com/profile.php?id=61560973754056&is_tour_dismissed"
+              target="_blank"
+            >
+              Facebook
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://x.com/Liber5017717167?t=71rOSDv7gmiwi_mOu_-0ZQ&s=08"
+              target="_blank"
+            >
+              X
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.tiktok.com/@livrarialiber?_t=8nAgvQUPdHq&_r=1"
+              target="_blank"
+            >
+              TikTok
+            </a>
+          </p>
         </div>
         <div className="container-know-more">
           <h4>Saiba Mais</h4>
@@ -72,7 +101,7 @@ export default function FooterBar() {
             <img src={PngVisa} alt="" />
           </Payment>
           <Payment>
-            <img src={PngPayPal} alt=""/>
+            <img src={PngPayPal} alt="" />
             <img src={PngApplePay} alt="" />
           </Payment>
           <Payment>

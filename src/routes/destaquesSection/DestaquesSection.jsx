@@ -27,17 +27,30 @@ function DestaquesSection() {
     fetchBooks();
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleRoutes = (route) => {
+    scrollToTop();
+    navigate(route);
+  };
+
   async function fetchBooks() {
     try {
       setIsLoading(true);
       const res = await axios.get("https://node-routes-mysql.vercel.app/book");
-      const filteredBooks = res.data.filter(book => 
-        book.genre.name === "Suspense" || book.genre.name === "Romance"
+      const filteredBooks = res.data.filter(
+        (book) =>
+          book.genre.name === "Suspense" || book.genre.name === "Romance"
       );
       setBooks(filteredBooks);
     } catch (err) {
       console.error("Error fetching books:", err);
-    } finally{
+    } finally {
       setIsLoading(false);
     }
   }
@@ -98,17 +111,16 @@ function DestaquesSection() {
         <CardsSecundarios>
           {[1].map((row) => (
             <Fileira key={row}>
-            {otherBooks.map((book, index) => (
-              <Card key={index} onClick={() => navigate(`/produto/${book.id}`)}>
-                {book.image && (
-                  <Imagem
-                    src={book.image.url}
-                  />
-                )}
-                <CardTitle>{book.name}</CardTitle>
-              </Card>
-            ))}
-          </Fileira>
+              {otherBooks.map((book, index) => (
+                <Card
+                  key={index}
+                  onClick={() => handleRoutes(`/produto/${book.id}`)}
+                >
+                  {book.image && <Imagem src={book.image.url} />}
+                  <CardTitle>{book.name}</CardTitle>
+                </Card>
+              ))}
+            </Fileira>
           ))}
         </CardsSecundarios>
       </CardsContainer>

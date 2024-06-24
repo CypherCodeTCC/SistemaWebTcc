@@ -4,6 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
   const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleRoutes = (route) => {
+    scrollToTop();
+    navigate(route);
+  };
+
   return (
     <>
       <header className="mainHeading">
@@ -12,10 +25,13 @@ function HeroSection() {
             <p className="mainHeading__preTitle">Diversidade</p>
             <h2 className="mainHeading__title">Opções Variadas</h2>
             <p className="mainHeading__description">
-            Nossas opções são variadas e qualificadas 
-            para atender a todos os gostos e necessidades.
+              Nossas opções são variadas e qualificadas para atender a todos os
+              gostos e necessidades.
             </p>
-            <button className="cta" onClick={() => navigate("/produto/geral")}>
+            <button
+              className="cta"
+              onClick={() => handleRoutes("/produto/geral")}
+            >
               Explorar opções
             </button>
           </article>

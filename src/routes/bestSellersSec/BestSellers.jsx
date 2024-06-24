@@ -18,8 +18,15 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Loading from "../loadingSec/Loading";
 
-function AvaliacaoAleatoria(){
+function AvaliacaoAleatoria() {
   return Math.floor(Math.random() * 2) + 4;
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 }
 
 function Avaliacoes({ avaliacao }) {
@@ -30,7 +37,7 @@ function Avaliacoes({ avaliacao }) {
       estrelas.push(<FaStar key={i} color="black" />);
     } else if (i === Math.ceil(avaliacao)) {
       estrelas.push(<FaStarHalf key={i} color="black" />);
-    } else{
+    } else {
       estrelas.push(<FaStar key={i} color="lightgray" />);
     }
   }
@@ -41,9 +48,17 @@ function Avaliacoes({ avaliacao }) {
 function Card({ id, imagem, name, price, avaliacoes }) {
   const navigate = useNavigate();
 
+  const handleRoutes = (route) => {
+    scrollToTop();
+    navigate(route);
+  };
+
   return (
     <CardContainer>
-      <Imagem src={imagem} onClick={() => navigate(`/produto/${id}`)}></Imagem>
+      <Imagem
+        src={imagem}
+        onClick={() => handleRoutes(`/produto/${id}`)}
+      ></Imagem>
       <NomeLivro>{name}</NomeLivro>
       <Avaliacoes avaliacao={avaliacoes} />
       <PrecoLivro>R${price}</PrecoLivro>
@@ -62,16 +77,18 @@ export default function BestSellers() {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        const bookWithRatings = res.data.slice(0, 8).map(book => ({
+        const bookWithRatings = res.data.slice(0, 8).map((book) => ({
           ...book,
-          avaliacoes: AvaliacaoAleatoria()
+          avaliacoes: AvaliacaoAleatoria(),
         }));
-          // Ordena os livros pelos ratings em ordem decrescente
-        const sortedBooks = bookWithRatings.sort((a, b) => b.avaliacoes - a.avaliacoes);
+        // Ordena os livros pelos ratings em ordem decrescente
+        const sortedBooks = bookWithRatings.sort(
+          (a, b) => b.avaliacoes - a.avaliacoes
+        );
         setBooks(sortedBooks);
       } catch (err) {
         console.log(err);
-      } finally{
+      } finally {
         setIsLoading(false);
       }
     };

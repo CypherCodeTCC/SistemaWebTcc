@@ -9,7 +9,9 @@ export default function CartProvider({ children }) {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("https://node-routes-mysql.vercel.app/book");
+        const res = await axios.get(
+          "https://node-routes-mysql.vercel.app/book"
+        );
         setItems(res.data);
       } catch (err) {
         console.log(err);
@@ -72,12 +74,17 @@ export default function CartProvider({ children }) {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
+  const clearCart = () => {
+    setCartItems(getDefaultCart(items));
+  };
+
   const contextValues = {
     cartItems,
     addToCart,
     removeFromCart,
     updateCartItemCount,
     getTotalCartAmount,
+    clearCart,
   };
 
   return (
