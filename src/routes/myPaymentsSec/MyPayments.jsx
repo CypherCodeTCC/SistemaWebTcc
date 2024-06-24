@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Ahref,
   Container,
@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import useWebSocket from "react-use-websocket";
 import { FaCheck } from "react-icons/fa";
+import CartContext from "../../context/cart/CartContext";
 
 const fetchPayments = async (setMyPayments) => {
   try {
@@ -32,6 +33,7 @@ const fetchPayments = async (setMyPayments) => {
 export default function MyPayments() {
   const [myPayments, setMyPayments] = useState([]);
   const [timeoutWs, setTimeoutWs] = useState();
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   useEffect(() => {
     fetchPayments(setMyPayments);
@@ -52,7 +54,14 @@ export default function MyPayments() {
     },
     onMessage: (e) => {
       const data = JSON.parse(e.data);
-      if (data.event === "CHANGE_PAYMENT") fetchPayments(setMyPayments);
+      if (data.event === "CHANGE_PAYMENT") {
+        fetchPayments(setMyPayments);
+        const clearedCart = Object.keys(cartItems).reduce((acc, key) => {
+          acc[key] = 0;
+          return acc;
+        }, {});
+        setCartItems(clearedCart);
+      }
       console.log(e.data);
     },
     onClose: () => {
