@@ -37,7 +37,7 @@ export default function MyPayments() {
     fetchPayments(setMyPayments);
   }, []);
 
-  const ws = useWebSocket("ws://liber-websocket-c7a65390f74d.herokuapp.com", {
+  const ws = useWebSocket("wss://liber-websocket-c7a65390f74d.herokuapp.com", {
     onOpen: () => {
       setTimeoutWs(
         setInterval(() => {
