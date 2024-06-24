@@ -35,7 +35,7 @@ export default function MyPayments() {
 
   useEffect(() => {
     fetchPayments(setMyPayments);
-  }, []);
+  }, [setMyPayments]);
 
   const ws = useWebSocket("wss://liber-websocket-c7a65390f74d.herokuapp.com", {
     onOpen: () => {
