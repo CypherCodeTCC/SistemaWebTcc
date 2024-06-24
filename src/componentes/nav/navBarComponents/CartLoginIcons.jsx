@@ -64,6 +64,7 @@ function CartLoginIcons() {
   const navigate = useNavigate();
 
   const handleRoutes = (route) => {
+    setMenuUserLogged(false);
     navigate(route);
   };
 

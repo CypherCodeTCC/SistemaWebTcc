@@ -16,6 +16,7 @@ import CartProvider from "./context/cart/CartProvider.jsx";
 import Cart from "./routes/cartSec/Cart.jsx";
 import Profile from "./routes/profileSec/Profile.jsx";
 import FinalizeRegister from "./routes/finalizeRegisterSec/FinalizeRegister.jsx";
+import MyPayments from "./routes/myPaymentsSec/MyPayments.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -104,6 +105,7 @@ export default function RoutesConfig() {
               </Layout>
             }
           />
+          <Route path="/meuspagamentos" element={<Layout><MyPayments /></Layout>}/>
 
           <Route path="*" element={<Error />} />
         </Routes>

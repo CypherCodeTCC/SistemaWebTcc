@@ -60,6 +60,14 @@ function MobileMenu() {
         <div>
           <li className="li-botoes-menumobile">
             <a
+              onClick={() => navigate("/meuspagamentos")}
+              className="a--li--menumobile"
+            >
+              Meus Pagamentos
+            </a>
+          </li>
+          <li className="li-botoes-menumobile">
+            <a
               onClick={() => navigate("/profile")}
               className="a--li--menumobile"
             >

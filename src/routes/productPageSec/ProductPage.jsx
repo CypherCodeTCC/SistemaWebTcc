@@ -77,7 +77,7 @@ export default function ProductPage() {
         <div className="container-text">
           <h2>{book.name}</h2>
           <Card avaliacoes={book.avaliacoes} />
-          <h2>R$ {book.price}</h2>
+          <h2>R$ {book.price && book.price.toFixed(2)}</h2>
           <h3>Descrição</h3>
           <p>{book.synopsis}</p>
           <h4>Editoras</h4>

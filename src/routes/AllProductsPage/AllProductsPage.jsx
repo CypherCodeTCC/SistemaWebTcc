@@ -23,7 +23,6 @@ import {
   ProductImageSection,
   ProductList,
   ProductName,
-  ProductPrice,
   ProductPriceAndButtonsSection,
   ProductPublisher,
   ProductSynopsis,
@@ -252,7 +251,7 @@ const ProductPage = () => {
           <Icon>
             <FaFilter />
           </Icon>
-          Fechar
+          Filtros
         </Tab>
         <MenuContent expanded={expanded}>
           <FilterSection>

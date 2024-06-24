@@ -200,6 +200,7 @@ export const RadioButtonLabel = styled.label`
 export const ProductList = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
   background-color: #f8f4f4;
 

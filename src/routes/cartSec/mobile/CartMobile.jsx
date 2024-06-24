@@ -27,6 +27,8 @@ import GooglePayPng from "../../../../public/googlePay.png";
 import ApplePayPng from "../../../../public/applePay.png";
 import PayPalPng from "../../../../public/paypal.png";
 import { CartEmpty, Title } from "../cartStyle";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function calculateTax(totalAmount, taxRate) {
   const taxDecimal = taxRate / 100;
@@ -38,6 +40,11 @@ function calculateTax(totalAmount, taxRate) {
 export default function CartMobile() {
   const [items, setItems] = useState([]);
   const { cartItems, getTotalCartAmount } = useContext(CartContext);
+  const [ itemsOnCart, setItemsOnCart ] = useState([]);
+
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+  const userGoogle = localStorage.getItem("uId");
 
   const totalAmount = getTotalCartAmount();
   const taxRate = 5;
@@ -57,6 +64,52 @@ export default function CartMobile() {
     fetchAllBooks();
   }, []);
 
+  const handleClick = async () => {
+    // Verifica se o usuário está logado
+    
+    if(userGoogle && !userId){
+      toast.error("É necessário fazer o registro antes de finalizar a compra!", {
+        closeOnClick: true,
+      });
+      navigate("/register");
+      return;
+    }
+    else if (!userId){
+      toast.error("É necessário logar antes de finalizar a compra!", {
+        closeOnClick: true,
+      });
+      navigate("/login");
+      return;
+    }
+
+    const itemsToSend = itemsOnCart.map((item) => ({
+      title: item.name,
+      quantity: cartItems[item.id],
+      unit_price: item.price,
+    }));
+
+    const payload = {
+      user_id: localStorage.getItem("userId"),
+      items: itemsToSend,
+    };
+
+    try{
+      const response = await axios.post("https://liber-payments-api-bb6000485904.herokuapp.com/payments", payload);
+      console.log("Resposta do MercadoPago:", response.data.link_to_payment);
+      window.open(response.data.link_to_payment, '_blank');
+    }
+    catch(err){
+      toast.error("Erro ao concluir pedido. Tente novamente mais tarde.", {
+        closeOnClick: true,
+      });
+      console.log("Erro ao enviar dados para o MercadoPago.", err);
+    }
+  }
+
+  useEffect(() => {
+    setItemsOnCart(items.filter((item) => cartItems[item.id] > 0));
+  }, [items, cartItems]);
+
   return (
     <>
       {totalAmount > 0 ? (
@@ -68,7 +121,7 @@ export default function CartMobile() {
                 Finalize suas compras
               </SubTitlePurchaseBoxMobile>
             </FinalizePurchaseBoxMobile>
-            <Button>Finalizar Compras</Button>
+            <Button onClick={handleClick}>Finalizar Compras</Button>
           </FinalizePurchase>
           {items.map((item) => {
             if (cartItems[item.id] > 0)

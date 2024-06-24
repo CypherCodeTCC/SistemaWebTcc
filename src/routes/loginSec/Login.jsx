@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import PngCelular from "../../../public/celular.png";
-import PngApple from "../../../public/apple.png";
 import PngGoogle from "../../../public/google.png";
 import PngFacebook from "../../../public/facebook.png";
 import {
@@ -148,7 +147,6 @@ export default function Login() {
         <ContainerForm>
           <h3>Seja Bem-Vindo</h3>
           <SubTitle>Faça login na sua conta Liber</SubTitle>
-          <Button><ImageIcons src={PngApple} alt="Apple" />Prossiga com a Apple</Button>
           <Button onClick={signInWithGoogle}><ImageIcons src={PngGoogle} alt="Google" />Prossiga com o Google</Button>
           <Button onClick={signInWithFacebook}><ImageIcons src={PngFacebook} alt="Facebook" />Prossiga com o Facebook</Button>
           <SubTitleCenter>Ou</SubTitleCenter>

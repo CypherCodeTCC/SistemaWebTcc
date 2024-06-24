@@ -25,6 +25,7 @@ import {
 export default function Cart() {
   const [items, setItems] = useState([]);
   const { cartItems, getTotalCartAmount } = useContext(CartContext);
+  const [ itemsOnCart, setItemsOnCart ] = useState([]);
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const userGoogle = localStorage.getItem("uId");
@@ -45,22 +46,52 @@ export default function Cart() {
     fetchAllBooks();
   }, []);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // Verifica se o usuário está logado
     
     if(userGoogle && !userId){
-      toast.error("é necessário fazer o registro antes de finalizar a compra!", {
+      toast.error("É necessário fazer o registro antes de finalizar a compra!", {
         closeOnClick: true,
       });
-      navigate("/register")
+      navigate("/register");
+      return;
     }
     else if (!userId){
-      toast.error("é necessário logar antes de finalizar a compra!", {
+      toast.error("É necessário logar antes de finalizar a compra!", {
         closeOnClick: true,
       });
       navigate("/login");
+      return;
     }
-  };
+
+    const itemsToSend = itemsOnCart.map((item) => ({
+      title: item.name,
+      quantity: cartItems[item.id],
+      unit_price: item.price,
+    }));
+
+    const payload = {
+      user_id: localStorage.getItem("userId"),
+      items: itemsToSend,
+    };
+
+    try{
+      const response = await axios.post("https://liber-payments-api-bb6000485904.herokuapp.com/payments", payload);
+      console.log("Resposta do MercadoPago:", response.data.link_to_payment);
+      window.open(response.data.link_to_payment, '_blank');
+    } 
+    catch(err) {
+      toast.error("Erro ao concluir pedido. Tente novamente mais tarde.", {
+        closeOnClick: true,
+      });
+      console.log("Erro ao enviar dados para o MercadoPago.", err);
+    }
+  }
+
+  useEffect(() => {
+    setItemsOnCart(items.filter((item) => cartItems[item.id] > 0));
+  }, [items, cartItems]);
+
   if (width < 1024)
     return <CartMobile />
 
