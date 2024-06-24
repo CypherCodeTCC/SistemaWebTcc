@@ -63,28 +63,8 @@ export default function Cart() {
       navigate("/login");
       return;
     }
-
-    const itemsToSend = itemsOnCart.map((item) => ({
-      title: item.name,
-      quantity: cartItems[item.id],
-      unit_price: item.price,
-    }));
-
-    const payload = {
-      user_id: localStorage.getItem("userId"),
-      items: itemsToSend,
-    };
-
-    try{
-      const response = await axios.post("https://liber-payments-api-bb6000485904.herokuapp.com/payments", payload);
-      console.log("Resposta do MercadoPago:", response.data.link_to_payment);
-      window.open(response.data.link_to_payment, '_blank');
-    } 
-    catch(err) {
-      toast.error("Erro ao concluir pedido. Tente novamente mais tarde.", {
-        closeOnClick: true,
-      });
-      console.log("Erro ao enviar dados para o MercadoPago.", err);
+    else{
+      navigate("/finalizarcompra",  { state: { itemsOnCart, cartItems, totalAmount }})
     }
   }
 
@@ -94,6 +74,8 @@ export default function Cart() {
 
   if (width < 1024)
     return <CartMobile />
+
+  console.log(totalAmount);
 
   return (
     <>
@@ -125,7 +107,7 @@ export default function Cart() {
                 <SubTitle>Total:</SubTitle>
                 <PrecoTotal>R${totalAmount.toFixed(2)}</PrecoTotal>
               </Infos>
-              <ButtonCart onClick={handleClick}>Finalizar Compra</ButtonCart>
+              <ButtonCart onClick={handleClick}>Continuar</ButtonCart>
             </Checkout>
           </ContainerCheckout>
         </Container>
