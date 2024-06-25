@@ -52,10 +52,10 @@ export default function MyPayments() {
         user_id: localStorage.getItem("userId"),
       });
     },
-    onMessage: (e) => {
+    onMessage: async (e) => {
       const data = JSON.parse(e.data);
       if (data.event === "CHANGE_PAYMENT") {
-        fetchPayments(setMyPayments);
+        await fetchPayments(setMyPayments);
         const clearedCart = Object.keys(cartItems).reduce((acc, key) => {
           acc[key] = 0;
           return acc;
