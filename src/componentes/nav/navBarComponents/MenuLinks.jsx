@@ -39,10 +39,10 @@ function MenuLinks() {
             <p onClick={() => navigate("/produto/geral?genero=Geek&editora=&preco=")}>Geek</p>
           </Dropdown>
         </li>
-        <li onClick={() => navigate("/")}>
+        <li onClick={() => navigate("/produto/geral?genero=&editora=&preco=descontos")}>
           <a>Ofertas</a>
         </li>
-        <li onClick={() => navigate("/")}>
+        <li onClick={() => navigate("/eventos")}>
           <a>Eventos</a>
         </li>
       </ul>

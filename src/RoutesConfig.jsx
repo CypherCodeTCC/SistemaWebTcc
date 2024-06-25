@@ -18,6 +18,7 @@ import Profile from "./routes/profileSec/Profile.jsx";
 import FinalizeRegister from "./routes/finalizeRegisterSec/FinalizeRegister.jsx";
 import MyPayments from "./routes/myPaymentsSec/MyPayments.jsx";
 import FinalizePurchase from "./routes/finalizePurchaseSec/FinalizePurchase.jsx";
+import Events from "./routes/eventsSec/Events.jsx";
 
 const Layout = ({ children }) => (
   <div>
@@ -108,6 +109,7 @@ export default function RoutesConfig() {
           />
           <Route path="/meuspagamentos" element={<Layout><MyPayments /></Layout>}/>
           <Route path="/finalizarcompra" element={<Layout><FinalizePurchase /></Layout>} />
+          <Route path="/eventos" element={<Layout><Events /></Layout>} />
 
           <Route path="*" element={<Error />} />
         </Routes>

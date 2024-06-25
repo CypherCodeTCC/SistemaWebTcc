@@ -209,6 +209,8 @@ const ProductPage = () => {
               return true; // Mostra todos os produtos
             case "plus100":
               return produto.price > 100; // Mostra apenas os produtos com preço > 100
+            case "descontos":
+              return produto.discount == 1;
             default:
               return false;
           }
@@ -556,6 +558,16 @@ const ProductPage = () => {
                       checked={filtroPreco == "*"} // Verifica se o filtroPreco é '*'
                     />{" "}
                     Qualquer
+                  </RadioButtonLabel>
+                  <RadioButtonLabel>
+                    <input
+                      type="checkbox"
+                      value="descontos"
+                      name="preco"
+                      onChange={handlePriceChange}
+                      checked={filtroPreco == "descontos"} // Verifica se o filtroPreco é '*'
+                    />{" "}
+                    Descontos
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
