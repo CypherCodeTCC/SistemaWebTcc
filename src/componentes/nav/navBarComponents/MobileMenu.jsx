@@ -133,12 +133,12 @@ function MobileMenu() {
               </a>
             </li>
             <li className="li--menu">
-              <a onClick={() => navigate("/")} className="li--a--menu">
+              <a onClick={() => navigate("/produto/geral?genero=&editora=&preco=descontos")} className="li--a--menu">
                 Ofertas
               </a>
             </li>
             <li className="li--menu">
-              <a onClick={() => navigate("/")} className="li--a--menu">
+              <a onClick={() => navigate("/eventos")} className="li--a--menu">
                 Eventos
               </a>
             </li>
