@@ -129,7 +129,7 @@ export default function FinalizePurchase() {
           <SubTitleItems>Cidade*</SubTitleItems>
           <Input type="text" value={address.Cidade} readOnly />
           <SubTitleItems>Telefone*</SubTitleItems>
-          <Input mask="00000-0000" type="text" value={user.Telefone} readOnly />
+          <Input mask="(00) 00000-0000" type="text" value={user.Telefone} readOnly />
           <SubTitleItems>Endereço de e-mail*</SubTitleItems>
           <Input type="text" value={user.Email} readOnly />
         </ContainerAddress>

@@ -60,6 +60,18 @@ export default function Cart() {
     fetchAllBooks();
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleRoutes = (route, state = {}) => {
+    scrollToTop();
+    navigate(route, { state })
+  }
+
 
   const handleClick = async () => {
     // Verifica se o usuário está logado
@@ -68,18 +80,18 @@ export default function Cart() {
       toast.error("É necessário fazer o registro antes de finalizar a compra!", {
         closeOnClick: true,
       });
-      navigate("/register");
+      handleRoutes("/register");
       return;
     }
     else if (!userId){
       toast.error("É necessário logar antes de finalizar a compra!", {
         closeOnClick: true,
       });
-      navigate("/login");
+      handleRoutes("/login");
       return;
     }
     else{
-      navigate("/finalizarcompra",  { state: { itemsOnCart, cartItems, totalAmount }})
+      handleRoutes("/finalizarcompra", { itemsOnCart, cartItems, totalAmount });
     }
   }
 
