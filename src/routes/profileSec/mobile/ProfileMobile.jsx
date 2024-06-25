@@ -233,7 +233,7 @@ export default function ProfileMobile() {
                 <div>
                   <SubTitleMobile>Telefone</SubTitleMobile>
                   <InputMobile
-                    mask="00000-0000"
+                    mask="(00) 90000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -280,7 +280,7 @@ export default function ProfileMobile() {
                 <div>
                   <SubTitleMobile>Telefone</SubTitleMobile>
                   <InputMobile
-                    mask="00000-0000"
+                    mask="(00) 90000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"

@@ -211,7 +211,7 @@ export default function SignUp() {
           <Text>
             <h4>Telefone</h4>
             <Input
-              mask="00000-0000"
+              mask="(00) 90000-0000"
               type="tel"
               placeholder="Ex: 99999-9999"
               name="Telefone"

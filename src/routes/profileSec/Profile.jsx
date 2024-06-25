@@ -155,6 +155,7 @@ export default function Profile() {
   };
 
   const handleUpdateGoogleOrFacebook = async () => {
+    console.log(user);
     try {
       await axios.put(
         `https://node-routes-mysql.vercel.app/client/${localStorage.getItem(
@@ -273,7 +274,7 @@ export default function Profile() {
                 <InputText>
                   <SubTitle>Telefone</SubTitle>
                   <Input
-                    mask="00000-0000"
+                    mask="(00) 90000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
@@ -324,7 +325,7 @@ export default function Profile() {
                 <InputText>
                   <SubTitle>Telefone</SubTitle>
                   <Input
-                    mask="00000-0000"
+                    mask="(00) 90000-0000"
                     type="text"
                     value={user.Telefone}
                     name="Telefone"
