@@ -54,7 +54,7 @@ function Card({ id, imagem, name, price, avaliacoes }) {
   };
 
   return (
-    <CardContainer>
+    <CardContainer onClick={() => handleRoutes(`/produto/${id}`)}>
       <Imagem
         src={imagem}
         onClick={() => handleRoutes(`/produto/${id}`)}

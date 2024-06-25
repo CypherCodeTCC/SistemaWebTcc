@@ -66,6 +66,19 @@ export default function CartMobile() {
     fetchAllBooks();
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleRoutes = (route, state = {}) => {
+    scrollToTop();
+    navigate(route, { state })
+  }
+
+
   const handleClick = async () => {
     // Verifica se o usuário está logado
     
@@ -73,39 +86,20 @@ export default function CartMobile() {
       toast.error("É necessário fazer o registro antes de finalizar a compra!", {
         closeOnClick: true,
       });
-      navigate("/register");
+      handleRoutes("/register");
       return;
     }
     else if (!userId){
       toast.error("É necessário logar antes de finalizar a compra!", {
         closeOnClick: true,
       });
-      navigate("/login");
+      handleRoutes("/login");
       return;
     }
-
-    const itemsToSend = itemsOnCart.map((item) => ({
-      title: item.name,
-      quantity: cartItems[item.id],
-      unit_price: item.price,
-    }));
-
-    const payload = {
-      user_id: localStorage.getItem("userId"),
-      items: itemsToSend,
-    };
-
-    try{
-      const response = await axios.post("https://liber-payments-api-bb6000485904.herokuapp.com/payments", payload);
-      console.log("Resposta do MercadoPago:", response.data.link_to_payment);
-      window.open(response.data.link_to_payment, '_blank');
+    else{
+      handleRoutes("/finalizarcompra", { itemsOnCart, cartItems, totalAmount });
     }
-    catch(err){
-      toast.error("Erro ao concluir pedido. Tente novamente mais tarde.", {
-        closeOnClick: true,
-      });
-      console.log("Erro ao enviar dados para o MercadoPago.", err);
-    }
+   
   }
 
   useEffect(() => {
