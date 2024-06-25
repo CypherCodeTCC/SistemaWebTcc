@@ -12,7 +12,19 @@ export default function CartProvider({ children }) {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        setItems(res.data);
+        const books = res.data;
+        const bookWithDiscount = books.map((book) => {
+          if(book.genre && book.genre.name === "Dev. Pessoal"){
+            const novoPreco = book.price * 0.5;
+            return {
+              ...book,
+              discount: 1,
+              price: novoPreco,
+            };
+          }
+          return book;
+        })
+        setItems(bookWithDiscount);
       } catch (err) {
         console.log(err);
       }

@@ -115,7 +115,20 @@ function CartLoginIcons() {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        setBooks(res.data);
+        const res_books = res.data;
+
+        const bookWithDiscount = res_books.map((book) => {
+          if(book.genre && book.genre.name === "Dev. Pessoal"){
+            const novoPreco = book.price * 0.5;
+            return{
+              ...book,
+              discount: 1,
+              price: novoPreco,
+            };
+          }
+          return book;
+        })
+        setBooks(bookWithDiscount);
       } catch (err) {
         console.log("Erro ao encontrar os livros.", err);
       }

@@ -6,6 +6,7 @@ import {
   AuthorPublisherSection,
   BuyButton,
   Container,
+  ContainerPrice,
   DiscountedPrice,
   ErrorMessage,
   FilterSection,
@@ -23,6 +24,7 @@ import {
   ProductImageSection,
   ProductList,
   ProductName,
+  ProductPrice,
   ProductPriceAndButtonsSection,
   ProductPublisher,
   ProductSynopsis,
@@ -75,23 +77,23 @@ const ProductPage = () => {
   };
 
   const handleRadioChange = (e) => {
-    const genero = e.target.value === filtroGenero ? '' : e.target.value;
+    const genero = e.target.value === filtroGenero ? "" : e.target.value;
     setFiltroGenero(genero);
     navigate(`?genero=${genero}&editora=${filtroEditora}&preco=${filtroPreco}`);
   };
-  
+
   const handlePublisherChange = (e) => {
-    const editora = e.target.value === filtroEditora ? '' : e.target.value;
+    const editora = e.target.value === filtroEditora ? "" : e.target.value;
     setFiltroEditora(editora);
     navigate(`?genero=${filtroGenero}&editora=${editora}&preco=${filtroPreco}`);
   };
-  
+
   const handlePriceChange = (e) => {
-    const preco = e.target.value === filtroPreco ? '' : e.target.value;
+    const preco = e.target.value === filtroPreco ? "" : e.target.value;
     setFiltroPreco(preco);
     navigate(`?genero=${filtroGenero}&editora=${filtroEditora}&preco=${preco}`);
   };
-  
+
   const toggleGenreMenu = () => {
     setExpandedGenre(!expandedGenre);
   };
@@ -114,7 +116,7 @@ const ProductPage = () => {
   const togglePriceMenu = () => {
     setExpandedPrice(!expandedPrice);
   };
-  
+
   const toggleMenu = (menuName, isOpen) => {
     switch (menuName) {
       case "genero":
@@ -156,7 +158,16 @@ const ProductPage = () => {
     }
 
     axios.get("https://node-routes-mysql.vercel.app/book/").then((response) => {
-      let produtosFiltrados = response.data;
+      let produtosFiltrados = response.data.map((produto) => {
+        if (produto.genre.name === "Dev. Pessoal") {
+          const novoPreco = produto.price * 0.5;
+          return {
+            ...produto,
+            discount: 1,
+            newPrice: novoPreco,
+          };
+        } else return produto;
+      });
 
       // Filtra os produtos com base no gênero
       if (genero) {
@@ -208,7 +219,7 @@ const ProductPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   return (
     <MelanciaSonica>
       <TabsContainer>
@@ -233,7 +244,8 @@ const ProductPage = () => {
           zIndex: 1000,
           display: isMobileMenuOpen ? "block" : "none", // Sempre visível para permitir o empurrão para baixo
           transition: "top 0.3s ease-in-out", // Efeito de transição suave para a animação
-      }}>
+        }}
+      >
         <MenuContent expanded={expanded}>
           <FilterSection>
             <MenuItem onClick={toggleGenreMenu}>
@@ -244,7 +256,7 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="Suspense"
                     name="genero"
                     onChange={handleRadioChange}
@@ -254,54 +266,54 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="Terror"
-                    name="genero" 
+                    name="genero"
                     onChange={handleRadioChange}
                     checked={filtroGenero == "Terror"}
                   />{" "}
                   Terror
                 </RadioButtonLabel>
                 <RadioButtonLabel>
-                    <input
-                      type='checkbox'
-                      value="Romance"
-                      name="genero"
-                      onChange={handleRadioChange}
-                      checked={filtroGenero == "Romance"}
-                    />{" "}
-                    Romance
-                  </RadioButtonLabel>
-                  <RadioButtonLabel>
-                    <input
-                      type='checkbox'
-                      value="Dev. Pessoal"
-                      name="genero"
-                      onChange={handleRadioChange}
-                      checked={filtroGenero == "Dev. Pessoal"}
-                    />{" "}
-                    Dev. Pessoal
-                  </RadioButtonLabel>
-                  <RadioButtonLabel>
-                    <input
-                      type='checkbox'
-                      value="Classico"
-                      name="genero"
-                      onChange={handleRadioChange}
-                      checked={filtroGenero == "Classico"}
-                    />{" "}
-                    Clássico
-                  </RadioButtonLabel>
-                  <RadioButtonLabel>
-                    <input
-                      type='checkbox'
-                      value="Geek"
-                      name="genero"
-                      onChange={handleRadioChange}
-                      checked={filtroGenero == "Geek"}
-                    />{" "}
-                    Geek
-                  </RadioButtonLabel>
+                  <input
+                    type="checkbox"
+                    value="Romance"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero == "Romance"}
+                  />{" "}
+                  Romance
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="checkbox"
+                    value="Dev. Pessoal"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero == "Dev. Pessoal"}
+                  />{" "}
+                  Dev. Pessoal
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="checkbox"
+                    value="Classico"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero == "Classico"}
+                  />{" "}
+                  Clássico
+                </RadioButtonLabel>
+                <RadioButtonLabel>
+                  <input
+                    type="checkbox"
+                    value="Geek"
+                    name="genero"
+                    onChange={handleRadioChange}
+                    checked={filtroGenero == "Geek"}
+                  />{" "}
+                  Geek
+                </RadioButtonLabel>
               </RadioContainer>
             )}
             <MenuItem onClick={togglePublisherMenu}>
@@ -312,7 +324,7 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="Editora Rocco"
                     name="editora"
                     onChange={handlePublisherChange}
@@ -322,7 +334,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="Editora Wish"
                     name="editora"
                     onChange={handlePublisherChange}
@@ -332,7 +344,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="Companhia das Letras"
                     name="editora"
                     onChange={handlePublisherChange}
@@ -350,7 +362,7 @@ const ProductPage = () => {
               <RadioContainer>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="*"
                     name="preco"
                     onChange={handlePriceChange}
@@ -360,7 +372,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="10"
                     name="preco"
                     onChange={handlePriceChange}
@@ -370,7 +382,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="50"
                     name="preco"
                     onChange={handlePriceChange}
@@ -380,7 +392,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="100"
                     name="preco"
                     onChange={handlePriceChange}
@@ -390,7 +402,7 @@ const ProductPage = () => {
                 </RadioButtonLabel>
                 <RadioButtonLabel>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     value="plus100"
                     name="preco"
                     onChange={handlePriceChange}
@@ -419,7 +431,7 @@ const ProductPage = () => {
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Suspense"
                       name="genero"
                       onChange={handleRadioChange}
@@ -429,7 +441,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Terror"
                       name="genero"
                       onChange={handleRadioChange}
@@ -439,7 +451,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Romance"
                       name="genero"
                       onChange={handleRadioChange}
@@ -449,7 +461,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Dev. Pessoal"
                       name="genero"
                       onChange={handleRadioChange}
@@ -459,7 +471,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Classico"
                       name="genero"
                       onChange={handleRadioChange}
@@ -469,7 +481,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Geek"
                       name="genero"
                       onChange={handleRadioChange}
@@ -483,11 +495,11 @@ const ProductPage = () => {
                 <MenuTitle>Editora</MenuTitle>
                 <span>{expandedPublisher ? "-" : "+"}</span>
               </MenuItem>
-                {expandedPublisher && (
+              {expandedPublisher && (
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Editora Rocco"
                       name="editora"
                       onChange={handlePublisherChange}
@@ -497,7 +509,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Editora Wish"
                       name="editora"
                       onChange={handlePublisherChange}
@@ -507,7 +519,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="Companhia das Letras"
                       name="editora"
                       onChange={handlePublisherChange}
@@ -525,7 +537,7 @@ const ProductPage = () => {
                 <RadioContainer>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="*"
                       name="preco"
                       onChange={handlePriceChange}
@@ -535,7 +547,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="10"
                       name="preco"
                       onChange={handlePriceChange}
@@ -545,7 +557,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="50"
                       name="preco"
                       onChange={handlePriceChange}
@@ -555,7 +567,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="100"
                       name="preco"
                       onChange={handlePriceChange}
@@ -565,7 +577,7 @@ const ProductPage = () => {
                   </RadioButtonLabel>
                   <RadioButtonLabel>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       value="plus100"
                       name="preco"
                       onChange={handlePriceChange}
@@ -602,11 +614,26 @@ const ProductPage = () => {
                 </ProductDetailsSection>
 
                 <ProductPriceAndButtonsSection>
-                  <DiscountedPrice>
-                    R$ {(produto.price).toFixed(2)}{" "}
-                    <span style={{ color: "#b8b8b8", fontSize: ".80vw" }}>
-                    </span>{" "}
-                  </DiscountedPrice>
+                  {produto.discount ? (
+                    <DiscountedPrice>
+                      <ContainerPrice>
+                        <p>De</p>
+                        <ProductPrice>R$ {produto.price.toFixed(2)}{" "}</ProductPrice>
+                      </ContainerPrice>
+                      <ContainerPrice>
+                        <p>Por</p>
+                        R$ {produto.newPrice.toFixed(2)}
+                      </ContainerPrice>
+                    </DiscountedPrice>
+                  ) : (
+                    <DiscountedPrice>
+                      R$ {produto.price.toFixed(2)}{" "}
+                      <span
+                        style={{ color: "#b8b8b8", fontSize: ".80vw" }}
+                      ></span>{" "}
+                    </DiscountedPrice>
+                  )}
+
                   <BuyButton onClick={() => addToCart(produto.id)}>
                     Comprar agora
                   </BuyButton>

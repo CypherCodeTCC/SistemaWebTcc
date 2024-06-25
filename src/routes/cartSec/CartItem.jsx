@@ -27,7 +27,7 @@ export default function CartItem(props) {
       <CartItems>
         <Description>
           <NomeAutor>{name}</NomeAutor>
-          <NomeLivro>R$ {price}</NomeLivro>
+          <NomeLivro>R$ {price.toFixed(2)}</NomeLivro>
           <CountHandler>
             <Input
               type="number"

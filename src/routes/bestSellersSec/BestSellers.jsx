@@ -61,7 +61,7 @@ function Card({ id, imagem, name, price, avaliacoes }) {
       ></Imagem>
       <NomeLivro>{name}</NomeLivro>
       <Avaliacoes avaliacao={avaliacoes} />
-      <PrecoLivro>R${price}</PrecoLivro>
+      <PrecoLivro>R${price.toFixed(2)}</PrecoLivro>
     </CardContainer>
   );
 }
@@ -77,12 +77,21 @@ export default function BestSellers() {
         const res = await axios.get(
           "https://node-routes-mysql.vercel.app/book"
         );
-        const bookWithRatings = res.data.slice(0, 8).map((book) => ({
-          ...book,
-          avaliacoes: AvaliacaoAleatoria(),
-        }));
+        const res_books = res.data.slice(0, 8);
+        const bookWithDiscountAndRatings = res_books.map((book) => {
+          let updatedBook = {...book};
+          if(book.genre && book.genre.name === "Dev. Pessoal"){
+            const novoPreco = book.price * 0.5;
+            updatedBook.price = novoPreco;
+            updatedBook.discount = 1;
+          }
+
+          updatedBook.avaliacoes = AvaliacaoAleatoria();
+          return updatedBook;
+        })
+
         // Ordena os livros pelos ratings em ordem decrescente
-        const sortedBooks = bookWithRatings.sort(
+        const sortedBooks = bookWithDiscountAndRatings.sort(
           (a, b) => b.avaliacoes - a.avaliacoes
         );
         setBooks(sortedBooks);

@@ -38,13 +38,28 @@ export default function Cart() {
     const fetchAllBooks = async () => {
       try {
         const res = await axios.get("https://node-routes-mysql.vercel.app/book");
-        setItems(res.data);
+        const books = res.data;
+
+        const booksWithDiscount = books.map((book) => {
+          if(book.genre && book.genre.name === "Dev. Pessoal"){
+            const novoPreco = book.price * 0.5;
+            return {
+              ...book,
+              discount: 1,
+              price: novoPreco,
+            };
+          }
+          return book;
+        });
+
+        setItems(booksWithDiscount);
       } catch (err) {
         console.log(err);
       }
     };
     fetchAllBooks();
   }, []);
+
 
   const handleClick = async () => {
     // Verifica se o usuário está logado
@@ -74,8 +89,6 @@ export default function Cart() {
 
   if (width < 1024)
     return <CartMobile />
-
-  console.log(totalAmount);
 
   return (
     <>

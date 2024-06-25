@@ -51,10 +51,22 @@ export default function ProductPage() {
         const res = await axios.get(
           `https://node-routes-mysql.vercel.app/book/${id}`
         );
+        const res_book = res.data;
+        let bookWithDiscount = {...res_book};
+
+        if(res_book.genre.name === "Dev. Pessoal"){
+          const novoPreco = res_book.price * 0.5;
+          bookWithDiscount = {
+            ...bookWithDiscount,
+            price: novoPreco,
+          };
+        }
+
         const bookWithRatings = {
-          ...res.data,
+          ...bookWithDiscount,
           avaliacoes: AvaliacaoAleatoria(),
-        };
+        }
+        
         setBook(bookWithRatings);
       } catch (err) {
         console.log(err);

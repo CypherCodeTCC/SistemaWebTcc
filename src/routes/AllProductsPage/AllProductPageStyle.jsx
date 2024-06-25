@@ -383,6 +383,11 @@ export const AuthorPublisherSection = styled.div`
   }
 `;
 
+export const ContainerPrice = styled.div`
+  display: flex;
+  gap: 10px;
+`
+
 export const ProductPrice = styled.p`
   font-weight: bold;
   text-decoration: line-through;
