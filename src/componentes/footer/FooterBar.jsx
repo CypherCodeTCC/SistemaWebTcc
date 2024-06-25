@@ -92,7 +92,7 @@ export default function FooterBar() {
           <h4>Saiba Mais</h4>
           <p onClick={() => handleRoutes("/about")}>Quem somos</p>
           <p onClick={() => handleRoutes("/about")}>Trabalhe conosco</p>
-          <p>Entre em contato</p>
+          <p onClick={() => handleRoutes("/about")}>Entre em contato</p>
         </div>
         <div className="container-payment">
           <h4>Formas de Pagamento</h4>

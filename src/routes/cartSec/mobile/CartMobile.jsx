@@ -30,13 +30,6 @@ import { CartEmpty, Title } from "../cartStyle";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function calculateTax(totalAmount, taxRate) {
-  const taxDecimal = taxRate / 100;
-  const taxAmount = totalAmount * taxDecimal;
-
-  return taxAmount;
-}
-
 export default function CartMobile() {
   const [items, setItems] = useState([]);
   const { cartItems, getTotalCartAmount } = useContext(CartContext);
@@ -47,16 +40,25 @@ export default function CartMobile() {
   const userGoogle = localStorage.getItem("uId");
 
   const totalAmount = getTotalCartAmount();
-  const taxRate = 5;
-  const taxAmount = calculateTax(totalAmount, taxRate);
-
-  const shippingCost = 4.5;
 
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
         const res = await axios.get("https://node-routes-mysql.vercel.app/book");
-        setItems(res.data);
+        const books = res.data;
+
+        const booksWithDiscount = books.map((book) => {
+          if(book.genre && book.genre.name === "Dev. Pessoal"){
+            const novoPreco = book.price * 0.5;
+            return {
+              ...book,
+              discount: 1,
+              price: novoPreco,
+            };
+          }
+          return book;
+        })
+        setItems(booksWithDiscount);
       } catch (err) {
         console.log(err);
       }
@@ -133,14 +135,12 @@ export default function CartMobile() {
               <LineMobile></LineMobile>
               <SubTitleMobile>Subtotal:</SubTitleMobile>
               <PrecosMobile>R${totalAmount.toFixed(2)}</PrecosMobile>
-              <SubTitleMobile>Impostos</SubTitleMobile>
-              <PrecosMobile>R${taxAmount.toFixed(2)}</PrecosMobile>
               <SubTitleMobile>Frete</SubTitleMobile>
-              <PrecosMobile>R${shippingCost.toFixed(2)}</PrecosMobile>
+              <PrecosMobile>Grátis</PrecosMobile>
               <LineMobile></LineMobile>
               <SubTitleMobile>Total:</SubTitleMobile>
               <PrecoTotalMobile>
-                R${(totalAmount + taxAmount + shippingCost).toFixed(2)}
+                R${totalAmount.toFixed(2)}
               </PrecoTotalMobile>
             </PurchaseInformationMobile>
             <PaymentMobile>

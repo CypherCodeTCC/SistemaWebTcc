@@ -15,7 +15,7 @@ import {
 } from "./cartMobileStyle";
 
 export default function CartMobileItem(props) {
-  const { id, name, price, image, author, genre } = props.data;
+  const { id, name, price, image, author, genre, publishing_company } = props.data;
   const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
 
   return (
@@ -23,7 +23,7 @@ export default function CartMobileItem(props) {
       <CartItemsMobile>
         {image && <ImageLivroMobile src={image.url} />}
         <DescriptionMobile>
-          <NomeEditoraMobile>Editora Wish</NomeEditoraMobile>
+          <NomeEditoraMobile>{publishing_company.name}</NomeEditoraMobile>
           <NomeLivroMobile>{name}</NomeLivroMobile>
           <NomeAutorMobile>Autor: {author.name}</NomeAutorMobile>
           <NomeAutorMobile>Gênero: {genre.name}</NomeAutorMobile>
@@ -33,7 +33,7 @@ export default function CartMobileItem(props) {
           <NomeLivroMobile>Qtd: {cartItems[id]}</NomeLivroMobile>
         </DescriptionMobile>
         <PrecoItemMobile>
-          <NomePrecoMobile>R${price}</NomePrecoMobile>
+          <NomePrecoMobile>R${price.toFixed(2)}</NomePrecoMobile>
           <ButtonExcluirMobile onClick={() => removeFromCart(id)}>
             Diminuir
           </ButtonExcluirMobile>

@@ -5,6 +5,7 @@ import CartContext from "../../context/cart/CartContext";
 
 import PngRocco from "../../../public/rocco.png";
 import PngWish from "../../../public/wish.png";
+import PngCdl from "../../../public/cialetra.png";
 
 import { FaStar } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
@@ -75,6 +76,8 @@ export default function ProductPage() {
     fetchBook();
   }, [id]);
 
+  console.log(book);
+
   return (
     <>
       <Container>
@@ -93,8 +96,13 @@ export default function ProductPage() {
           <p>{book.synopsis}</p>
           <h4>Editoras</h4>
           <div className="container-images">
-            <img src={PngRocco} alt="Editora Rocco" />
-            <img src={PngWish} alt="Editora Wish" />
+            {book.publishing_company && book.publishing_company.name === "Editora Rocco" ? (
+              <img src={PngRocco} alt="Editora Rocco" />
+            ) : book.publishing_company && book.publishing_company.name === "Editora Wish" ? (
+              <img src={PngWish} alt="Editora Wish" />
+            ) : (
+              <img src={PngCdl} alt="Companhia das Letras" />
+            )}
           </div>
           <div className="container-buttons">
             <button className="big-button" onClick={() => addToCart(book.id)}>

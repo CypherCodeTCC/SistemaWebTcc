@@ -134,11 +134,6 @@ function MobileMenu() {
             </li>
             <li className="li--menu">
               <a onClick={() => navigate("/")} className="li--a--menu">
-                Categorias
-              </a>
-            </li>
-            <li className="li--menu">
-              <a onClick={() => navigate("/")} className="li--a--menu">
                 Ofertas
               </a>
             </li>

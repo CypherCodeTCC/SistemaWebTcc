@@ -54,6 +54,18 @@ const ProductPage = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  const handleRoutes = (route) => {
+    scrollToTop();
+    navigate(route);
+  } 
+
   useEffect(() => {
     window.addEventListener("beforeunload", alertUser);
 
@@ -638,7 +650,7 @@ const ProductPage = () => {
                     Comprar agora
                   </BuyButton>
                   <MoreInfoButton
-                    onClick={() => navigate(`/produto/${produto.id}`)}
+                    onClick={() => handleRoutes(`/produto/${produto.id}`)}
                   >
                     Saiba mais
                   </MoreInfoButton>
